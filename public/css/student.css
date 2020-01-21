@@ -1,0 +1,94 @@
+html,body{
+	min-height: 100%;
+	background:#e6e4e4
+}
+
+
+.header{
+	background: #02904f;
+
+}
+
+.header ul{
+	list-style: none;
+	padding:0;
+	margin:0;
+}
+
+.header ul li{
+	padding:0;
+	margin:0;
+	display: inline-block;
+}
+.header ul li a{
+	display: block;
+	padding:15px;
+	color:white;
+	color:#dcdcdc;
+}
+.header ul li a i{
+	margin-right:10px;
+}
+
+.header ul li a:hover{
+	background: #02884b
+}
+
+
+.navigation {
+	background: #d5d3d3;
+	padding:15px;
+	margin-left: -15px;
+ 	margin-right: -15px;
+}
+
+/*custom style*/
+
+a:link,a:active,a:hover{
+	color:gray;
+	text-decoration: none
+}
+.padding{
+	padding:15px;
+}
+
+.padding-tb{
+	padding-top:15px;
+	padding-bottom:15px;
+}
+
+.padding-lr{
+	padding-left:15px;
+	padding-right:15px;
+}
+
+
+
+.padding-left{
+	margin-left:15px;
+}
+.padding-top{
+	margin-top:15px;
+}
+.padding-bottom{
+	margin-left:15px;
+}
+
+.padding-right{
+	margin-right:10px;
+}
+
+
+.padding-left{
+	margin-left:15px;
+}
+.margin-top{
+	margin-top:15px;
+}
+.margin-bottom{
+	margin-left:15px;
+}
+
+.margin-right{
+	margin-right:10px;
+}

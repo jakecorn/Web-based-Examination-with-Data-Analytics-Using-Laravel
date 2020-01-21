@@ -1,0 +1,16 @@
+{
+    "name": "Examination",
+    "alias": "examination",
+    "description": "",
+    "keywords": [],
+    "active": 1,
+    "order": 0,
+    "providers": [
+        "Modules\\Examination\\Providers\\ExaminationServiceProvider"
+    ],
+    "aliases": {},
+    "files": [
+        "start.php"
+    ],
+    "requires": []
+}

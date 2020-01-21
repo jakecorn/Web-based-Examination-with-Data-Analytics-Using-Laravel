@@ -1,0 +1,942 @@
+<!DOCTYPE html>
+<!-- saved from url=(0036)https://laravel.com/docs/5.4/queries -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <title>Database: Query Builder - Laravel - The PHP Framework For Web Artisans</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="author" content="Taylor Otwell">
+    <meta name="description" content="Laravel - The PHP framework for web artisans.">
+    <meta name="keywords" content="laravel, php, framework, web, artisans, taylor otwell">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+            <link rel="canonical" href="https://laravel.com/docs/5.4/queries">
+        <!--[if lte IE 9]>
+        <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link href="./Database_ Query Builder - Laravel - The PHP Framework For Web Artisans_files/css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="./Database_ Query Builder - Laravel - The PHP Framework For Web Artisans_files/laravel-143628dd7b.css">
+    <link rel="stylesheet" href="./Database_ Query Builder - Laravel - The PHP Framework For Web Artisans_files/flexboxgrid.min.css" type="text/css">
+    <link rel="apple-touch-icon" href="https://laravel.com/favicon.png">
+    <script src="./Database_ Query Builder - Laravel - The PHP Framework For Web Artisans_files/ga.js.download"></script><script src="./Database_ Query Builder - Laravel - The PHP Framework For Web Artisans_files/vue.min.js.download"></script>
+<style type="text/css">:root a[href^="http://www.drowle.com/"], :root #\5f _mom_ad_2, :root #header + #content > #left > #rlblock_left, :root a[href^="http://keep2share.cc/pr/"], :root #MAIN.ShowTopic > .ad, :root #\5f _mom_ad_12, :root #center_col > #main > .dfrd > .mnr-c > .c._oc._zs, :root .__y_elastic .__y_item, :root a[href^="http://ul.to/ref/"], :root a[href^="http://landingpagegenius.com/"], :root a[href^="http://ads.pheedo.com/"], :root #\5f _nq__hh[style="display:block!important"], :root a[href^="http://www.getyourguide.com/?partner_id="], :root a[href^="http://lp.ncdownloader.com/"], :root #ads > .dose > .dosesingle, :root .inlineNewsletterSubscription + .inlineNewsletterSubscription div[class$="_item"], :root #assetsListings[style="display: block;"], :root a[href^="http://b.bestcompleteusa.info/"], :root #main-content > [style="padding:10px 0 0 0 !important;"], :root a[href^="https://www.spyoff.com/"], :root .ob_container a[data-redirect^="http://paid.outbrain.com/network/redir?"], :root #center_col > #\5f Emc, :root a[href^="http://secure.signup-way.com/"], :root a[href^="http://easydownload4you.com/"], :root #center_col > #res > #topstuff + #search > div > #ires > #rso > #flun, :root a[href^="http://www.affbuzzads.com/affiliate/"], :root a[href^="http://web.adblade.com/"], :root a[href^="http://cdn3.adexprts.com/"], :root #center_col > #resultStats + #tads, :root #center_col > #resultStats + #tads + #res + #tads, :root a[href^="http://codec.codecm.com/"], :root #cnt #center_col > #taw > #tvcap > .c._oc._Lp, :root #center_col > #resultStats + div + #res + #tads, :root div[id^="div-gpt-ad"], :root a[href^="http://liversely.com/"], :root #center_col > #resultStats + div[style="border:1px solid #dedede;margin-bottom:11px;padding:5px 7px 5px 6px"], :root #topstuff > #tads, :root #center_col > #taw > #tvcap > .rscontainer, :root #center_col > div[style="font-size:14px;margin-right:0;min-height:5px"] > div[style="font-size:14px;margin:0 4px;padding:1px 5px;background:#fff8e7"], :root a[href^="http://fileloadr.com/"], :root .gbfwa > div[class$="_item"], :root div[id^="ad_script_"], :root a[href^="http://www.friendlyadvertisements.com/"], :root #cnt #center_col > #res > #topstuff > .ts, :root a[href^="http://affiliates.pinnaclesports.com/processing/"], :root #mn div[style="position:relative"] > #center_col > ._Ak, :root #content > #center > .dose > .dosesingle, :root #content > #right > .dose > .dosesingle, :root a[href^="http://fsoft4down.com/"], :root a[href^="http://buysellads.com/"], :root #flowplayer > div[style="position: absolute; width: 300px; height: 275px; left: 222.5px; top: 85px; z-index: 999;"], :root a[href^="http://www.easydownloadnow.com/"], :root a[href^="http://n217adserv.com/"], :root a[href*="emprestimo.eu"], :root #mn #center_col > div > h2.spon:first-child + ol:last-child, :root div[id^="ads120_600-widget"], :root .rc-cta[data-target], :root #flowplayer > div[style="z-index: 208; position: absolute; width: 300px; height: 275px; left: 222.5px; top: 85px;"], :root a[href^="http://c.ketads.com/"], :root .GB3L-QEDGY .GB3L-QEDF- > .GB3L-QEDE-, :root a[href^="http://www.usearchmedia.com/signup?"], :root #main_col > #center_col div[style="font-size:14px;margin:0 4px;padding:1px 5px;background:#fff7ed"], :root a[href^="http://banners.victor.com/processing/"], :root .__zinit .__y_item, :root a[href^="https://www.FriendlyDuck.com/AF_"], :root #mbEnd[cellspacing="0"][cellpadding="0"], :root a[href^="http://ads.sprintrade.com/"], :root #mn #center_col > div > h2.spon:first-child, :root a[href^="http://farm.plista.com/pets"], :root #rhs_block > .ts[cellspacing="0"][cellpadding="0"][style="padding:0"], :root .__yinit .__y_item, :root #mn div[style="position:relative"] > #center_col > div > ._dPg, :root a[href^="https://www.firstload.com/affiliate/"], :root #resultspanel > #topads, :root a[href^="http://www.faceporn.net/free?"], :root a[href^="http://www.coinducks.com/AF_"], :root #rhs_block > #mbEnd, :root a[href^="http://uploaded.net/ref/"], :root #rhs_block .mod > .gws-local-hotels__booking-module, :root #rhs_block .mod > .luhb-div > div[data-async-type="updateHotelBookingModule"], :root a[href^="http://www.fbooksluts.com/"], :root a[href^="http://jobitem.org/"], :root #rhs_block .xpdopen > ._OKe > div > .mod > ._yYf, :root a[href^="http://www.moneyducks.com/"], :root #rhs_block > ol > .rhsvw > .kp-blk > .xpdopen > ._OKe > ol > ._DJe > .luhb-div, :root a[href^="http://websitedhoome.com/"], :root .trc_rbox_div .syndicatedItem, :root .mw > #rcnt > #center_col > #taw > #tvcap > .c, :root a[href^="http://ad.yieldmanager.com/"], :root .lads[width="100%"][style="background:#FFF8DD"], :root a[href^="http://taboola-"][href*="/redirect.php?app.type="], :root #rhs_block > script + .c._oc._Ve.rhsvw, :root a[href^="http://www.uniblue.com/cm/"], :root #tads + div + .c, :root a[href^="http://ads.betfair.com/redirect.aspx?"], :root #rhswrapper > #rhssection[border="0"][bgcolor="#ffffff"], :root a[href^="http://adserver.itsfogo.com/"], :root #ssmiwdiv[jsdisplay], :root .__ywl .__y_item, :root a[href^="http://ads.activtrades.com/"], :root .GFYY1SVD2 > .GFYY1SVC2 > .GFYY1SVF5, :root .GHOFUQ5BG2 > .GHOFUQ5BF2 > .GHOFUQ5BG5, :root div[id^="mainads"], :root .GFYY1SVE2 > .GFYY1SVD2 > .GFYY1SVG5, :root .jobs-information-call-to-action + .jobs-information-call-to-action div[class$="_item"], :root a[href^="http://www.terraclicks.com/"], :root a[href^="http://paid.outbrain.com/network/redir?"], :root a[href^="http://go.oclaserver.com/"], :root a[href^="http://clickandjoinyourgirl.com/"], :root .GJJKPX2N1 > .GJJKPX2M1 > .GJJKPX2P4, :root .GKJYXHBF2 > .GKJYXHBE2 > .GKJYXHBH5, :root a[href^="http://www.streamtunerhd.com/signup?"], :root .GPMV2XEDA2 > .GPMV2XEDP1 > .GPMV2XEDJBB, :root .Mpopup + #Mad > #MadZone, :root .__y_inner > .__y_item, :root .__ywvr .__y_item, :root .ch[onclick="ga(this,event)"], :root .icons-rss-feed + .icons-rss-feed div[class$="_item"], :root a[href^="http://www.epicgameads.com/"], :root a[href^="http://hyperlinksecure.com/go/"], :root .l-container > #fishtank, :root .mod > ._jH + .rscontainer, :root a[href^="http://xads.zedo.com/"], :root a[href^="http://clicks.binarypromos.com/"], :root .mw > #rcnt > #center_col > #taw > .c, :root .nrelate .nr_partner, :root a[href^="http://www.paddypower.com/?AFF_ID="], :root .ob_container .item-container-obpd, :root .ob_dual_right > .ob_ads_header ~ .odb_div, :root .plistaList > .itemLinkPET, :root a[href^="http://bcp.crwdcntrl.net/"], :root a[href^="http://adtransfer.net/"], :root .plistaList > .plista_widget_underArticle_item[data-type="pet"], :root a[href^="http://www.pinkvisualgames.com/?revid="], :root .plista_widget_belowArticleRelaunch_item[data-type="pet"], :root a[href^="http://abc2.mobile-10.com/"], :root .ra[align="left"][width="30%"], :root .ra[align="right"][width="30%"], :root .ra[width="30%"][align="right"] + table[width="70%"][cellpadding="0"], :root .rhsvw[style="background-color:#fff;margin:0 0 14px;padding-bottom:1px;padding-top:1px;"], :root a[href^="http://www.fducks.com/"], :root a[href^="http://record.sportsbetaffiliates.com.au/"], :root .rscontainer > .ellip, :root a[href^="http://cinema.friendscout24.de?"], :root .section-result[data-result-ad-type], :root .trc_rbox .syndicatedItem, :root .trc_rbox_border_elm .syndicatedItem, :root .trc_rbox_div .syndicatedItemUB, :root .trc_rbox_div a[target="_blank"][href^="http://tab"], :root .trc_related_container div[data-item-syndicated="true"], :root a[href^="http://www.ringtonematcher.com/"], :root .widget-pane-section-result[data-result-ad-type], :root div[id^="div-adtech-ad-"], :root ADS-RIGHT, :root div[id^="div_openx_ad_"], :root AFS-AD, :root a[href^="//srv.buysellads.com/"], :root AMP-AD, :root a[href^="http://engine.newsmaxfeednetwork.com/"], :root [ad-id^="googlead"], :root a[onmousedown^="this.href='http://staffpicks.outbrain.com/network/redir?"][target="_blank"] + .ob_source, :root [lazy-ad="lefttop_banner"], :root a[href^="http://pokershibes.com/index.php?ref="], :root [onclick*="content.ad/"], :root [onclick^="window.open('http://adultfriendfinder.com/search/"], :root a[href^="http://www.bet365.com/home/?affiliate"], :root a[href^="http://ryushare.com/affiliate.python"], :root a[href^=" http://n47adshostnet.com/"], :root a[data-obtrack^="http://paid.outbrain.com/network/redir?"], :root a[href^="http://affiliate.godaddy.com/"], :root a[data-redirect^="http://click.plista.com/pets"], :root a[href^="http://adclick.g.doubleclick.net/"], :root a[data-redirect^="this.href='http://paid.outbrain.com/network/redir?"], :root a[href^="https://bs.serving-sys.com"], :root a[data-url^="http://paid.outbrain.com/network/redir?"], :root a[data-url^="http://paid.outbrain.com/network/redir?"] + .author, :root a[href^="http://hd-plugins.com/download/"], :root a[data-widget-outbrain-redirect^="http://paid.outbrain.com/network/redir?"], :root a[href$="/vghd.shtml"], :root a[href*=".adk2x.com/"], :root a[href^="http://mmo123.co/"], :root a[href*=".adsrv.eacdn.com/"] > img, :root a[href^="http://k2s.cc/pr/"], :root a[href*=".qertewrt.com/"], :root a[href^="http://xtgem.com/click?"], :root a[href^="http://dwn.pushtraffic.net/"], :root a[href*=".trust.zone"], :root a[href^="http://www.ducksnetwork.com/"], :root a[href*="/adrotate-out.php?"], :root td[valign="top"] > .mainmenu[style="padding:10px 0 0 0 !important;"], :root a[href*="/cmd.php?ad="], :root a[href*="=Adtracker"], :root a[href^="http://www.freefilesdownloader.com/"], :root a[href^="http://mgid.com/"], :root a[href^="http://data.ad.yieldmanager.net/"], :root a[href^="http://ads.integral-marketing.com/"], :root a[href^=" http://ads.ad-center.com/"], :root a[href*="ad2upapp.com/"], :root a[href*="friendlyduck.com"], :root a[href*="googleme.eu"], :root a[href*="letsadvertisetogether.com"], :root a[href*="onclkds."], :root a[href^="//adbit.co/?a=Advertise&"], :root a[href^="http://www.roboform.com/php/land.php"], :root a[href^="//ads.ad-center.com/"], :root a[href^="//api.ad-goi.com/"], :root a[href^="//t.MtagMonetizationA.com/"], :root a[href^="http://www.fpcTraffic2.com/blind/in.cgi?"], :root a[href^="http://www.babylon.com/welcome/index?affID"], :root a[href^="//www.mgid.com/"], :root a[href^="http://1phads.com/"], :root a[href^="https://www.share-online.biz/affiliate/"], :root a[href^="http://internalredirect.site/"], :root a[href^="http://360ads.go2cloud.org/"], :root a[href^="http://www.duckcash.eu/AF_"], :root a[href^="http://3wr110.net/"], :root a[href^="http://www.menaon.com/installs/"], :root a[href^="http://NowDownloadAll.com"], :root a[href^="http://a.adquantix.com/"], :root a[href^="http://prousa.work/"], :root a[href^="http://ad-apac.doubleclick.net/"], :root a[href^="http://fusionads.net"], :root a[href^="http://ad-emea.doubleclick.net/"], :root a[href^="http://ad.au.doubleclick.net/"], :root a[href^="http://ad.doubleclick.net/"], :root a[href^="http://adexprt.me/"], :root a[href^="http://feedads.g.doubleclick.net/"], :root a[href^="http://api.ringtonematcher.com/"], :root a[href^="http://adf.ly/?id="], :root a[href^="http://www.clkads.com/adServe/"], :root a[href^="http://adfarm.mediaplex.com/"], :root a[href^="http://adlev.neodatagroup.com/"], :root a[href^="http://wgpartner.com/"], :root a[href^="http://admingame.info/"], :root a[href^="http://adprovider.adlure.net/"], :root a[href^="http://www.sfippa.com/"], :root a[href^="http://adrunnr.com/"], :root div[id^="div_ad_stack_"], :root a[href^="https://paid.outbrain.com/network/redir?"], :root a[href^="http://ads.ad-center.com/"], :root a[href^="http://ads.affbuzzads.com/"], :root a[href^="https://trackjs.com/?utm_source"], :root a[href^="http://www.download-provider.org/"], :root a[href^="http://ads.expekt.com/affiliates/"], :root a[href^="http://adserver.adtech.de/"], :root a[href^="http://www.adxpansion.com"], :root a[href^="http://cdn.adstract.com/"], :root a[href^="http://adserver.adtechus.com/"], :root iframe[src^="http://cdn1.adexprt.com/"], :root a[href^="http://www.socialsex.com/"], :root a[href^="http://adserving.liveuniversenetwork.com/"], :root a[href^="http://adserving.unibet.com/"], :root a[href^="https://dediseedbox.com/clients/aff.php?"], :root a[href^="http://www.installads.net/"], :root a[href^="http://adsrv.keycaptcha.com"], :root a[href^="http://clickserv.sitescout.com/"], :root a[href^="http://adtrack123.pl/"], :root a[href^="http://adtrackone.eu/"], :root a[href^="http://adultfriendfinder.com/p/register.cgi?pid="], :root a[href^="http://affiliate.coral.co.uk/processing/"], :root a[href^="http://affiliate.glbtracker.com/"], :root a[href^="http://affiliates.score-affiliates.com/"], :root a[href^="http://aflrm.com/"], :root div[id^="ads300_100-widget"], :root aside[id^="div-gpt-ad"], :root a[href^="http://www.greenmangaming.com/?tap_a="], :root a[href^="http://www.dealcent.com/register.php?affid="], :root a[href^="http://amzn.to/"] > img[src^="data"], :root a[href^="http://api.content.ad/"], :root a[href^="http://at.atwola.com/"], :root a[href^="https://www.dsct1.com/"], :root a[href^="http://games.ucoz.ru/"][target="_blank"], :root a[href^="http://bc.vc/?r="], :root a[href^="http://bestorican.com/"], :root a[href^="http://bluehost.com/track/"], :root a[href^="http://bonusfapturbo.nmvsite.com/"], :root a[href^="http://www.downloadthesefiles.com/"], :root a[href^="http://bs.serving-sys.com/"], :root a[href^="http://c.actiondesk.com/"], :root a[href^="http://goldmoney.com/?gmrefcode="], :root a[href^="http://callville.xyz/"], :root a[href^="http://campaign.bharatmatrimony.com/cbstrack/"], :root a[href^="http://campaign.bharatmatrimony.com/track/"], :root a[href^="http://casino-x.com/?partner"], :root a[href^="http://secure.signup-page.com/"], :root a[href^="http://lp.ilivid.com/"], :root a[href^="http://cdn.adsrvmedia.net/"], :root a[href^="http://www.accuserveadsystem.com/accuserve-go.php?"], :root a[href^="http://t.mdn2015x2.com/"], :root a[href^="http://cdn3.adbrau.com/"], :root a[style="display:block;width:300px;min-height:250px"][href^="http://li.cnet.com/click?"], :root a[href^="http://centertrust.xyz/"], :root a[href^="http://chaturbate.com/affiliates/"], :root div[id^="ads300_600-widget"], :root a[href^="http://click.guamwnvgashbkashawhgkhahshmashcas.pw/"], :root a[href^="http://click.plista.com/pets"], :root a[href^="http://clicks.guamwnvgashbkashawhgkhahshmashcas.pw/"], :root a[href^="http://clk.directrev.com/"], :root a[href^="http://clkmon.com/adServe/"], :root a[href^="http://connectlinking6.com/"], :root a[href^="http://contractallsticker.net/"], :root a[href^="http://cpaway.afftrack.com/"], :root a[href^="http://d2.zedo.com/"], :root a[href^="https://adhealers.com/"], :root a[href^="https://ad.atdmt.com/"], :root a[href^="http://data.committeemenencyclopedicrepertory.info/"], :root a[href^="http://www.fonts.com/BannerScript/"], :root a[href^="http://data.linoleictanzaniatitanic.com/"], :root a[href^="http://databass.info/"], :root div[id^="dmRosAdWrapper"], :root a[href^="http://ddownload39.club/"], :root iframe[src^="http://static.mozo.com.au/strips/"], :root div[id^="dfp-ad-"], :root a[href^="http://www.myfreepaysite.com/sfw.php?aid"], :root a[href^="http://dethao.com/"], :root a[href^="http://www.bet365.com/dl/~offer?affiliate="], :root a[href^="http://dftrck.com/"], :root a[href^="http://www.torntvdl.com/"], :root a[href^="http://down1oads.com/"], :root a[href^="http://download-performance.com/"], :root a[href^="http://imads.integral-marketing.com/"], :root a[href^="http://duckcash.eu/AF_"], :root a[href^="http://eclkmpsa.com/"], :root a[href^="http://www.cash-duck.com/AF_"], :root a[href^="http://elite-sex-finder.com/?"], :root a[href^="http://www.downloadplayer1.com/"], :root a[href^="http://elitefuckbook.com/"], :root a[href^="http://srvpub.com/"], :root a[href^="http://fileupnow.rocks/"], :root a[href^="http://finaljuyu.com/"], :root a[href^="http://go.mobisla.com/"], :root a[href^="http://findersocket.com/"], :root a[href^="http://freesoftwarelive.com/"], :root a[href^="http://t.mdn2015x1.com/"], :root a[href^="http://galleries.pinballpublishernetwork.com/"], :root iframe[id^="google_ads_iframe"], :root a[href^="http://galleries.securewebsiteaccess.com/"], :root a[href^="http://www.affiliates1128.com/processing/"], :root a[href^="http://gca.sh/user/register?ref="], :root a[href^="http://get.slickvpn.com/"], :root a[href^="http://getlinksinaseconds.com/"], :root a[href^="http://go.ad2up.com/"], :root a[href^="http://go.seomojo.com/tracking202/"], :root a[href^="http://green.trafficinvest.com/"], :root a[href^="http://promos.bwin.com/"], :root a[href^="http://greensmoke.com/"], :root a[href^="http://n.admagnet.net/"], :root a[href^="http://guideways.info/"], :root a[target="_blank"][href^="http://api.taboola.com/"], :root a[href^="http://hdplugin.flashplayer-updates.com/"], :root div[id^="ADV-SLOT-"], :root a[href^="http://www.sex.com/?utm_"], :root a[href^="http://install.securewebsiteaccess.com/"], :root a[href^="http://istri.it/?"], :root a[href^="http://join3.bannedsextapes.com/track/"], :root a[href^="http://latestdownloads.net/download.php?"], :root a[href^="http://linksnappy.com/?ref="], :root a[href^="http://www.tirerack.com/affiliates/"], :root a[href^="http://liversely.net/"], :root a[href^="http://lp.ezdownloadpro.info/"], :root div[class$="dealnews"] > .dealnews, :root a[href^="http://marketgid.com"], :root a[href^="https://pubads.g.doubleclick.net/"], :root a[href^="http://www.idownloadplay.com/"], :root a[href^="http://www.flashx.tv/downloadthis"], :root a[href^="http://mo8mwxi1.com/"], :root a[href^="http://record.betsafe.com/"], :root a[href^="http://mojofun.info/"], :root a[href^="http://onclickads.net/"], :root a[href^="http://online.ladbrokes.com/promoRedirect?"], :root div[id^="MarketGid"], :root a[href^="http://www.graboid.com/affiliates/"], :root a[href^="http://papi.mynativeplatform.com:80/pub2/"], :root a[href^="http://partner.sbaffiliates.com/"], :root a[href^="http://serve.williamhill.com/promoRedirect?"], :root a[href^="http://prochina.link/"], :root a[href^="http://www.1clickdownloader.com/"], :root a[href^="http://prochina.space/"], :root a[href^="http://pubads.g.doubleclick.net/"], :root a[href^="http://www.brightwheel.info/"], :root a[href^="http://pwrads.net/"], :root a[href^="http://record.commissionking.com/"], :root a[href^="http://tezfiles.com/pr/"], :root a[href^="http://refer.webhostingbuzz.com/"], :root a[href^="http://rekoverr.com/"], :root a[href^="http://searchtabnew.com/"], :root a[href^="http://secure.hostgator.com/~affiliat/"], :root a[href^="http://see-work.info/"], :root a[href^="http://www.1clickmoviedownloader.info/"], :root a[href^="http://server.cpmstar.com/click.aspx?poolid="], :root a[href^="http://servicegetbook.net/"], :root a[href^="http://www.sex.com/pics/?utm_"], :root a[href^="http://sharesuper.info/"], :root a[href^="http://www.badoink.com/go.php?"], :root a[href^="http://stateresolver.link/"], :root a[href^="http://t.mdn2015x3.com/"], :root a[href^="http://t.wowtrk.com/"], :root a[href^="http://tour.affbuzzads.com/"], :root a[href^="http://track.adform.net/"], :root a[href^="http://wxdownloadmanager.com/dl/"], :root a[href^="http://track.incognitovpn.com/"], :root a[href^="http://www.pheedo.com/"], :root a[href^="http://tracking.crazylead.com/"], :root a[href^="http://www.friendlyquacks.com/"], :root a[href^="http://tracking.deltamediallc.com/"], :root a[href^="http://tracking.toroadvertising.com/"], :root a[href^="http://www.firstload.com/affiliate/"], :root a[href^="http://us.marketgid.com"], :root a[href^="http://webtrackerplus.com/"], :root a[href^="http://www.123-reg.co.uk/affiliate2.cgi"], :root a[href^="http://www.FriendlyDuck.com/AF_"], :root a[href^="http://www.TwinPlan.com/AF_"], :root a[href^="http://www.adbrite.com/mb/commerce/purchase_form.php?"], :root a[href^="http://www.adshost2.com/"], :root a[href^="http://www.amazon.co.uk/exec/obidos/external-search?"], :root a[href^="http://www.bet365.com/home/default.asp?affiliate="], :root input[onclick^="window.open('http://www.friendlyduck.com/AF_"], :root input[onclick^="window.open('http://www.FriendlyDuck.com/AF_"], :root div[itemtype="http://schema.org/WPAdBlock"], :root a[href^="http://www.clickansave.net/"], :root a[href^="http://www.dl-provider.com/search/"], :root a[href^="http://www.down1oads.com/"], :root a[href^="http://www.downloadweb.org/"], :root a[href^="http://www.quick-torrent.com/download.html?aff"], :root a[href^="http://www.firstclass-download.com/"], :root a[href^="http://www.firstload.de/affiliate/"], :root a[href^="http://www.fleshlight.com/"], :root div[id^="block-views-topheader-ad-block-"], :root a[href^="http://www.gamebookers.com/cgi-bin/intro.cgi?"], :root a[href^="https://understandsolar.com/signup/?lead_source="][href*="&tracking_code="], :root a[href^="http://www.on2url.com/app/adtrack.asp"], :root a[href^="http://www.incredimail.com/?id="], :root a[href^="http://www.zergnet.com/i/"], :root a[href^="http://www.ireel.com/signup?ref"], :root a[href^="http://www.plus500.com/?id="], :root a[href^="http://www.linkbucks.com/referral/"], :root a[href^="http://www.liutilities.com/"], :root a[href^="http://www.liversely.net/"], :root iframe[id^="google_ads_frame"], :root a[href^="http://www.mobileandinternetadvertising.com/"], :root a[href^="http://www.my-dirty-hobby.com/?sub="], :root a[onmousedown^="this.href='http://staffpicks.outbrain.com/network/redir?"][target="_blank"], :root a[href^="https://go.ad2up.com/"], :root a[href^="http://www.myfreepaysite.com/sfw_int.php?aid"], :root a[href^="http://www.sex.com/videos/?utm_"], :root a[href^="http://www.mysuperpharm.com/"], :root a[href^="https://ad.doubleclick.net/"], :root a[href^="http://www.myvpn.pro/"], :root a[href^="http://www.pinkvisualpad.com/?revid="], :root a[href^="http://www.revenuehits.com/"], :root a[href^="http://www.richducks.com/"], :root a[href^="http://www.seekbang.com/cs/"], :root a[href^="http://www.sexgangsters.com/?pid="], :root a[href^="http://www.streamate.com/exports/"], :root a[href^="http://www.text-link-ads.com/"], :root a[href^="http://www.torntv-downloader.com/"], :root a[href^="http://www.twinplan.com/AF_"], :root a[href^="http://www.urmediazone.com/signup"], :root a[href^="http://www.wantstraffic.com/"], :root a[href^="http://www.webtrackerplus.com/"], :root a[href^="http://www.xmediaserve.com/"], :root a[href^="http://www.yourfuckbook.com/?"], :root a[href^="http://www1.clickdownloader.com/"], :root a[href^="https://www.adskeeper.co.uk/"], :root a[href^="http://yads.zedo.com/"], :root a[href^="http://z1.zedo.com/"], :root div[id^="ad-server-"], :root a[href^="http://zevera.com/afi.html"], :root a[href^="https://affiliates.bet-at-home.com/processing/"], :root a[href^="https://atomidownload.com/"], :root a[href^="https://click.plista.com/pets"], :root a[href^="https://dltags.com/"], :root div[id^="dfp-slot-"], :root a[href^="https://farm.plista.com/pets"], :root a[href^="https://secure.eveonline.com/ft/?aid="], :root a[href^="https://torguard.net/aff.php"], :root a[href^="https://trklvs.com/"], :root a[href^="https://trust.zone/go/r.php?RID="], :root a[href^="https://www.googleadservices.com/pagead/aclk?"], :root a[href^="https://www.oboom.com/ad/"], :root a[href^="https://www.popads.net/users/"], :root a[href^="https://www.secureupload.eu/suprerefid="], :root a[onmousedown^="this.href='/wp-content/embed-ad-content/"], :root a[onmousedown^="this.href='http://paid.outbrain.com/network/redir?"][target="_blank"], :root a[onmousedown^="this.href='http://paid.outbrain.com/network/redir?"][target="_blank"] + .ob_source, :root a[onmousedown^="this.href='https://paid.outbrain.com/network/redir?"][target="_blank"], :root a[onmousedown^="this.href='https://paid.outbrain.com/network/redir?"][target="_blank"] + .ob_source, :root a[target="_blank"][onmousedown="this.href^='http://paid.outbrain.com/network/redir?"], :root bottomadblock, :root div > [class][onclick*=".updateAnalyticsEvents"], :root div[class^="gemini-ad"], :root div[class^="proadszone-"], :root div[id^="YFBMSN"], :root div[id^="acm-ad-tag-"], :root div[id^="adrotate_widgets-"], :root div[id^="ads250_250-widget"], :root div[id^="ads300_250-widget"], :root div[id^="advads-"], :root div[id^="cns_ads_"], :root div[id^="google_ads_iframe_"], :root div[id^="google_dfp_"], :root div[id^="lazyad-"], :root div[id^="proadszone-"], :root div[id^="q1-adset-"], :root topadblock, :root div[itemtype="http://www.schema.org/WPAdBlock"], :root iframe[src^="http://ad.yieldmanager.com/"], :root iframe[src^="http://cdn2.adexprt.com/"], :root img[alt^="Fuckbook"], :root p[id^="div-gpt-ad-"], :root script[src^="http://free-shoutbox.net/app/webroot/shoutbox/sb.php?shoutbox="] + #freeshoutbox_content { display: none !important; }</style></head>
+<body class="docs language-php scotchified"><div class="scotch-panel-wrapper" style="position: relative; overflow: hidden; width: 100%;"><div class="scotch-panel-canvas" style="position: relative; height: 100%; width: 100%; transform: translate3d(0px, 0px, 0px); backface-visibility: hidden; transition: all 300ms ease;">
+
+    <span class="overlay"></span>
+
+    <nav class="main">
+        <a href="https://laravel.com/" class="brand nav-block">
+            <svg xmlns="http://www.w3.org/2000/svg" width="84.1" height="57.6" viewBox="0 0 84.1 57.6"><path fill="#FB503B" d="M83.8 26.9c-.6-.6-8.3-10.3-9.6-11.9-1.4-1.6-2-1.3-2.9-1.2s-10.6 1.8-11.7 1.9c-1.1.2-1.8.6-1.1 1.6.6.9 7 9.9 8.4 12l-25.5 6.1L21.2 1.5c-.8-1.2-1-1.6-2.8-1.5C16.6.1 2.5 1.3 1.5 1.3c-1 .1-2.1.5-1.1 2.9S17.4 41 17.8 42c.4 1 1.6 2.6 4.3 2 2.8-.7 12.4-3.2 17.7-4.6 2.8 5 8.4 15.2 9.5 16.7 1.4 2 2.4 1.6 4.5 1 1.7-.5 26.2-9.3 27.3-9.8 1.1-.5 1.8-.8 1-1.9-.6-.8-7-9.5-10.4-14 2.3-.6 10.6-2.8 11.5-3.1 1-.3 1.2-.8.6-1.4zm-46.3 9.5c-.3.1-14.6 3.5-15.3 3.7-.8.2-.8.1-.8-.2-.2-.3-17-35.1-17.3-35.5-.2-.4-.2-.8 0-.8S17.6 2.4 18 2.4c.5 0 .4.1.6.4 0 0 18.7 32.3 19 32.8.4.5.2.7-.1.8zm40.2 7.5c.2.4.5.6-.3.8-.7.3-24.1 8.2-24.6 8.4-.5.2-.8.3-1.4-.6s-8.2-14-8.2-14L68.1 32c.6-.2.8-.3 1.2.3.4.7 8.2 11.3 8.4 11.6zm1.6-17.6c-.6.1-9.7 2.4-9.7 2.4l-7.5-10.2c-.2-.3-.4-.6.1-.7.5-.1 9-1.6 9.4-1.7.4-.1.7-.2 1.2.5.5.6 6.9 8.8 7.2 9.1.3.3-.1.5-.7.6z"></path></svg>
+            <span>Laravel</span>
+        </a>
+
+        <div class="search nav-block">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16"><path fill="#A1A1A1" d="M5.8 11.7c-1.6 0-3-.6-4.1-1.7S0 7.4 0 5.8s.6-3 1.7-4.1C2.8.6 4.3 0 5.8 0s3 .6 4.1 1.7c2.3 2.3 2.3 6 0 8.3-1 1.1-2.5 1.7-4.1 1.7zM5.8 1c-1.3 0-2.5.5-3.4 1.4C1.5 3.3 1 4.5 1 5.8s.5 2.5 1.4 3.4c.9.9 2.1 1.4 3.4 1.4s2.5-.5 3.4-1.4c1.9-1.9 1.9-5 0-6.9C8.4 1.5 7.1 1 5.8 1z"></path><path fill="#A1A1A1" d="M15.5 16c-.1 0-.3 0-.3-.1L9.3 10c-.2-.2-.2-.5 0-.7s.5-.2.7 0l5.9 5.9c.2.2.2.5 0 .7-.1.1-.3.1-.4.1z"></path></svg>
+            <span class="twitter-typeahead" style="position: relative; display: inline-block; direction: ltr;"><input placeholder="search" type="text" id="search-input" class="tt-input" autocomplete="off" spellcheck="false" dir="auto" style="position: relative; vertical-align: top;"><pre aria-hidden="true" style="position: absolute; visibility: hidden; white-space: pre; font-family: &quot;Source Sans Pro&quot;, sans-serif; font-size: 16px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; word-spacing: 0px; letter-spacing: 0px; text-indent: 0px; text-rendering: auto; text-transform: none;"></pre><span class="tt-dropdown-menu" style="position: absolute; top: 100%; left: 0px; z-index: 100; display: none; right: auto;"><div class="tt-dataset-0"></div></span></span>
+        </div>
+
+        <ul class="main-nav">
+            <li class="nav-docs"><a href="https://laravel.com/docs">Documentation</a></li>
+<li class="nav-laracasts"><a href="https://laracasts.com/">Laracasts</a></li>
+<li class="nav-laravel-news"><a href="https://laravel-news.com/">News</a></li>
+<li class="nav-partners"><a href="https://laravel.com/partners">Partners</a></li>
+<li class="nav-forge"><a href="https://forge.laravel.com/">Forge</a></li>
+
+<li class="dropdown community-dropdown">
+	<a href="https://laravel.com/docs/5.4/queries#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Ecosystem <span class="caret"></span></a>
+	<ul class="dropdown-menu" role="menu">
+
+		<li><a href="https://envoyer.io/">Envoyer</a></li>
+		<li><a href="https://lumen.laravel.com/">Lumen</a></li>
+		<li><a href="https://spark.laravel.com/">Spark</a></li>
+
+		<li class="divider"></li>
+
+		<li><a href="https://laracon.eu/">Laracon EU</a></li>
+		<li><a href="http://laracon.us/">Laracon US</a></li>
+		<li><a href="https://laracon.net/">Laracon Online</a></li>
+
+		<li class="divider"></li>
+
+		<li><a href="https://laracasts.com/discuss">Forums</a></li>
+		<li><a href="https://github.com/laravel/laravel">GitHub</a></li>
+		<li><a href="https://larajobs.com/?partner=5#/">Jobs</a></li>
+		<li><a href="http://www.laravelpodcast.com/">Podcast</a></li>
+		<li><a href="http://larachat.co/">Slack</a></li>
+		<li><a href="https://twitter.com/laravelphp">Twitter</a></li>
+	</ul>
+</li>
+        </ul>
+
+                    <div class="switcher">
+	<div class="dropdown">
+		<button class="btn dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">
+			5.4
+			<span class="caret"></span>
+		</button>
+		<ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+							<li role="presentation">
+					<a role="menuitem" tabindex="-1" href="https://laravel.com/docs/master/queries">Master</a>
+				</li>
+							<li role="presentation">
+					<a role="menuitem" tabindex="-1" href="https://laravel.com/docs/5.4/queries">5.4</a>
+				</li>
+							<li role="presentation">
+					<a role="menuitem" tabindex="-1" href="https://laravel.com/docs/5.3/queries">5.3</a>
+				</li>
+							<li role="presentation">
+					<a role="menuitem" tabindex="-1" href="https://laravel.com/docs/5.2/queries">5.2</a>
+				</li>
+							<li role="presentation">
+					<a role="menuitem" tabindex="-1" href="https://laravel.com/docs/5.1/queries">5.1</a>
+				</li>
+							<li role="presentation">
+					<a role="menuitem" tabindex="-1" href="https://laravel.com/docs/5.0/queries">5.0</a>
+				</li>
+							<li role="presentation">
+					<a role="menuitem" tabindex="-1" href="https://laravel.com/docs/4.2/queries">4.2</a>
+				</li>
+					</ul>
+	</div>
+</div>
+        
+        <div class="responsive-sidebar-nav">
+            <a href="https://laravel.com/docs/5.4/queries#" class="toggle-slide menu-link btn">☰</a>
+        </div>
+    </nav>
+
+    <nav id="slide-menu" class="slide-menu scotch-panel-left" role="navigation" style="top: 0px; left: -70%; width: 70%; height: 100%; position: absolute; z-index: 888888; overflow: hidden; backface-visibility: hidden; display: block;">
+
+	<div class="brand">
+		<a href="https://laravel.com/">
+			<img src="./Database_ Query Builder - Laravel - The PHP Framework For Web Artisans_files/laravel-logo-white.png" height="50">
+		</a>
+	</div>
+
+	<ul class="slide-main-nav">
+		<li><a href="https://laravel.com/">Home</a></li>
+		<li class="nav-docs"><a href="https://laravel.com/docs">Documentation</a></li>
+<li class="nav-laracasts"><a href="https://laracasts.com/">Laracasts</a></li>
+<li class="nav-laravel-news"><a href="https://laravel-news.com/">News</a></li>
+<li class="nav-partners"><a href="https://laravel.com/partners">Partners</a></li>
+<li class="nav-forge"><a href="https://forge.laravel.com/">Forge</a></li>
+
+<li class="dropdown community-dropdown">
+	<a href="https://laravel.com/docs/5.4/queries#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Ecosystem <span class="caret"></span></a>
+	<ul class="dropdown-menu" role="menu">
+
+		<li><a href="https://envoyer.io/">Envoyer</a></li>
+		<li><a href="https://lumen.laravel.com/">Lumen</a></li>
+		<li><a href="https://spark.laravel.com/">Spark</a></li>
+
+		<li class="divider"></li>
+
+		<li><a href="https://laracon.eu/">Laracon EU</a></li>
+		<li><a href="http://laracon.us/">Laracon US</a></li>
+		<li><a href="https://laracon.net/">Laracon Online</a></li>
+
+		<li class="divider"></li>
+
+		<li><a href="https://laracasts.com/discuss">Forums</a></li>
+		<li><a href="https://github.com/laravel/laravel">GitHub</a></li>
+		<li><a href="https://larajobs.com/?partner=5#/">Jobs</a></li>
+		<li><a href="http://www.laravelpodcast.com/">Podcast</a></li>
+		<li><a href="http://larachat.co/">Slack</a></li>
+		<li><a href="https://twitter.com/laravelphp">Twitter</a></li>
+	</ul>
+</li>
+	</ul>
+
+	<div class="slide-docs-nav">
+		<h2>Documentation</h2>
+		<ul>
+<li>
+<h2>Prologue</h2>
+<ul>
+<li><a href="https://laravel.com/docs/5.4/releases">Release Notes</a></li>
+<li><a href="https://laravel.com/docs/5.4/upgrade">Upgrade Guide</a></li>
+<li><a href="https://laravel.com/docs/5.4/contributions">Contribution Guide</a></li>
+<li><a href="https://laravel.com/api/5.4">API Documentation</a></li>
+</ul>
+</li>
+<li>
+<h2>Getting Started</h2>
+<ul>
+<li><a href="https://laravel.com/docs/5.4/installation">Installation</a></li>
+<li><a href="https://laravel.com/docs/5.4/configuration">Configuration</a></li>
+<li><a href="https://laravel.com/docs/5.4/structure">Directory Structure</a></li>
+<li><a href="https://laravel.com/docs/5.4/homestead">Homestead</a></li>
+<li><a href="https://laravel.com/docs/5.4/valet">Valet</a></li>
+</ul>
+</li>
+<li>
+<h2>Architecture Concepts</h2>
+<ul>
+<li><a href="https://laravel.com/docs/5.4/lifecycle">Request Lifecycle</a></li>
+<li><a href="https://laravel.com/docs/5.4/container">Service Container</a></li>
+<li><a href="https://laravel.com/docs/5.4/providers">Service Providers</a></li>
+<li><a href="https://laravel.com/docs/5.4/facades">Facades</a></li>
+<li><a href="https://laravel.com/docs/5.4/contracts">Contracts</a></li>
+</ul>
+</li>
+<li>
+<h2>The Basics</h2>
+<ul>
+<li><a href="https://laravel.com/docs/5.4/routing">Routing</a></li>
+<li><a href="https://laravel.com/docs/5.4/middleware">Middleware</a></li>
+<li><a href="https://laravel.com/docs/5.4/csrf">CSRF Protection</a></li>
+<li><a href="https://laravel.com/docs/5.4/controllers">Controllers</a></li>
+<li><a href="https://laravel.com/docs/5.4/requests">Requests</a></li>
+<li><a href="https://laravel.com/docs/5.4/responses">Responses</a></li>
+<li><a href="https://laravel.com/docs/5.4/views">Views</a></li>
+<li><a href="https://laravel.com/docs/5.4/session">Session</a></li>
+<li><a href="https://laravel.com/docs/5.4/validation">Validation</a></li>
+<li><a href="https://laravel.com/docs/5.4/errors">Errors &amp; Logging</a></li>
+</ul>
+</li>
+<li>
+<h2>Frontend</h2>
+<ul>
+<li><a href="https://laravel.com/docs/5.4/blade">Blade Templates</a></li>
+<li><a href="https://laravel.com/docs/5.4/localization">Localization</a></li>
+<li><a href="https://laravel.com/docs/5.4/frontend">Frontend Scaffolding</a></li>
+<li><a href="https://laravel.com/docs/5.4/mix">Compiling Assets</a></li>
+</ul>
+</li>
+<li>
+<h2>Security</h2>
+<ul>
+<li><a href="https://laravel.com/docs/5.4/authentication">Authentication</a></li>
+<li><a href="https://laravel.com/docs/5.4/passport">API Authentication</a></li>
+<li><a href="https://laravel.com/docs/5.4/authorization">Authorization</a></li>
+<li><a href="https://laravel.com/docs/5.4/encryption">Encryption</a></li>
+<li><a href="https://laravel.com/docs/5.4/hashing">Hashing</a></li>
+<li><a href="https://laravel.com/docs/5.4/passwords">Password Reset</a></li>
+</ul>
+</li>
+<li>
+<h2>Digging Deeper</h2>
+<ul>
+<li><a href="https://laravel.com/docs/5.4/artisan">Artisan Console</a></li>
+<li><a href="https://laravel.com/docs/5.4/broadcasting">Broadcasting</a></li>
+<li><a href="https://laravel.com/docs/5.4/cache">Cache</a></li>
+<li><a href="https://laravel.com/docs/5.4/collections">Collections</a></li>
+<li><a href="https://laravel.com/docs/5.4/events">Events</a></li>
+<li><a href="https://laravel.com/docs/5.4/filesystem">File Storage</a></li>
+<li><a href="https://laravel.com/docs/5.4/helpers">Helpers</a></li>
+<li><a href="https://laravel.com/docs/5.4/mail">Mail</a></li>
+<li><a href="https://laravel.com/docs/5.4/notifications">Notifications</a></li>
+<li><a href="https://laravel.com/docs/5.4/packages">Package Development</a></li>
+<li><a href="https://laravel.com/docs/5.4/queues">Queues</a></li>
+<li><a href="https://laravel.com/docs/5.4/scheduling">Task Scheduling</a></li>
+</ul>
+</li>
+<li>
+<h2>Database</h2>
+<ul>
+<li><a href="https://laravel.com/docs/5.4/database">Getting Started</a></li>
+<li><a href="https://laravel.com/docs/5.4/queries">Query Builder</a></li>
+<li><a href="https://laravel.com/docs/5.4/pagination">Pagination</a></li>
+<li><a href="https://laravel.com/docs/5.4/migrations">Migrations</a></li>
+<li><a href="https://laravel.com/docs/5.4/seeding">Seeding</a></li>
+<li><a href="https://laravel.com/docs/5.4/redis">Redis</a></li>
+</ul>
+</li>
+<li>
+<h2>Eloquent ORM</h2>
+<ul>
+<li><a href="https://laravel.com/docs/5.4/eloquent">Getting Started</a></li>
+<li><a href="https://laravel.com/docs/5.4/eloquent-relationships">Relationships</a></li>
+<li><a href="https://laravel.com/docs/5.4/eloquent-collections">Collections</a></li>
+<li><a href="https://laravel.com/docs/5.4/eloquent-mutators">Mutators</a></li>
+<li><a href="https://laravel.com/docs/5.4/eloquent-serialization">Serialization</a></li>
+</ul>
+</li>
+<li>
+<h2>Testing</h2>
+<ul>
+<li><a href="https://laravel.com/docs/5.4/testing">Getting Started</a></li>
+<li><a href="https://laravel.com/docs/5.4/http-tests">HTTP Tests</a></li>
+<li><a href="https://laravel.com/docs/5.4/dusk">Browser Tests</a></li>
+<li><a href="https://laravel.com/docs/5.4/database-testing">Database</a></li>
+<li><a href="https://laravel.com/docs/5.4/mocking">Mocking</a></li>
+</ul>
+</li>
+<li>
+<h2>Official Packages</h2>
+<ul>
+<li><a href="https://laravel.com/docs/5.4/billing">Cashier</a></li>
+<li><a href="https://laravel.com/docs/5.4/envoy">Envoy</a></li>
+<li><a href="https://laravel.com/docs/5.4/passport">Passport</a></li>
+<li><a href="https://laravel.com/docs/5.4/scout">Scout</a></li>
+<li><a href="https://github.com/laravel/socialite">Socialite</a></li>
+</ul>
+</li>
+</ul>
+	</div>
+
+</nav>
+
+<div class="docs-wrapper container">
+
+	<section class="sidebar">
+		<script async="" type="text/javascript" src="https://cdn.carbonads.com/carbon.js?zoneid=1673&amp;serve=C6AILKT&amp;placement=laravelcom" id="_carbonads_js" style="display: none !important;"></script>
+		<small><a href="https://laravel.com/docs/5.4/queries#" id="doc-expand" style="font-size: 9px; color: #525252;">▶</a></small>
+		<ul>
+<li>
+<h2 tabindex="0">Prologue</h2>
+<ul>
+<li><a href="https://laravel.com/docs/5.4/releases">Release Notes</a></li>
+<li><a href="https://laravel.com/docs/5.4/upgrade">Upgrade Guide</a></li>
+<li><a href="https://laravel.com/docs/5.4/contributions">Contribution Guide</a></li>
+<li><a href="https://laravel.com/api/5.4">API Documentation</a></li>
+</ul>
+</li>
+<li>
+<h2 tabindex="0">Getting Started</h2>
+<ul>
+<li><a href="https://laravel.com/docs/5.4/installation">Installation</a></li>
+<li><a href="https://laravel.com/docs/5.4/configuration">Configuration</a></li>
+<li><a href="https://laravel.com/docs/5.4/structure">Directory Structure</a></li>
+<li><a href="https://laravel.com/docs/5.4/homestead">Homestead</a></li>
+<li><a href="https://laravel.com/docs/5.4/valet">Valet</a></li>
+</ul>
+</li>
+<li>
+<h2 tabindex="0">Architecture Concepts</h2>
+<ul>
+<li><a href="https://laravel.com/docs/5.4/lifecycle">Request Lifecycle</a></li>
+<li><a href="https://laravel.com/docs/5.4/container">Service Container</a></li>
+<li><a href="https://laravel.com/docs/5.4/providers">Service Providers</a></li>
+<li><a href="https://laravel.com/docs/5.4/facades">Facades</a></li>
+<li><a href="https://laravel.com/docs/5.4/contracts">Contracts</a></li>
+</ul>
+</li>
+<li>
+<h2 tabindex="0">The Basics</h2>
+<ul>
+<li><a href="https://laravel.com/docs/5.4/routing">Routing</a></li>
+<li><a href="https://laravel.com/docs/5.4/middleware">Middleware</a></li>
+<li><a href="https://laravel.com/docs/5.4/csrf">CSRF Protection</a></li>
+<li><a href="https://laravel.com/docs/5.4/controllers">Controllers</a></li>
+<li><a href="https://laravel.com/docs/5.4/requests">Requests</a></li>
+<li><a href="https://laravel.com/docs/5.4/responses">Responses</a></li>
+<li><a href="https://laravel.com/docs/5.4/views">Views</a></li>
+<li><a href="https://laravel.com/docs/5.4/session">Session</a></li>
+<li><a href="https://laravel.com/docs/5.4/validation">Validation</a></li>
+<li><a href="https://laravel.com/docs/5.4/errors">Errors &amp; Logging</a></li>
+</ul>
+</li>
+<li>
+<h2 tabindex="0">Frontend</h2>
+<ul>
+<li><a href="https://laravel.com/docs/5.4/blade">Blade Templates</a></li>
+<li><a href="https://laravel.com/docs/5.4/localization">Localization</a></li>
+<li><a href="https://laravel.com/docs/5.4/frontend">Frontend Scaffolding</a></li>
+<li><a href="https://laravel.com/docs/5.4/mix">Compiling Assets</a></li>
+</ul>
+</li>
+<li>
+<h2 tabindex="0">Security</h2>
+<ul>
+<li><a href="https://laravel.com/docs/5.4/authentication">Authentication</a></li>
+<li><a href="https://laravel.com/docs/5.4/passport">API Authentication</a></li>
+<li><a href="https://laravel.com/docs/5.4/authorization">Authorization</a></li>
+<li><a href="https://laravel.com/docs/5.4/encryption">Encryption</a></li>
+<li><a href="https://laravel.com/docs/5.4/hashing">Hashing</a></li>
+<li><a href="https://laravel.com/docs/5.4/passwords">Password Reset</a></li>
+</ul>
+</li>
+<li>
+<h2 tabindex="0">Digging Deeper</h2>
+<ul>
+<li><a href="https://laravel.com/docs/5.4/artisan">Artisan Console</a></li>
+<li><a href="https://laravel.com/docs/5.4/broadcasting">Broadcasting</a></li>
+<li><a href="https://laravel.com/docs/5.4/cache">Cache</a></li>
+<li><a href="https://laravel.com/docs/5.4/collections">Collections</a></li>
+<li><a href="https://laravel.com/docs/5.4/events">Events</a></li>
+<li><a href="https://laravel.com/docs/5.4/filesystem">File Storage</a></li>
+<li><a href="https://laravel.com/docs/5.4/helpers">Helpers</a></li>
+<li><a href="https://laravel.com/docs/5.4/mail">Mail</a></li>
+<li><a href="https://laravel.com/docs/5.4/notifications">Notifications</a></li>
+<li><a href="https://laravel.com/docs/5.4/packages">Package Development</a></li>
+<li><a href="https://laravel.com/docs/5.4/queues">Queues</a></li>
+<li><a href="https://laravel.com/docs/5.4/scheduling">Task Scheduling</a></li>
+</ul>
+</li>
+<li>
+<h2 tabindex="0" class="is-active">Database</h2>
+<ul>
+<li><a href="https://laravel.com/docs/5.4/database">Getting Started</a></li>
+<li style="font-weight: bold;"><a href="https://laravel.com/docs/5.4/queries">Query Builder</a></li>
+<li><a href="https://laravel.com/docs/5.4/pagination">Pagination</a></li>
+<li><a href="https://laravel.com/docs/5.4/migrations">Migrations</a></li>
+<li><a href="https://laravel.com/docs/5.4/seeding">Seeding</a></li>
+<li><a href="https://laravel.com/docs/5.4/redis">Redis</a></li>
+</ul>
+</li>
+<li>
+<h2 tabindex="0">Eloquent ORM</h2>
+<ul>
+<li><a href="https://laravel.com/docs/5.4/eloquent">Getting Started</a></li>
+<li><a href="https://laravel.com/docs/5.4/eloquent-relationships">Relationships</a></li>
+<li><a href="https://laravel.com/docs/5.4/eloquent-collections">Collections</a></li>
+<li><a href="https://laravel.com/docs/5.4/eloquent-mutators">Mutators</a></li>
+<li><a href="https://laravel.com/docs/5.4/eloquent-serialization">Serialization</a></li>
+</ul>
+</li>
+<li>
+<h2 tabindex="0">Testing</h2>
+<ul>
+<li><a href="https://laravel.com/docs/5.4/testing">Getting Started</a></li>
+<li><a href="https://laravel.com/docs/5.4/http-tests">HTTP Tests</a></li>
+<li><a href="https://laravel.com/docs/5.4/dusk">Browser Tests</a></li>
+<li><a href="https://laravel.com/docs/5.4/database-testing">Database</a></li>
+<li><a href="https://laravel.com/docs/5.4/mocking">Mocking</a></li>
+</ul>
+</li>
+<li>
+<h2 tabindex="0">Official Packages</h2>
+<ul>
+<li><a href="https://laravel.com/docs/5.4/billing">Cashier</a></li>
+<li><a href="https://laravel.com/docs/5.4/envoy">Envoy</a></li>
+<li><a href="https://laravel.com/docs/5.4/passport">Passport</a></li>
+<li><a href="https://laravel.com/docs/5.4/scout">Scout</a></li>
+<li><a href="https://github.com/laravel/socialite">Socialite</a></li>
+</ul>
+</li>
+</ul>
+	</section>
+
+	
+
+	<article>
+		<h1>Database: Query Builder</h1>
+<ul>
+<li><a href="https://laravel.com/docs/5.4/queries#introduction">Introduction</a></li>
+<li><a href="https://laravel.com/docs/5.4/queries#retrieving-results">Retrieving Results</a>
+<ul>
+<li><a href="https://laravel.com/docs/5.4/queries#chunking-results">Chunking Results</a></li>
+<li><a href="https://laravel.com/docs/5.4/queries#aggregates">Aggregates</a></li>
+</ul></li>
+<li><a href="https://laravel.com/docs/5.4/queries#selects">Selects</a></li>
+<li><a href="https://laravel.com/docs/5.4/queries#raw-expressions">Raw Expressions</a></li>
+<li><a href="https://laravel.com/docs/5.4/queries#joins">Joins</a></li>
+<li><a href="https://laravel.com/docs/5.4/queries#unions">Unions</a></li>
+<li><a href="https://laravel.com/docs/5.4/queries#where-clauses">Where Clauses</a>
+<ul>
+<li><a href="https://laravel.com/docs/5.4/queries#parameter-grouping">Parameter Grouping</a></li>
+<li><a href="https://laravel.com/docs/5.4/queries#where-exists-clauses">Where Exists Clauses</a></li>
+<li><a href="https://laravel.com/docs/5.4/queries#json-where-clauses">JSON Where Clauses</a></li>
+</ul></li>
+<li><a href="https://laravel.com/docs/5.4/queries#ordering-grouping-limit-and-offset">Ordering, Grouping, Limit, &amp; Offset</a></li>
+<li><a href="https://laravel.com/docs/5.4/queries#conditional-clauses">Conditional Clauses</a></li>
+<li><a href="https://laravel.com/docs/5.4/queries#inserts">Inserts</a></li>
+<li><a href="https://laravel.com/docs/5.4/queries#updates">Updates</a>
+<ul>
+<li><a href="https://laravel.com/docs/5.4/queries#updating-json-columns">Updating JSON Columns</a></li>
+<li><a href="https://laravel.com/docs/5.4/queries#increment-and-decrement">Increment &amp; Decrement</a></li>
+</ul></li>
+<li><a href="https://laravel.com/docs/5.4/queries#deletes">Deletes</a></li>
+<li><a href="https://laravel.com/docs/5.4/queries#pessimistic-locking">Pessimistic Locking</a></li>
+</ul>
+<p><a name="introduction"></a></p>
+<h2><a href="https://laravel.com/docs/5.4/queries#introduction">Introduction</a></h2>
+<p>Laravel's database query builder provides a convenient, fluent interface to creating and running database queries. It can be used to perform most database operations in your application and works on all supported database systems.</p>
+<p>The Laravel query builder uses PDO parameter binding to protect your application against SQL injection attacks. There is no need to clean strings being passed as bindings.</p>
+<p><a name="retrieving-results"></a></p>
+<h2><a href="https://laravel.com/docs/5.4/queries#retrieving-results">Retrieving Results</a></h2>
+<h4>Retrieving All Rows From A Table</h4>
+<p>You may use the <code class=" language-php">table</code> method on the <code class=" language-php"><span class="token constant">DB</span></code> facade to begin a query. The <code class=" language-php">table</code> method returns a fluent query builder instance for the given table, allowing you to chain more constraints onto the query and then finally get the results using the <code class=" language-php">get</code> method:</p>
+<pre class=" language-php"><code class=" language-php"><span class="token delimiter">&lt;?php</span>
+
+<span class="token keyword">namespace</span> <span class="token package">App<span class="token punctuation">\</span>Http<span class="token punctuation">\</span>Controllers</span><span class="token punctuation">;</span>
+
+<span class="token keyword">use</span> <span class="token package">Illuminate<span class="token punctuation">\</span>Support<span class="token punctuation">\</span>Facades<span class="token punctuation">\</span>DB</span><span class="token punctuation">;</span>
+<span class="token keyword">use</span> <span class="token package">App<span class="token punctuation">\</span>Http<span class="token punctuation">\</span>Controllers<span class="token punctuation">\</span>Controller</span><span class="token punctuation">;</span>
+
+<span class="token keyword">class</span> <span class="token class-name">UserController</span> <span class="token keyword">extends</span> <span class="token class-name">Controller</span>
+<span class="token punctuation">{</span>
+    <span class="token comment" spellcheck="true">/**
+     * Show a list of all of the application's users.
+     *
+     * @return Response
+     */</span>
+    <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function">index<span class="token punctuation">(</span></span><span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+        <span class="token variable">$users</span> <span class="token operator">=</span> <span class="token scope">DB<span class="token punctuation">::</span></span><span class="token function">table<span class="token punctuation">(</span></span><span class="token string">'users'</span><span class="token punctuation">)</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">get<span class="token punctuation">(</span></span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        <span class="token keyword">return</span> <span class="token function">view<span class="token punctuation">(</span></span><span class="token string">'user.index'</span><span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token string">'users'</span> <span class="token operator">=</span><span class="token operator">&gt;</span> <span class="token variable">$users</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code></pre>
+<p>The <code class=" language-php">get</code> method returns an <code class=" language-php">Illuminate\<span class="token package">Support<span class="token punctuation">\</span>Collection</span></code> containing the results where each result is an instance of the PHP <code class=" language-php">StdClass</code> object. You may access each column's value by accessing the column as a property of the object:</p>
+<pre class=" language-php"><code class=" language-php"><span class="token keyword">foreach</span> <span class="token punctuation">(</span><span class="token variable">$users</span> <span class="token keyword">as</span> <span class="token variable">$user</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">echo</span> <span class="token variable">$user</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token property">name</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code></pre>
+<h4>Retrieving A Single Row / Column From A Table</h4>
+<p>If you just need to retrieve a single row from the database table, you may use the <code class=" language-php">first</code> method. This method will return a single <code class=" language-php">StdClass</code> object:</p>
+<pre class=" language-php"><code class=" language-php"><span class="token variable">$user</span> <span class="token operator">=</span> <span class="token scope">DB<span class="token punctuation">::</span></span><span class="token function">table<span class="token punctuation">(</span></span><span class="token string">'users'</span><span class="token punctuation">)</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">where<span class="token punctuation">(</span></span><span class="token string">'name'</span><span class="token punctuation">,</span> <span class="token string">'John'</span><span class="token punctuation">)</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">first<span class="token punctuation">(</span></span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token keyword">echo</span> <span class="token variable">$user</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token property">name</span><span class="token punctuation">;</span></code></pre>
+<p>If you don't even need an entire row, you may extract a single value from a record using the <code class=" language-php">value</code> method. This method will return the value of the column directly:</p>
+<pre class=" language-php"><code class=" language-php"><span class="token variable">$email</span> <span class="token operator">=</span> <span class="token scope">DB<span class="token punctuation">::</span></span><span class="token function">table<span class="token punctuation">(</span></span><span class="token string">'users'</span><span class="token punctuation">)</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">where<span class="token punctuation">(</span></span><span class="token string">'name'</span><span class="token punctuation">,</span> <span class="token string">'John'</span><span class="token punctuation">)</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">value<span class="token punctuation">(</span></span><span class="token string">'email'</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<h4>Retrieving A List Of Column Values</h4>
+<p>If you would like to retrieve a Collection containing the values of a single column, you may use the <code class=" language-php">pluck</code> method. In this example, we'll retrieve a Collection of role titles:</p>
+<pre class=" language-php"><code class=" language-php"><span class="token variable">$titles</span> <span class="token operator">=</span> <span class="token scope">DB<span class="token punctuation">::</span></span><span class="token function">table<span class="token punctuation">(</span></span><span class="token string">'roles'</span><span class="token punctuation">)</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">pluck<span class="token punctuation">(</span></span><span class="token string">'title'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token keyword">foreach</span> <span class="token punctuation">(</span><span class="token variable">$titles</span> <span class="token keyword">as</span> <span class="token variable">$title</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">echo</span> <span class="token variable">$title</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code></pre>
+<p>You may also specify a custom key column for the returned Collection:</p>
+<pre class=" language-php"><code class=" language-php"><span class="token variable">$roles</span> <span class="token operator">=</span> <span class="token scope">DB<span class="token punctuation">::</span></span><span class="token function">table<span class="token punctuation">(</span></span><span class="token string">'roles'</span><span class="token punctuation">)</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">pluck<span class="token punctuation">(</span></span><span class="token string">'title'</span><span class="token punctuation">,</span> <span class="token string">'name'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token keyword">foreach</span> <span class="token punctuation">(</span><span class="token variable">$roles</span> <span class="token keyword">as</span> <span class="token variable">$name</span> <span class="token operator">=</span><span class="token operator">&gt;</span> <span class="token variable">$title</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">echo</span> <span class="token variable">$title</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code></pre>
+<p><a name="chunking-results"></a></p>
+<h3>Chunking Results</h3>
+<p>If you need to work with thousands of database records, consider using the <code class=" language-php">chunk</code> method. This method retrieves a small chunk of the results at a time and feeds each chunk into a <code class=" language-php">Closure</code> for processing. This method is very useful for writing <a href="https://laravel.com/docs/5.4/artisan">Artisan commands</a> that process thousands of records. For example, let's work with the entire <code class=" language-php">users</code> table in chunks of 100 records at a time:</p>
+<pre class=" language-php"><code class=" language-php"><span class="token scope">DB<span class="token punctuation">::</span></span><span class="token function">table<span class="token punctuation">(</span></span><span class="token string">'users'</span><span class="token punctuation">)</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">orderBy<span class="token punctuation">(</span></span><span class="token string">'id'</span><span class="token punctuation">)</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">chunk<span class="token punctuation">(</span></span><span class="token number">100</span><span class="token punctuation">,</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token variable">$users</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">foreach</span> <span class="token punctuation">(</span><span class="token variable">$users</span> <span class="token keyword">as</span> <span class="token variable">$user</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+       <span class="token comment" spellcheck="true"> //
+</span>    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<p>You may stop further chunks from being processed by returning <code class=" language-php"><span class="token boolean">false</span></code> from the <code class=" language-php">Closure</code>:</p>
+<pre class=" language-php"><code class=" language-php"><span class="token scope">DB<span class="token punctuation">::</span></span><span class="token function">table<span class="token punctuation">(</span></span><span class="token string">'users'</span><span class="token punctuation">)</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">orderBy<span class="token punctuation">(</span></span><span class="token string">'id'</span><span class="token punctuation">)</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">chunk<span class="token punctuation">(</span></span><span class="token number">100</span><span class="token punctuation">,</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token variable">$users</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+   <span class="token comment" spellcheck="true"> // Process the records...
+</span>
+    <span class="token keyword">return</span> <span class="token boolean">false</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<p><a name="aggregates"></a></p>
+<h3>Aggregates</h3>
+<p>The query builder also provides a variety of aggregate methods such as <code class=" language-php">count</code>, <code class=" language-php">max</code>, <code class=" language-php">min</code>, <code class=" language-php">avg</code>, and <code class=" language-php">sum</code>. You may call any of these methods after constructing your query:</p>
+<pre class=" language-php"><code class=" language-php"><span class="token variable">$users</span> <span class="token operator">=</span> <span class="token scope">DB<span class="token punctuation">::</span></span><span class="token function">table<span class="token punctuation">(</span></span><span class="token string">'users'</span><span class="token punctuation">)</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">count<span class="token punctuation">(</span></span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token variable">$price</span> <span class="token operator">=</span> <span class="token scope">DB<span class="token punctuation">::</span></span><span class="token function">table<span class="token punctuation">(</span></span><span class="token string">'orders'</span><span class="token punctuation">)</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">max<span class="token punctuation">(</span></span><span class="token string">'price'</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<p>Of course, you may combine these methods with other clauses:</p>
+<pre class=" language-php"><code class=" language-php"><span class="token variable">$price</span> <span class="token operator">=</span> <span class="token scope">DB<span class="token punctuation">::</span></span><span class="token function">table<span class="token punctuation">(</span></span><span class="token string">'orders'</span><span class="token punctuation">)</span>
+                <span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">where<span class="token punctuation">(</span></span><span class="token string">'finalized'</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">)</span>
+                <span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">avg<span class="token punctuation">(</span></span><span class="token string">'price'</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<p><a name="selects"></a></p>
+<h2><a href="https://laravel.com/docs/5.4/queries#selects">Selects</a></h2>
+<h4>Specifying A Select Clause</h4>
+<p>Of course, you may not always want to select all columns from a database table. Using the <code class=" language-php">select</code> method, you can specify a custom <code class=" language-php">select</code> clause for the query:</p>
+<pre class=" language-php"><code class=" language-php"><span class="token variable">$users</span> <span class="token operator">=</span> <span class="token scope">DB<span class="token punctuation">::</span></span><span class="token function">table<span class="token punctuation">(</span></span><span class="token string">'users'</span><span class="token punctuation">)</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">select<span class="token punctuation">(</span></span><span class="token string">'name'</span><span class="token punctuation">,</span> <span class="token string">'email as user_email'</span><span class="token punctuation">)</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">get<span class="token punctuation">(</span></span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<p>The <code class=" language-php">distinct</code> method allows you to force the query to return distinct results:</p>
+<pre class=" language-php"><code class=" language-php"><span class="token variable">$users</span> <span class="token operator">=</span> <span class="token scope">DB<span class="token punctuation">::</span></span><span class="token function">table<span class="token punctuation">(</span></span><span class="token string">'users'</span><span class="token punctuation">)</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">distinct<span class="token punctuation">(</span></span><span class="token punctuation">)</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">get<span class="token punctuation">(</span></span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<p>If you already have a query builder instance and you wish to add a column to its existing select clause, you may use the <code class=" language-php">addSelect</code> method:</p>
+<pre class=" language-php"><code class=" language-php"><span class="token variable">$query</span> <span class="token operator">=</span> <span class="token scope">DB<span class="token punctuation">::</span></span><span class="token function">table<span class="token punctuation">(</span></span><span class="token string">'users'</span><span class="token punctuation">)</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">select<span class="token punctuation">(</span></span><span class="token string">'name'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token variable">$users</span> <span class="token operator">=</span> <span class="token variable">$query</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">addSelect<span class="token punctuation">(</span></span><span class="token string">'age'</span><span class="token punctuation">)</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">get<span class="token punctuation">(</span></span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<p><a name="raw-expressions"></a></p>
+<h2><a href="https://laravel.com/docs/5.4/queries#raw-expressions">Raw Expressions</a></h2>
+<p>Sometimes you may need to use a raw expression in a query. These expressions will be injected into the query as strings, so be careful not to create any SQL injection points! To create a raw expression, you may use the <code class=" language-php"><span class="token scope">DB<span class="token punctuation">::</span></span>raw</code> method:</p>
+<pre class=" language-php"><code class=" language-php"><span class="token variable">$users</span> <span class="token operator">=</span> <span class="token scope">DB<span class="token punctuation">::</span></span><span class="token function">table<span class="token punctuation">(</span></span><span class="token string">'users'</span><span class="token punctuation">)</span>
+                     <span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">select<span class="token punctuation">(</span></span><span class="token scope">DB<span class="token punctuation">::</span></span><span class="token function">raw<span class="token punctuation">(</span></span><span class="token string">'count(*) as user_count, status'</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+                     <span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">where<span class="token punctuation">(</span></span><span class="token string">'status'</span><span class="token punctuation">,</span> <span class="token string">'&lt;&gt;'</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">)</span>
+                     <span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">groupBy<span class="token punctuation">(</span></span><span class="token string">'status'</span><span class="token punctuation">)</span>
+                     <span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">get<span class="token punctuation">(</span></span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<p><a name="joins"></a></p>
+<h2><a href="https://laravel.com/docs/5.4/queries#joins">Joins</a></h2>
+<h4>Inner Join Clause</h4>
+<p>The query builder may also be used to write join statements. To perform a basic "inner join", you may use the <code class=" language-php">join</code> method on a query builder instance. The first argument passed to the <code class=" language-php">join</code> method is the name of the table you need to join to, while the remaining arguments specify the column constraints for the join. Of course, as you can see, you can join to multiple tables in a single query:</p>
+<pre class=" language-php"><code class=" language-php"><span class="token variable">$users</span> <span class="token operator">=</span> <span class="token scope">DB<span class="token punctuation">::</span></span><span class="token function">table<span class="token punctuation">(</span></span><span class="token string">'users'</span><span class="token punctuation">)</span>
+            <span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">join<span class="token punctuation">(</span></span><span class="token string">'contacts'</span><span class="token punctuation">,</span> <span class="token string">'users.id'</span><span class="token punctuation">,</span> <span class="token string">'='</span><span class="token punctuation">,</span> <span class="token string">'contacts.user_id'</span><span class="token punctuation">)</span>
+            <span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">join<span class="token punctuation">(</span></span><span class="token string">'orders'</span><span class="token punctuation">,</span> <span class="token string">'users.id'</span><span class="token punctuation">,</span> <span class="token string">'='</span><span class="token punctuation">,</span> <span class="token string">'orders.user_id'</span><span class="token punctuation">)</span>
+            <span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">select<span class="token punctuation">(</span></span><span class="token string">'users.*'</span><span class="token punctuation">,</span> <span class="token string">'contacts.phone'</span><span class="token punctuation">,</span> <span class="token string">'orders.price'</span><span class="token punctuation">)</span>
+            <span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">get<span class="token punctuation">(</span></span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<h4>Left Join Clause</h4>
+<p>If you would like to perform a "left join" instead of an "inner join", use the <code class=" language-php">leftJoin</code> method. The <code class=" language-php">leftJoin</code> method has the same signature as the <code class=" language-php">join</code> method:</p>
+<pre class=" language-php"><code class=" language-php"><span class="token variable">$users</span> <span class="token operator">=</span> <span class="token scope">DB<span class="token punctuation">::</span></span><span class="token function">table<span class="token punctuation">(</span></span><span class="token string">'users'</span><span class="token punctuation">)</span>
+            <span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">leftJoin<span class="token punctuation">(</span></span><span class="token string">'posts'</span><span class="token punctuation">,</span> <span class="token string">'users.id'</span><span class="token punctuation">,</span> <span class="token string">'='</span><span class="token punctuation">,</span> <span class="token string">'posts.user_id'</span><span class="token punctuation">)</span>
+            <span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">get<span class="token punctuation">(</span></span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<h4>Cross Join Clause</h4>
+<p>To perform a "cross join" use the <code class=" language-php">crossJoin</code> method with the name of the table you wish to cross join to. Cross joins generate a cartesian product between the first table and the joined table:</p>
+<pre class=" language-php"><code class=" language-php"><span class="token variable">$users</span> <span class="token operator">=</span> <span class="token scope">DB<span class="token punctuation">::</span></span><span class="token function">table<span class="token punctuation">(</span></span><span class="token string">'sizes'</span><span class="token punctuation">)</span>
+            <span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">crossJoin<span class="token punctuation">(</span></span><span class="token string">'colours'</span><span class="token punctuation">)</span>
+            <span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">get<span class="token punctuation">(</span></span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<h4>Advanced Join Clauses</h4>
+<p>You may also specify more advanced join clauses. To get started, pass a <code class=" language-php">Closure</code> as the second argument into the <code class=" language-php">join</code> method. The <code class=" language-php">Closure</code> will receive a <code class=" language-php">JoinClause</code> object which allows you to specify constraints on the <code class=" language-php">join</code> clause:</p>
+<pre class=" language-php"><code class=" language-php"><span class="token scope">DB<span class="token punctuation">::</span></span><span class="token function">table<span class="token punctuation">(</span></span><span class="token string">'users'</span><span class="token punctuation">)</span>
+        <span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">join<span class="token punctuation">(</span></span><span class="token string">'contacts'</span><span class="token punctuation">,</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token variable">$join</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token variable">$join</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">on<span class="token punctuation">(</span></span><span class="token string">'users.id'</span><span class="token punctuation">,</span> <span class="token string">'='</span><span class="token punctuation">,</span> <span class="token string">'contacts.user_id'</span><span class="token punctuation">)</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">orOn<span class="token punctuation">(</span></span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span><span class="token punctuation">)</span>
+        <span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">get<span class="token punctuation">(</span></span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<p>If you would like to use a "where" style clause on your joins, you may use the <code class=" language-php">where</code> and <code class=" language-php">orWhere</code> methods on a join. Instead of comparing two columns, these methods will compare the column against a value:</p>
+<pre class=" language-php"><code class=" language-php"><span class="token scope">DB<span class="token punctuation">::</span></span><span class="token function">table<span class="token punctuation">(</span></span><span class="token string">'users'</span><span class="token punctuation">)</span>
+        <span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">join<span class="token punctuation">(</span></span><span class="token string">'contacts'</span><span class="token punctuation">,</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token variable">$join</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token variable">$join</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">on<span class="token punctuation">(</span></span><span class="token string">'users.id'</span><span class="token punctuation">,</span> <span class="token string">'='</span><span class="token punctuation">,</span> <span class="token string">'contacts.user_id'</span><span class="token punctuation">)</span>
+                 <span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">where<span class="token punctuation">(</span></span><span class="token string">'contacts.user_id'</span><span class="token punctuation">,</span> <span class="token string">'&gt;'</span><span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span><span class="token punctuation">)</span>
+        <span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">get<span class="token punctuation">(</span></span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<p><a name="unions"></a></p>
+<h2><a href="https://laravel.com/docs/5.4/queries#unions">Unions</a></h2>
+<p>The query builder also provides a quick way to "union" two queries together. For example, you may create an initial query and use the <code class=" language-php">union</code> method to union it with a second query:</p>
+<pre class=" language-php"><code class=" language-php"><span class="token variable">$first</span> <span class="token operator">=</span> <span class="token scope">DB<span class="token punctuation">::</span></span><span class="token function">table<span class="token punctuation">(</span></span><span class="token string">'users'</span><span class="token punctuation">)</span>
+            <span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">whereNull<span class="token punctuation">(</span></span><span class="token string">'first_name'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token variable">$users</span> <span class="token operator">=</span> <span class="token scope">DB<span class="token punctuation">::</span></span><span class="token function">table<span class="token punctuation">(</span></span><span class="token string">'users'</span><span class="token punctuation">)</span>
+            <span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">whereNull<span class="token punctuation">(</span></span><span class="token string">'last_name'</span><span class="token punctuation">)</span>
+            <span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">union<span class="token punctuation">(</span></span><span class="token variable">$first</span><span class="token punctuation">)</span>
+            <span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">get<span class="token punctuation">(</span></span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<blockquote class="has-icon tip">
+<p><div class="flag"><span class="svg"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:a="http://ns.adobe.com/AdobeSVGViewerExtensions/3.0/" version="1.1" x="0px" y="0px" width="56.6px" height="87.5px" viewBox="0 0 56.6 87.5" enable-background="new 0 0 56.6 87.5" xml:space="preserve"><path fill="#FFFFFF" d="M28.7 64.5c-1.4 0-2.5-1.1-2.5-2.5v-5.7 -5V41c0-1.4 1.1-2.5 2.5-2.5s2.5 1.1 2.5 2.5v10.1 5 5.8C31.2 63.4 30.1 64.5 28.7 64.5zM26.4 0.1C11.9 1 0.3 13.1 0 27.7c-0.1 7.9 3 15.2 8.2 20.4 0.5 0.5 0.8 1 1 1.7l3.1 13.1c0.3 1.1 1.3 1.9 2.4 1.9 0.3 0 0.7-0.1 1.1-0.2 1.1-0.5 1.6-1.8 1.4-3l-2-8.4 -0.4-1.8c-0.7-2.9-2-5.7-4-8 -1-1.2-2-2.5-2.7-3.9C5.8 35.3 4.7 30.3 5.4 25 6.7 14.5 15.2 6.3 25.6 5.1c13.9-1.5 25.8 9.4 25.8 23 0 4.1-1.1 7.9-2.9 11.2 -0.8 1.4-1.7 2.7-2.7 3.9 -2 2.3-3.3 5-4 8L41.4 53l-2 8.4c-0.3 1.2 0.3 2.5 1.4 3 0.3 0.2 0.7 0.2 1.1 0.2 1.1 0 2.2-0.8 2.4-1.9l3.1-13.1c0.2-0.6 0.5-1.2 1-1.7 5-5.1 8.2-12.1 8.2-19.8C56.4 12 42.8-1 26.4 0.1zM43.7 69.6c0 0.5-0.1 0.9-0.3 1.3 -0.4 0.8-0.7 1.6-0.9 2.5 -0.7 3-2 8.6-2 8.6 -1.3 3.2-4.4 5.5-7.9 5.5h-4.1H28h-0.5 -3.6c-3.5 0-6.7-2.4-7.9-5.7l-0.1-0.4 -1.8-7.8c-0.4-1.1-0.8-2.1-1.2-3.1 -0.1-0.3-0.2-0.5-0.2-0.9 0.1-1.3 1.3-2.1 2.6-2.1H41C42.4 67.5 43.6 68.2 43.7 69.6zM37.7 72.5H26.9c-4.2 0-7.2 3.9-6.3 7.9 0.6 1.3 1.8 2.1 3.2 2.1h4.1 0.5 0.5 3.6c1.4 0 2.7-0.8 3.2-2.1L37.7 72.5z"></path></svg></span></div> The <code class=" language-php">unionAll</code> method is also available and has the same method signature as <code class=" language-php">union</code>.</p>
+</blockquote>
+<p><a name="where-clauses"></a></p>
+<h2><a href="https://laravel.com/docs/5.4/queries#where-clauses">Where Clauses</a></h2>
+<h4>Simple Where Clauses</h4>
+<p>You may use the <code class=" language-php">where</code> method on a query builder instance to add <code class=" language-php">where</code> clauses to the query. The most basic call to <code class=" language-php">where</code> requires three arguments. The first argument is the name of the column. The second argument is an operator, which can be any of the database's supported operators. Finally, the third argument is the value to evaluate against the column.</p>
+<p>For example, here is a query that verifies the value of the "votes" column is equal to 100:</p>
+<pre class=" language-php"><code class=" language-php"><span class="token variable">$users</span> <span class="token operator">=</span> <span class="token scope">DB<span class="token punctuation">::</span></span><span class="token function">table<span class="token punctuation">(</span></span><span class="token string">'users'</span><span class="token punctuation">)</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">where<span class="token punctuation">(</span></span><span class="token string">'votes'</span><span class="token punctuation">,</span> <span class="token string">'='</span><span class="token punctuation">,</span> <span class="token number">100</span><span class="token punctuation">)</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">get<span class="token punctuation">(</span></span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<p>For convenience, if you simply want to verify that a column is equal to a given value, you may pass the value directly as the second argument to the <code class=" language-php">where</code> method:</p>
+<pre class=" language-php"><code class=" language-php"><span class="token variable">$users</span> <span class="token operator">=</span> <span class="token scope">DB<span class="token punctuation">::</span></span><span class="token function">table<span class="token punctuation">(</span></span><span class="token string">'users'</span><span class="token punctuation">)</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">where<span class="token punctuation">(</span></span><span class="token string">'votes'</span><span class="token punctuation">,</span> <span class="token number">100</span><span class="token punctuation">)</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">get<span class="token punctuation">(</span></span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<p>Of course, you may use a variety of other operators when writing a <code class=" language-php">where</code> clause:</p>
+<pre class=" language-php"><code class=" language-php"><span class="token variable">$users</span> <span class="token operator">=</span> <span class="token scope">DB<span class="token punctuation">::</span></span><span class="token function">table<span class="token punctuation">(</span></span><span class="token string">'users'</span><span class="token punctuation">)</span>
+                <span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">where<span class="token punctuation">(</span></span><span class="token string">'votes'</span><span class="token punctuation">,</span> <span class="token string">'&gt;='</span><span class="token punctuation">,</span> <span class="token number">100</span><span class="token punctuation">)</span>
+                <span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">get<span class="token punctuation">(</span></span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token variable">$users</span> <span class="token operator">=</span> <span class="token scope">DB<span class="token punctuation">::</span></span><span class="token function">table<span class="token punctuation">(</span></span><span class="token string">'users'</span><span class="token punctuation">)</span>
+                <span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">where<span class="token punctuation">(</span></span><span class="token string">'votes'</span><span class="token punctuation">,</span> <span class="token string">'&lt;&gt;'</span><span class="token punctuation">,</span> <span class="token number">100</span><span class="token punctuation">)</span>
+                <span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">get<span class="token punctuation">(</span></span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token variable">$users</span> <span class="token operator">=</span> <span class="token scope">DB<span class="token punctuation">::</span></span><span class="token function">table<span class="token punctuation">(</span></span><span class="token string">'users'</span><span class="token punctuation">)</span>
+                <span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">where<span class="token punctuation">(</span></span><span class="token string">'name'</span><span class="token punctuation">,</span> <span class="token string">'like'</span><span class="token punctuation">,</span> <span class="token string">'T%'</span><span class="token punctuation">)</span>
+                <span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">get<span class="token punctuation">(</span></span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<p>You may also pass an array of conditions to the <code class=" language-php">where</code> function:</p>
+<pre class=" language-php"><code class=" language-php"><span class="token variable">$users</span> <span class="token operator">=</span> <span class="token scope">DB<span class="token punctuation">::</span></span><span class="token function">table<span class="token punctuation">(</span></span><span class="token string">'users'</span><span class="token punctuation">)</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">where<span class="token punctuation">(</span></span><span class="token punctuation">[</span>
+    <span class="token punctuation">[</span><span class="token string">'status'</span><span class="token punctuation">,</span> <span class="token string">'='</span><span class="token punctuation">,</span> <span class="token string">'1'</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+    <span class="token punctuation">[</span><span class="token string">'subscribed'</span><span class="token punctuation">,</span> <span class="token string">'&lt;&gt;'</span><span class="token punctuation">,</span> <span class="token string">'1'</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">get<span class="token punctuation">(</span></span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<h4>Or Statements</h4>
+<p>You may chain where constraints together as well as add <code class=" language-php"><span class="token keyword">or</span></code> clauses to the query. The <code class=" language-php">orWhere</code> method accepts the same arguments as the <code class=" language-php">where</code> method:</p>
+<pre class=" language-php"><code class=" language-php"><span class="token variable">$users</span> <span class="token operator">=</span> <span class="token scope">DB<span class="token punctuation">::</span></span><span class="token function">table<span class="token punctuation">(</span></span><span class="token string">'users'</span><span class="token punctuation">)</span>
+                    <span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">where<span class="token punctuation">(</span></span><span class="token string">'votes'</span><span class="token punctuation">,</span> <span class="token string">'&gt;'</span><span class="token punctuation">,</span> <span class="token number">100</span><span class="token punctuation">)</span>
+                    <span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">orWhere<span class="token punctuation">(</span></span><span class="token string">'name'</span><span class="token punctuation">,</span> <span class="token string">'John'</span><span class="token punctuation">)</span>
+                    <span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">get<span class="token punctuation">(</span></span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<h4>Additional Where Clauses</h4>
+<p><strong>whereBetween</strong></p>
+<p>The <code class=" language-php">whereBetween</code> method verifies that a column's value is between two values:</p>
+<pre class=" language-php"><code class=" language-php"><span class="token variable">$users</span> <span class="token operator">=</span> <span class="token scope">DB<span class="token punctuation">::</span></span><span class="token function">table<span class="token punctuation">(</span></span><span class="token string">'users'</span><span class="token punctuation">)</span>
+                    <span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">whereBetween<span class="token punctuation">(</span></span><span class="token string">'votes'</span><span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">100</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">get<span class="token punctuation">(</span></span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<p><strong>whereNotBetween</strong></p>
+<p>The <code class=" language-php">whereNotBetween</code> method verifies that a column's value lies outside of two values:</p>
+<pre class=" language-php"><code class=" language-php"><span class="token variable">$users</span> <span class="token operator">=</span> <span class="token scope">DB<span class="token punctuation">::</span></span><span class="token function">table<span class="token punctuation">(</span></span><span class="token string">'users'</span><span class="token punctuation">)</span>
+                    <span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">whereNotBetween<span class="token punctuation">(</span></span><span class="token string">'votes'</span><span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">100</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+                    <span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">get<span class="token punctuation">(</span></span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<p><strong>whereIn / whereNotIn</strong></p>
+<p>The <code class=" language-php">whereIn</code> method verifies that a given column's value is contained within the given array:</p>
+<pre class=" language-php"><code class=" language-php"><span class="token variable">$users</span> <span class="token operator">=</span> <span class="token scope">DB<span class="token punctuation">::</span></span><span class="token function">table<span class="token punctuation">(</span></span><span class="token string">'users'</span><span class="token punctuation">)</span>
+                    <span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">whereIn<span class="token punctuation">(</span></span><span class="token string">'id'</span><span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+                    <span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">get<span class="token punctuation">(</span></span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<p>The <code class=" language-php">whereNotIn</code> method verifies that the given column's value is <strong>not</strong> contained in the given array:</p>
+<pre class=" language-php"><code class=" language-php"><span class="token variable">$users</span> <span class="token operator">=</span> <span class="token scope">DB<span class="token punctuation">::</span></span><span class="token function">table<span class="token punctuation">(</span></span><span class="token string">'users'</span><span class="token punctuation">)</span>
+                    <span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">whereNotIn<span class="token punctuation">(</span></span><span class="token string">'id'</span><span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+                    <span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">get<span class="token punctuation">(</span></span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<p><strong>whereNull / whereNotNull</strong></p>
+<p>The <code class=" language-php">whereNull</code> method verifies that the value of the given column is <code class=" language-php"><span class="token keyword">NULL</span></code>:</p>
+<pre class=" language-php"><code class=" language-php"><span class="token variable">$users</span> <span class="token operator">=</span> <span class="token scope">DB<span class="token punctuation">::</span></span><span class="token function">table<span class="token punctuation">(</span></span><span class="token string">'users'</span><span class="token punctuation">)</span>
+                    <span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">whereNull<span class="token punctuation">(</span></span><span class="token string">'updated_at'</span><span class="token punctuation">)</span>
+                    <span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">get<span class="token punctuation">(</span></span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<p>The <code class=" language-php">whereNotNull</code> method verifies that the column's value is not <code class=" language-php"><span class="token keyword">NULL</span></code>:</p>
+<pre class=" language-php"><code class=" language-php"><span class="token variable">$users</span> <span class="token operator">=</span> <span class="token scope">DB<span class="token punctuation">::</span></span><span class="token function">table<span class="token punctuation">(</span></span><span class="token string">'users'</span><span class="token punctuation">)</span>
+                    <span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">whereNotNull<span class="token punctuation">(</span></span><span class="token string">'updated_at'</span><span class="token punctuation">)</span>
+                    <span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">get<span class="token punctuation">(</span></span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<p><strong>whereDate / whereMonth / whereDay / whereYear</strong></p>
+<p>The <code class=" language-php">whereDate</code> method may be used to compare a column's value against a date:</p>
+<pre class=" language-php"><code class=" language-php"><span class="token variable">$users</span> <span class="token operator">=</span> <span class="token scope">DB<span class="token punctuation">::</span></span><span class="token function">table<span class="token punctuation">(</span></span><span class="token string">'users'</span><span class="token punctuation">)</span>
+                <span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">whereDate<span class="token punctuation">(</span></span><span class="token string">'created_at'</span><span class="token punctuation">,</span> <span class="token string">'2016-12-31'</span><span class="token punctuation">)</span>
+                <span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">get<span class="token punctuation">(</span></span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<p>The <code class=" language-php">whereMonth</code> method may be used to compare a column's value against a specific month of a year:</p>
+<pre class=" language-php"><code class=" language-php"><span class="token variable">$users</span> <span class="token operator">=</span> <span class="token scope">DB<span class="token punctuation">::</span></span><span class="token function">table<span class="token punctuation">(</span></span><span class="token string">'users'</span><span class="token punctuation">)</span>
+                <span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">whereMonth<span class="token punctuation">(</span></span><span class="token string">'created_at'</span><span class="token punctuation">,</span> <span class="token string">'12'</span><span class="token punctuation">)</span>
+                <span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">get<span class="token punctuation">(</span></span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<p>The <code class=" language-php">whereDay</code> method may be used to compare a column's value against a specific day of a month:</p>
+<pre class=" language-php"><code class=" language-php"><span class="token variable">$users</span> <span class="token operator">=</span> <span class="token scope">DB<span class="token punctuation">::</span></span><span class="token function">table<span class="token punctuation">(</span></span><span class="token string">'users'</span><span class="token punctuation">)</span>
+                <span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">whereDay<span class="token punctuation">(</span></span><span class="token string">'created_at'</span><span class="token punctuation">,</span> <span class="token string">'31'</span><span class="token punctuation">)</span>
+                <span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">get<span class="token punctuation">(</span></span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<p>The <code class=" language-php">whereYear</code> method may be used to compare a column's value against a specific year:</p>
+<pre class=" language-php"><code class=" language-php"><span class="token variable">$users</span> <span class="token operator">=</span> <span class="token scope">DB<span class="token punctuation">::</span></span><span class="token function">table<span class="token punctuation">(</span></span><span class="token string">'users'</span><span class="token punctuation">)</span>
+                <span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">whereYear<span class="token punctuation">(</span></span><span class="token string">'created_at'</span><span class="token punctuation">,</span> <span class="token string">'2016'</span><span class="token punctuation">)</span>
+                <span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">get<span class="token punctuation">(</span></span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<p><strong>whereColumn</strong></p>
+<p>The <code class=" language-php">whereColumn</code> method may be used to verify that two columns are equal:</p>
+<pre class=" language-php"><code class=" language-php"><span class="token variable">$users</span> <span class="token operator">=</span> <span class="token scope">DB<span class="token punctuation">::</span></span><span class="token function">table<span class="token punctuation">(</span></span><span class="token string">'users'</span><span class="token punctuation">)</span>
+                <span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">whereColumn<span class="token punctuation">(</span></span><span class="token string">'first_name'</span><span class="token punctuation">,</span> <span class="token string">'last_name'</span><span class="token punctuation">)</span>
+                <span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">get<span class="token punctuation">(</span></span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<p>You may also pass a comparison operator to the method:</p>
+<pre class=" language-php"><code class=" language-php"><span class="token variable">$users</span> <span class="token operator">=</span> <span class="token scope">DB<span class="token punctuation">::</span></span><span class="token function">table<span class="token punctuation">(</span></span><span class="token string">'users'</span><span class="token punctuation">)</span>
+                <span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">whereColumn<span class="token punctuation">(</span></span><span class="token string">'updated_at'</span><span class="token punctuation">,</span> <span class="token string">'&gt;'</span><span class="token punctuation">,</span> <span class="token string">'created_at'</span><span class="token punctuation">)</span>
+                <span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">get<span class="token punctuation">(</span></span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<p>The <code class=" language-php">whereColumn</code> method can also be passed an array of multiple conditions. These conditions will be joined using the <code class=" language-php"><span class="token keyword">and</span></code> operator:</p>
+<pre class=" language-php"><code class=" language-php"><span class="token variable">$users</span> <span class="token operator">=</span> <span class="token scope">DB<span class="token punctuation">::</span></span><span class="token function">table<span class="token punctuation">(</span></span><span class="token string">'users'</span><span class="token punctuation">)</span>
+                <span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">whereColumn<span class="token punctuation">(</span></span><span class="token punctuation">[</span>
+                    <span class="token punctuation">[</span><span class="token string">'first_name'</span><span class="token punctuation">,</span> <span class="token string">'='</span><span class="token punctuation">,</span> <span class="token string">'last_name'</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+                    <span class="token punctuation">[</span><span class="token string">'updated_at'</span><span class="token punctuation">,</span> <span class="token string">'&gt;'</span><span class="token punctuation">,</span> <span class="token string">'created_at'</span><span class="token punctuation">]</span>
+                <span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">get<span class="token punctuation">(</span></span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<p><a name="parameter-grouping"></a></p>
+<h3>Parameter Grouping</h3>
+<p>Sometimes you may need to create more advanced where clauses such as "where exists" clauses or nested parameter groupings. The Laravel query builder can handle these as well. To get started, let's look at an example of grouping constraints within parenthesis:</p>
+<pre class=" language-php"><code class=" language-php"><span class="token scope">DB<span class="token punctuation">::</span></span><span class="token function">table<span class="token punctuation">(</span></span><span class="token string">'users'</span><span class="token punctuation">)</span>
+            <span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">where<span class="token punctuation">(</span></span><span class="token string">'name'</span><span class="token punctuation">,</span> <span class="token string">'='</span><span class="token punctuation">,</span> <span class="token string">'John'</span><span class="token punctuation">)</span>
+            <span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">orWhere<span class="token punctuation">(</span></span><span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token variable">$query</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                <span class="token variable">$query</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">where<span class="token punctuation">(</span></span><span class="token string">'votes'</span><span class="token punctuation">,</span> <span class="token string">'&gt;'</span><span class="token punctuation">,</span> <span class="token number">100</span><span class="token punctuation">)</span>
+                      <span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">where<span class="token punctuation">(</span></span><span class="token string">'title'</span><span class="token punctuation">,</span> <span class="token string">'&lt;&gt;'</span><span class="token punctuation">,</span> <span class="token string">'Admin'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span><span class="token punctuation">)</span>
+            <span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">get<span class="token punctuation">(</span></span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<p>As you can see, passing a <code class=" language-php">Closure</code> into the <code class=" language-php">orWhere</code> method instructs the query builder to begin a constraint group. The <code class=" language-php">Closure</code> will receive a query builder instance which you can use to set the constraints that should be contained within the parenthesis group. The example above will produce the following SQL:</p>
+<pre class=" language-php"><code class=" language-php">select <span class="token operator">*</span> from users where name <span class="token operator">=</span> <span class="token string">'John'</span> <span class="token keyword">or</span> <span class="token punctuation">(</span>votes <span class="token operator">&gt;</span> <span class="token number">100</span> <span class="token keyword">and</span> title <span class="token operator">&lt;</span><span class="token operator">&gt;</span> <span class="token string">'Admin'</span><span class="token punctuation">)</span></code></pre>
+<p><a name="where-exists-clauses"></a></p>
+<h3>Where Exists Clauses</h3>
+<p>The <code class=" language-php">whereExists</code> method allows you to write <code class=" language-php">where exists</code> SQL clauses. The <code class=" language-php">whereExists</code> method accepts a <code class=" language-php">Closure</code> argument, which will receive a query builder instance allowing you to define the query that should be placed inside of the "exists" clause:</p>
+<pre class=" language-php"><code class=" language-php"><span class="token scope">DB<span class="token punctuation">::</span></span><span class="token function">table<span class="token punctuation">(</span></span><span class="token string">'users'</span><span class="token punctuation">)</span>
+            <span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">whereExists<span class="token punctuation">(</span></span><span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token variable">$query</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                <span class="token variable">$query</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">select<span class="token punctuation">(</span></span><span class="token scope">DB<span class="token punctuation">::</span></span><span class="token function">raw<span class="token punctuation">(</span></span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+                      <span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">from<span class="token punctuation">(</span></span><span class="token string">'orders'</span><span class="token punctuation">)</span>
+                      <span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">whereRaw<span class="token punctuation">(</span></span><span class="token string">'orders.user_id = users.id'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span><span class="token punctuation">)</span>
+            <span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">get<span class="token punctuation">(</span></span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<p>The query above will produce the following SQL:</p>
+<pre class=" language-php"><code class=" language-php">select <span class="token operator">*</span> from users
+where exists <span class="token punctuation">(</span>
+    select <span class="token number">1</span> from orders where orders<span class="token punctuation">.</span>user_id <span class="token operator">=</span> users<span class="token punctuation">.</span>id
+<span class="token punctuation">)</span></code></pre>
+<p><a name="json-where-clauses"></a></p>
+<h3>JSON Where Clauses</h3>
+<p>Laravel also supports querying JSON column types on databases that provide support for JSON column types. Currently, this includes MySQL 5.7 and Postgres. To query a JSON column, use the <code class=" language-php"><span class="token operator">-</span><span class="token operator">&gt;</span></code> operator:</p>
+<pre class=" language-php"><code class=" language-php"><span class="token variable">$users</span> <span class="token operator">=</span> <span class="token scope">DB<span class="token punctuation">::</span></span><span class="token function">table<span class="token punctuation">(</span></span><span class="token string">'users'</span><span class="token punctuation">)</span>
+                <span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">where<span class="token punctuation">(</span></span><span class="token string">'options-&gt;language'</span><span class="token punctuation">,</span> <span class="token string">'en'</span><span class="token punctuation">)</span>
+                <span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">get<span class="token punctuation">(</span></span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token variable">$users</span> <span class="token operator">=</span> <span class="token scope">DB<span class="token punctuation">::</span></span><span class="token function">table<span class="token punctuation">(</span></span><span class="token string">'users'</span><span class="token punctuation">)</span>
+                <span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">where<span class="token punctuation">(</span></span><span class="token string">'preferences-&gt;dining-&gt;meal'</span><span class="token punctuation">,</span> <span class="token string">'salad'</span><span class="token punctuation">)</span>
+                <span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">get<span class="token punctuation">(</span></span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<p><a name="ordering-grouping-limit-and-offset"></a></p>
+<h2><a href="https://laravel.com/docs/5.4/queries#ordering-grouping-limit-and-offset">Ordering, Grouping, Limit, &amp; Offset</a></h2>
+<h4>orderBy</h4>
+<p>The <code class=" language-php">orderBy</code> method allows you to sort the result of the query by a given column. The first argument to the <code class=" language-php">orderBy</code> method should be the column you wish to sort by, while the second argument controls the direction of the sort and may be either <code class=" language-php">asc</code> or <code class=" language-php">desc</code>:</p>
+<pre class=" language-php"><code class=" language-php"><span class="token variable">$users</span> <span class="token operator">=</span> <span class="token scope">DB<span class="token punctuation">::</span></span><span class="token function">table<span class="token punctuation">(</span></span><span class="token string">'users'</span><span class="token punctuation">)</span>
+                <span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">orderBy<span class="token punctuation">(</span></span><span class="token string">'name'</span><span class="token punctuation">,</span> <span class="token string">'desc'</span><span class="token punctuation">)</span>
+                <span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">get<span class="token punctuation">(</span></span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<h4>latest / oldest</h4>
+<p>The <code class=" language-php">latest</code> and <code class=" language-php">oldest</code> methods allow you to easily order results by date. By default, result will be ordered by the <code class=" language-php">created_at</code> column. Or, you may pass the column name that you wish to sort by:</p>
+<pre class=" language-php"><code class=" language-php"><span class="token variable">$user</span> <span class="token operator">=</span> <span class="token scope">DB<span class="token punctuation">::</span></span><span class="token function">table<span class="token punctuation">(</span></span><span class="token string">'users'</span><span class="token punctuation">)</span>
+                <span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">latest<span class="token punctuation">(</span></span><span class="token punctuation">)</span>
+                <span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">first<span class="token punctuation">(</span></span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<h4>inRandomOrder</h4>
+<p>The <code class=" language-php">inRandomOrder</code> method may be used to sort the query results randomly. For example, you may use this method to fetch a random user:</p>
+<pre class=" language-php"><code class=" language-php"><span class="token variable">$randomUser</span> <span class="token operator">=</span> <span class="token scope">DB<span class="token punctuation">::</span></span><span class="token function">table<span class="token punctuation">(</span></span><span class="token string">'users'</span><span class="token punctuation">)</span>
+                <span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">inRandomOrder<span class="token punctuation">(</span></span><span class="token punctuation">)</span>
+                <span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">first<span class="token punctuation">(</span></span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<h4>groupBy / having / havingRaw</h4>
+<p>The <code class=" language-php">groupBy</code> and <code class=" language-php">having</code> methods may be used to group the query results. The <code class=" language-php">having</code> method's signature is similar to that of the <code class=" language-php">where</code> method:</p>
+<pre class=" language-php"><code class=" language-php"><span class="token variable">$users</span> <span class="token operator">=</span> <span class="token scope">DB<span class="token punctuation">::</span></span><span class="token function">table<span class="token punctuation">(</span></span><span class="token string">'users'</span><span class="token punctuation">)</span>
+                <span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">groupBy<span class="token punctuation">(</span></span><span class="token string">'account_id'</span><span class="token punctuation">)</span>
+                <span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">having<span class="token punctuation">(</span></span><span class="token string">'account_id'</span><span class="token punctuation">,</span> <span class="token string">'&gt;'</span><span class="token punctuation">,</span> <span class="token number">100</span><span class="token punctuation">)</span>
+                <span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">get<span class="token punctuation">(</span></span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<p>The <code class=" language-php">havingRaw</code> method may be used to set a raw string as the value of the <code class=" language-php">having</code> clause. For example, we can find all of the departments with sales greater than $2,500:</p>
+<pre class=" language-php"><code class=" language-php"><span class="token variable">$users</span> <span class="token operator">=</span> <span class="token scope">DB<span class="token punctuation">::</span></span><span class="token function">table<span class="token punctuation">(</span></span><span class="token string">'orders'</span><span class="token punctuation">)</span>
+                <span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">select<span class="token punctuation">(</span></span><span class="token string">'department'</span><span class="token punctuation">,</span> <span class="token scope">DB<span class="token punctuation">::</span></span><span class="token function">raw<span class="token punctuation">(</span></span><span class="token string">'SUM(price) as total_sales'</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+                <span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">groupBy<span class="token punctuation">(</span></span><span class="token string">'department'</span><span class="token punctuation">)</span>
+                <span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">havingRaw<span class="token punctuation">(</span></span><span class="token string">'SUM(price) &gt; 2500'</span><span class="token punctuation">)</span>
+                <span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">get<span class="token punctuation">(</span></span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<h4>skip / take</h4>
+<p>To limit the number of results returned from the query, or to skip a given number of results in the query, you may use the <code class=" language-php">skip</code> and <code class=" language-php">take</code> methods:</p>
+<pre class=" language-php"><code class=" language-php"><span class="token variable">$users</span> <span class="token operator">=</span> <span class="token scope">DB<span class="token punctuation">::</span></span><span class="token function">table<span class="token punctuation">(</span></span><span class="token string">'users'</span><span class="token punctuation">)</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">skip<span class="token punctuation">(</span></span><span class="token number">10</span><span class="token punctuation">)</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">take<span class="token punctuation">(</span></span><span class="token number">5</span><span class="token punctuation">)</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">get<span class="token punctuation">(</span></span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<p>Alternatively, you may use the <code class=" language-php">limit</code> and <code class=" language-php">offset</code> methods:</p>
+<pre class=" language-php"><code class=" language-php"><span class="token variable">$users</span> <span class="token operator">=</span> <span class="token scope">DB<span class="token punctuation">::</span></span><span class="token function">table<span class="token punctuation">(</span></span><span class="token string">'users'</span><span class="token punctuation">)</span>
+                <span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">offset<span class="token punctuation">(</span></span><span class="token number">10</span><span class="token punctuation">)</span>
+                <span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">limit<span class="token punctuation">(</span></span><span class="token number">5</span><span class="token punctuation">)</span>
+                <span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">get<span class="token punctuation">(</span></span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<p><a name="conditional-clauses"></a></p>
+<h2><a href="https://laravel.com/docs/5.4/queries#conditional-clauses">Conditional Clauses</a></h2>
+<p>Sometimes you may want clauses to apply to a query only when something else is true. For instance you may only want to apply a <code class=" language-php">where</code> statement if a given input value is present on the incoming request. You may accomplish this using the <code class=" language-php">when</code> method:</p>
+<pre class=" language-php"><code class=" language-php"><span class="token variable">$role</span> <span class="token operator">=</span> <span class="token variable">$request</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">input<span class="token punctuation">(</span></span><span class="token string">'role'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token variable">$users</span> <span class="token operator">=</span> <span class="token scope">DB<span class="token punctuation">::</span></span><span class="token function">table<span class="token punctuation">(</span></span><span class="token string">'users'</span><span class="token punctuation">)</span>
+                <span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">when<span class="token punctuation">(</span></span><span class="token variable">$role</span><span class="token punctuation">,</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token variable">$query</span><span class="token punctuation">)</span> <span class="token keyword">use</span> <span class="token punctuation">(</span><span class="token variable">$role</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                    <span class="token keyword">return</span> <span class="token variable">$query</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">where<span class="token punctuation">(</span></span><span class="token string">'role_id'</span><span class="token punctuation">,</span> <span class="token variable">$role</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                <span class="token punctuation">}</span><span class="token punctuation">)</span>
+                <span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">get<span class="token punctuation">(</span></span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<p>The <code class=" language-php">when</code> method only executes the given Closure when the first parameter is <code class=" language-php"><span class="token boolean">true</span></code>. If the first parameter is <code class=" language-php"><span class="token boolean">false</span></code>, the Closure will not be executed.</p>
+<p>You may pass another Closure as the third parameter to the <code class=" language-php">when</code> method. This Closure will execute if the first parameter evaluates as <code class=" language-php"><span class="token boolean">false</span></code>. To illustrate how this feature may be used, we will use it to configure the default sorting of a query:</p>
+<pre class=" language-php"><code class=" language-php"><span class="token variable">$sortBy</span> <span class="token operator">=</span> <span class="token keyword">null</span><span class="token punctuation">;</span>
+
+<span class="token variable">$users</span> <span class="token operator">=</span> <span class="token scope">DB<span class="token punctuation">::</span></span><span class="token function">table<span class="token punctuation">(</span></span><span class="token string">'users'</span><span class="token punctuation">)</span>
+                <span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">when<span class="token punctuation">(</span></span><span class="token variable">$sortBy</span><span class="token punctuation">,</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token variable">$query</span><span class="token punctuation">)</span> <span class="token keyword">use</span> <span class="token punctuation">(</span><span class="token variable">$sortBy</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                    <span class="token keyword">return</span> <span class="token variable">$query</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">orderBy<span class="token punctuation">(</span></span><span class="token variable">$sortBy</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                <span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token variable">$query</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                    <span class="token keyword">return</span> <span class="token variable">$query</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">orderBy<span class="token punctuation">(</span></span><span class="token string">'name'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                <span class="token punctuation">}</span><span class="token punctuation">)</span>
+                <span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">get<span class="token punctuation">(</span></span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<p><a name="inserts"></a></p>
+<h2><a href="https://laravel.com/docs/5.4/queries#inserts">Inserts</a></h2>
+<p>The query builder also provides an <code class=" language-php">insert</code> method for inserting records into the database table. The <code class=" language-php">insert</code> method accepts an array of column names and values:</p>
+<pre class=" language-php"><code class=" language-php"><span class="token scope">DB<span class="token punctuation">::</span></span><span class="token function">table<span class="token punctuation">(</span></span><span class="token string">'users'</span><span class="token punctuation">)</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">insert<span class="token punctuation">(</span></span>
+    <span class="token punctuation">[</span><span class="token string">'email'</span> <span class="token operator">=</span><span class="token operator">&gt;</span> <span class="token string">'john@example.com'</span><span class="token punctuation">,</span> <span class="token string">'votes'</span> <span class="token operator">=</span><span class="token operator">&gt;</span> <span class="token number">0</span><span class="token punctuation">]</span>
+<span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<p>You may even insert several records into the table with a single call to <code class=" language-php">insert</code> by passing an array of arrays. Each array represents a row to be inserted into the table:</p>
+<pre class=" language-php"><code class=" language-php"><span class="token scope">DB<span class="token punctuation">::</span></span><span class="token function">table<span class="token punctuation">(</span></span><span class="token string">'users'</span><span class="token punctuation">)</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">insert<span class="token punctuation">(</span></span><span class="token punctuation">[</span>
+    <span class="token punctuation">[</span><span class="token string">'email'</span> <span class="token operator">=</span><span class="token operator">&gt;</span> <span class="token string">'taylor@example.com'</span><span class="token punctuation">,</span> <span class="token string">'votes'</span> <span class="token operator">=</span><span class="token operator">&gt;</span> <span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+    <span class="token punctuation">[</span><span class="token string">'email'</span> <span class="token operator">=</span><span class="token operator">&gt;</span> <span class="token string">'dayle@example.com'</span><span class="token punctuation">,</span> <span class="token string">'votes'</span> <span class="token operator">=</span><span class="token operator">&gt;</span> <span class="token number">0</span><span class="token punctuation">]</span>
+<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<h4>Auto-Incrementing IDs</h4>
+<p>If the table has an auto-incrementing id, use the <code class=" language-php">insertGetId</code> method to insert a record and then retrieve the ID:</p>
+<pre class=" language-php"><code class=" language-php"><span class="token variable">$id</span> <span class="token operator">=</span> <span class="token scope">DB<span class="token punctuation">::</span></span><span class="token function">table<span class="token punctuation">(</span></span><span class="token string">'users'</span><span class="token punctuation">)</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">insertGetId<span class="token punctuation">(</span></span>
+    <span class="token punctuation">[</span><span class="token string">'email'</span> <span class="token operator">=</span><span class="token operator">&gt;</span> <span class="token string">'john@example.com'</span><span class="token punctuation">,</span> <span class="token string">'votes'</span> <span class="token operator">=</span><span class="token operator">&gt;</span> <span class="token number">0</span><span class="token punctuation">]</span>
+<span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<blockquote class="has-icon note">
+<p><div class="flag"><span class="svg"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:a="http://ns.adobe.com/AdobeSVGViewerExtensions/3.0/" version="1.1" x="0px" y="0px" width="90px" height="90px" viewBox="0 0 90 90" enable-background="new 0 0 90 90" xml:space="preserve"><path fill="#FFFFFF" d="M45 0C20.1 0 0 20.1 0 45s20.1 45 45 45 45-20.1 45-45S69.9 0 45 0zM45 74.5c-3.6 0-6.5-2.9-6.5-6.5s2.9-6.5 6.5-6.5 6.5 2.9 6.5 6.5S48.6 74.5 45 74.5zM52.1 23.9l-2.5 29.6c0 2.5-2.1 4.6-4.6 4.6 -2.5 0-4.6-2.1-4.6-4.6l-2.5-29.6c-0.1-0.4-0.1-0.7-0.1-1.1 0-4 3.2-7.2 7.2-7.2 4 0 7.2 3.2 7.2 7.2C52.2 23.1 52.2 23.5 52.1 23.9z"></path></svg></span></div> When using PostgreSQL the insertGetId method expects the auto-incrementing column to be named <code class=" language-php">id</code>. If you would like to retrieve the ID from a different "sequence", you may pass the sequence name as the second parameter to the <code class=" language-php">insertGetId</code> method.</p>
+</blockquote>
+<p><a name="updates"></a></p>
+<h2><a href="https://laravel.com/docs/5.4/queries#updates">Updates</a></h2>
+<p>Of course, in addition to inserting records into the database, the query builder can also update existing records using the <code class=" language-php">update</code> method. The <code class=" language-php">update</code> method, like the <code class=" language-php">insert</code> method, accepts an array of column and value pairs containing the columns to be updated. You may constrain the <code class=" language-php">update</code> query using <code class=" language-php">where</code> clauses:</p>
+<pre class=" language-php"><code class=" language-php"><span class="token scope">DB<span class="token punctuation">::</span></span><span class="token function">table<span class="token punctuation">(</span></span><span class="token string">'users'</span><span class="token punctuation">)</span>
+            <span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">where<span class="token punctuation">(</span></span><span class="token string">'id'</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">)</span>
+            <span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">update<span class="token punctuation">(</span></span><span class="token punctuation">[</span><span class="token string">'votes'</span> <span class="token operator">=</span><span class="token operator">&gt;</span> <span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<p><a name="updating-json-columns"></a></p>
+<h3>Updating JSON Columns</h3>
+<p>When updating a JSON column, you should use <code class=" language-php"><span class="token operator">-</span><span class="token operator">&gt;</span></code> syntax to access the appropriate key in the JSON object. This operation is only supported on databases that support JSON columns:</p>
+<pre class=" language-php"><code class=" language-php"><span class="token scope">DB<span class="token punctuation">::</span></span><span class="token function">table<span class="token punctuation">(</span></span><span class="token string">'users'</span><span class="token punctuation">)</span>
+            <span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">where<span class="token punctuation">(</span></span><span class="token string">'id'</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">)</span>
+            <span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">update<span class="token punctuation">(</span></span><span class="token punctuation">[</span><span class="token string">'options-&gt;enabled'</span> <span class="token operator">=</span><span class="token operator">&gt;</span> <span class="token boolean">true</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<p><a name="increment-and-decrement"></a></p>
+<h3>Increment &amp; Decrement</h3>
+<p>The query builder also provides convenient methods for incrementing or decrementing the value of a given column. This is simply a shortcut, providing a more expressive and terse interface compared to manually writing the <code class=" language-php">update</code> statement.</p>
+<p>Both of these methods accept at least one argument: the column to modify. A second argument may optionally be passed to control the amount by which the column should be incremented or decremented:</p>
+<pre class=" language-php"><code class=" language-php"><span class="token scope">DB<span class="token punctuation">::</span></span><span class="token function">table<span class="token punctuation">(</span></span><span class="token string">'users'</span><span class="token punctuation">)</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">increment<span class="token punctuation">(</span></span><span class="token string">'votes'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token scope">DB<span class="token punctuation">::</span></span><span class="token function">table<span class="token punctuation">(</span></span><span class="token string">'users'</span><span class="token punctuation">)</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">increment<span class="token punctuation">(</span></span><span class="token string">'votes'</span><span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token scope">DB<span class="token punctuation">::</span></span><span class="token function">table<span class="token punctuation">(</span></span><span class="token string">'users'</span><span class="token punctuation">)</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">decrement<span class="token punctuation">(</span></span><span class="token string">'votes'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token scope">DB<span class="token punctuation">::</span></span><span class="token function">table<span class="token punctuation">(</span></span><span class="token string">'users'</span><span class="token punctuation">)</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">decrement<span class="token punctuation">(</span></span><span class="token string">'votes'</span><span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<p>You may also specify additional columns to update during the operation:</p>
+<pre class=" language-php"><code class=" language-php"><span class="token scope">DB<span class="token punctuation">::</span></span><span class="token function">table<span class="token punctuation">(</span></span><span class="token string">'users'</span><span class="token punctuation">)</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">increment<span class="token punctuation">(</span></span><span class="token string">'votes'</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token string">'name'</span> <span class="token operator">=</span><span class="token operator">&gt;</span> <span class="token string">'John'</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<p><a name="deletes"></a></p>
+<h2><a href="https://laravel.com/docs/5.4/queries#deletes">Deletes</a></h2>
+<p>The query builder may also be used to delete records from the table via the <code class=" language-php">delete</code> method. You may constrain <code class=" language-php">delete</code> statements by adding <code class=" language-php">where</code> clauses before calling the <code class=" language-php">delete</code> method:</p>
+<pre class=" language-php"><code class=" language-php"><span class="token scope">DB<span class="token punctuation">::</span></span><span class="token function">table<span class="token punctuation">(</span></span><span class="token string">'users'</span><span class="token punctuation">)</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">delete<span class="token punctuation">(</span></span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token scope">DB<span class="token punctuation">::</span></span><span class="token function">table<span class="token punctuation">(</span></span><span class="token string">'users'</span><span class="token punctuation">)</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">where<span class="token punctuation">(</span></span><span class="token string">'votes'</span><span class="token punctuation">,</span> <span class="token string">'&gt;'</span><span class="token punctuation">,</span> <span class="token number">100</span><span class="token punctuation">)</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">delete<span class="token punctuation">(</span></span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<p>If you wish to truncate the entire table, which will remove all rows and reset the auto-incrementing ID to zero, you may use the <code class=" language-php">truncate</code> method:</p>
+<pre class=" language-php"><code class=" language-php"><span class="token scope">DB<span class="token punctuation">::</span></span><span class="token function">table<span class="token punctuation">(</span></span><span class="token string">'users'</span><span class="token punctuation">)</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">truncate<span class="token punctuation">(</span></span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<p><a name="pessimistic-locking"></a></p>
+<h2><a href="https://laravel.com/docs/5.4/queries#pessimistic-locking">Pessimistic Locking</a></h2>
+<p>The query builder also includes a few functions to help you do "pessimistic locking" on your <code class=" language-php">select</code> statements. To run the statement with a "shared lock", you may use the <code class=" language-php">sharedLock</code> method on a query. A shared lock prevents the selected rows from being modified until your transaction commits:</p>
+<pre class=" language-php"><code class=" language-php"><span class="token scope">DB<span class="token punctuation">::</span></span><span class="token function">table<span class="token punctuation">(</span></span><span class="token string">'users'</span><span class="token punctuation">)</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">where<span class="token punctuation">(</span></span><span class="token string">'votes'</span><span class="token punctuation">,</span> <span class="token string">'&gt;'</span><span class="token punctuation">,</span> <span class="token number">100</span><span class="token punctuation">)</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">sharedLock<span class="token punctuation">(</span></span><span class="token punctuation">)</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">get<span class="token punctuation">(</span></span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<p>Alternatively, you may use the <code class=" language-php">lockForUpdate</code> method. A "for update" lock prevents the rows from being modified or from being selected with another shared lock:</p>
+<pre class=" language-php"><code class=" language-php"><span class="token scope">DB<span class="token punctuation">::</span></span><span class="token function">table<span class="token punctuation">(</span></span><span class="token string">'users'</span><span class="token punctuation">)</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">where<span class="token punctuation">(</span></span><span class="token string">'votes'</span><span class="token punctuation">,</span> <span class="token string">'&gt;'</span><span class="token punctuation">,</span> <span class="token number">100</span><span class="token punctuation">)</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">lockForUpdate<span class="token punctuation">(</span></span><span class="token punctuation">)</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">get<span class="token punctuation">(</span></span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+	</article>
+</div>
+
+    <footer class="main">
+        <ul>
+            <li class="nav-docs"><a href="https://laravel.com/docs">Documentation</a></li>
+<li class="nav-laracasts"><a href="https://laracasts.com/">Laracasts</a></li>
+<li class="nav-laravel-news"><a href="https://laravel-news.com/">News</a></li>
+<li class="nav-partners"><a href="https://laravel.com/partners">Partners</a></li>
+<li class="nav-forge"><a href="https://forge.laravel.com/">Forge</a></li>
+
+<li class="dropdown community-dropdown">
+	<a href="https://laravel.com/docs/5.4/queries#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Ecosystem <span class="caret"></span></a>
+	<ul class="dropdown-menu" role="menu">
+
+		<li><a href="https://envoyer.io/">Envoyer</a></li>
+		<li><a href="https://lumen.laravel.com/">Lumen</a></li>
+		<li><a href="https://spark.laravel.com/">Spark</a></li>
+
+		<li class="divider"></li>
+
+		<li><a href="https://laracon.eu/">Laracon EU</a></li>
+		<li><a href="http://laracon.us/">Laracon US</a></li>
+		<li><a href="https://laracon.net/">Laracon Online</a></li>
+
+		<li class="divider"></li>
+
+		<li><a href="https://laracasts.com/discuss">Forums</a></li>
+		<li><a href="https://github.com/laravel/laravel">GitHub</a></li>
+		<li><a href="https://larajobs.com/?partner=5#/">Jobs</a></li>
+		<li><a href="http://www.laravelpodcast.com/">Podcast</a></li>
+		<li><a href="http://larachat.co/">Slack</a></li>
+		<li><a href="https://twitter.com/laravelphp">Twitter</a></li>
+	</ul>
+</li>
+        </ul>
+        <p>Laravel is a trademark of Taylor Otwell. Copyright © Taylor Otwell.</p>
+        <p class="less-significant">
+            <a href="http://jackmcdade.com/">
+                Designed by<br>
+                <svg xmlns="http://www.w3.org/2000/svg" width="128.2" height="28" viewBox="0 0 128.2 28"><g fill="#c3c3c3"><path d="M14.2.4v1.4l-1.4-.3.3 4.5c.1 1.5 0 3-.1 4.5 0 .4-.1.8-.1 1.2-.1.4-.1.8-.3 1.2-.1.4-.3.7-.5 1.1-.2.3-.5.6-.9.9-.4.2-.9.4-1.5.6-.6.2-1.1.3-1.6.3-.6 0-1.2-.1-1.6-.3-.5-.2-.9-.6-1.1-1-.3-.5-.5-1-.6-1.6-.1-.6-.1-1.3 0-2.1 0-.2.1-.5.2-.7-.1-.2 0-.4.1-.6l.3-.6 1.1.4c.2 0 .5.1.8.2.3.1.5.1.6.2 0 .2 0 .4-.1.5-.1.2-.1.3-.2.4-.1.1-.2.3-.2.4-.1.2-.1.3-.1.5L6 10.8c-.1.3-.2.7-.2 1.1 0 .4.1.8.2 1.2.2.4.4.7.6 1 .3.3.6.4 1 .3.6 0 1.1-.3 1.4-.6.3-.4.5-.9.7-1.7.1-.7.2-1.6.2-2.8V5.4c0-.6-.1-1.3-.1-2-.1-.6-.2-1.3-.3-2H5.7c-.7 0-1.5 0-2.2.2-.3.1-.6.2-1 .4-.3.1-.6.4-.9.6-.2.3-.4.6-.5 1-.1.3-.1.7 0 1 .1.5.3.8.4.9v-.1c0-.4.1-.8.4-1 .3-.2.6-.3.9-.3.3 0 .6.1.9.3.3.2.4.6.4 1s-.1.8-.4 1c-.3.2-.6.3-1 .3-.8 0-1.4-.2-1.8-.7-.4-.4-.7-.9-.8-1.5C0 4 0 3.4.2 2.7c.2-.6.5-1.1 1-1.5.4-.3.8-.5 1.2-.7.4-.1.9-.2 1.4-.3.5-.1.9-.1 1.4-.1h2.9c.6 0 1.1 0 1.6.1.5 0 1 .1 1.5.1s1 .1 1.5.1c.4.1.9.1 1.5 0zM25.2 14.3c0 .2.1.4.1.6 0 .2.1.4.1.7-1-.1-2-.2-3-.1-1.1.1-2.1.2-3 .4 0-.2-.1-.4-.1-.5 0-.2-.1-.4-.1-.5.2 0 .5-.1.7-.1.2 0 .4-.1.6-.1-.1-1.5-.3-3.1-.5-4.6-.5.1-.9.1-1.4.2-.5.1-.9.1-1.4.2-.2.7-.3 1.3-.5 2s-.3 1.3-.5 2h.6c.1 0 .3 0 .4.1v.9c0 .1 0 .2-.1.3H14v-1.2h1c.2-.5.3-1 .4-1.5.1-.5.3-1 .4-1.5.2-.6.3-1.2.5-1.7.2-.6.3-1.2.5-1.7.2-1.1.4-2.1.6-3.2.2-1.1.3-2.1.4-3.2h-1.4c0-.2.1-.4.1-.6 0-.2 0-.4.1-.6h5.8l.2 1.2h-1c.3 2.1.7 4.3 1 6.5.3 2.2.7 4.4 1 6.5h1.6zM17.5 9c.4-.1.7-.1 1.1-.2.4-.1.8-.1 1.2-.2-.2-1-.3-2-.5-2.9-.2-1-.4-1.9-.6-2.9-.2 1-.4 2.1-.5 3.1-.3 1-.5 2.1-.7 3.1zM36.7 10.4h-.6c0 .6 0 1.2-.2 1.9-.2.6-.5 1.2-1 1.6-.5.5-1 .9-1.6 1.1-.6.3-1.3.4-2 .5-.6.1-1.1.1-1.8 0-.6-.1-1.1-.4-1.6-.7-.2-.2-.5-.4-.8-.7-.3-.3-.5-.5-.6-.8-.3-.5-.5-1-.6-1.5-.2-.5-.3-.9-.4-1.4-.1-.5-.2-1-.2-1.5s0-1 .1-1.6c.2-1 .4-2 .8-2.9.4-.9.8-1.7 1.4-2.3.5-.7 1.2-1.2 1.9-1.6.7-.3 1.4-.5 2.2-.5.3 0 .5 0 .8.1.3.1.5.2.7.4.3.3.7.7 1 1.2.3.5.6 1.2.7 1.9h.6v.6l-2.5.4c-.3.1-.5.1-.6 0-.1 0-.2-.1-.2-.2-.1-.1-.1-.2 0-.3h.4c.2-.2.3-.3.3-.6v-.7c0-.5-.2-.9-.5-1.3l-.4-.4c-.2-.1-.4-.1-.6 0-.2 0-.4.2-.6.4-.2.2-.4.5-.5.9-.3.2-.4.6-.5.9-.1.3-.2.5-.2.7-.6 2.6-.7 5.3-.2 8 .1.3.2.7.3 1s.3.6.5.9c.2.3.5.5.8.7.3.2.6.2 1 .1.6-.1 1-.4 1.4-1 .3-.5.6-1.1.7-1.8.1-.3.1-.6.1-.9v-.5c-.2 0-.4 0-.6-.1-.1-.1-.2-.2-.2-.3 0-.1 0-.2.1-.3h3.4c0 .1 0 .2-.1.3-.1.1-.1.2-.1.3z"></path><path d="M48 14.2c.1.2.3.3.5.4.2.1.5.1.7 0 .1.1.1.2.1.4s-.1.3-.2.4c-.1.1-.2.2-.4.2h-1.4c-.3 0-.7 0-1-.1-.3-.1-.7-.2-1-.4-.3-.2-.5-.4-.7-.7-.2-.3-.3-.6-.3-1V9.9v-.4c0-.2-.1-.3-.2-.5s-.3-.3-.4-.4c-.2-.1-.4-.1-.7-.1-.1 0-.2 0-.5.1-.2.3-.3.5-.5.8-.2.3-.3.5-.5.7 0 .8 0 1.5-.1 2.2 0 .7-.1 1.5-.1 2.1h1.4v1.1c-.5 0-.9.1-1.3 0-.4 0-.8 0-1.2-.1-.4 0-.8-.1-1.2-.1H37.3c-.1 0-.2 0-.3-.1-.1 0-.1-.1-.1-.2s-.1-.3-.1-.4v-.4c0-.1.1-.2.1-.2.2.1.4.2.6.1s.4-.2.5-.4c0-.1.1-.3.1-.7 0-.4 0-.9.1-1.6 0-.6.1-1.3.1-2.1s0-1.6.1-2.4c0-.8 0-1.5.1-2.3 0-.7.1-1.3.1-1.8v-.7c0-.2-.1-.4-.2-.6-.1-.2-.3-.3-.5-.4-.2-.1-.4 0-.6.1 0-.2-.1-.5-.1-.7 0-.2 0-.4-.1-.7 1 0 2 .1 3 .1.9 0 1.9.1 3 .1v.3c0 .1 0 .3.1.4v.4c0 .1 0 .2-.1.2-.1.1-.2.1-.3.1-.1 0-.2 0-.4-.1-.1-.1-.3-.1-.4-.2-.1-.1-.3-.1-.3-.1-.1.9-.1 1.9-.1 2.9s-.1 2-.1 3.1c.7-1.2 1.4-2.5 2-3.8.2-.3.3-.6.4-.9.1-.3.3-.6.5-.9.2-.3.4-.5.7-.7.3.3.6.2.9.1.3-.1.7-.1 1 0 .3.1.6.2.9.5.2.3.4.6.4 1s.1.8 0 1.1v.5c0 .2-.1.3-.2.4-.1.2-.2.3-.4.4-.2.1-.4.1-.5.2-.1 0-.3.1-.4.1h-.4c-.2-.3-.4-.4-.4-.6-.1-.2-.1-.4 0-.5.1-.2.2-.3.3-.3.1 0 .2-.1.4-.1.2-.1.3-.2.3-.3.1-.2.1-.3.1-.5 0-.3-.1-.5-.1-.7-.1-.2-.2-.3-.3-.3-.2 0-.3 0-.5.1s-.3.2-.5.4-.3.4-.4.6c-.1.2-.3.5-.4.7-.1.3-.3.6-.4.8-.2.2-.3.5-.4.8-.4.9-.8 1.7-1.2 2.5.3 0 .6-.1 1 0h1c.3 0 .7.1 1 .2.3.1.6.3.8.6.3.3.4.6.5 1 .1.4.1.8.2 1.1l.2 2.1c0 .2.1.5.1.7 0 .4.1.7.3.9zM71.7 13.9c.2.2.4.4.7.5.3.1.5 0 .8-.1 0 .2.1.3.1.6.1.2.1.4.1.6h-1.1s-.8 0-1.3.1h-2.3v-.2c0-.1.1-.2.2-.3.1-.1.2-.2.4-.3.2-.1.3-.1.6-.1.1 0 .1-.2.1-.7v-1.6c0-.6 0-1.2-.1-1.9s0-1.1 0-1.5V6.4c0-.7.1-1.5.1-2.2-.6 1.3-1.1 2.7-1.6 4.1-.5 1.5-1 3-1.5 4.4 0 0 .1.1.1.2-.2 0-.4 0-.7.1-.3.1-.5.1-.7.1-.5-1.9-1.1-3.7-1.6-5.5-.5-1.8-1.1-3.6-1.6-5.5-.1 1-.1 2-.1 3 0 1.1-.1 2.1-.1 3.2s0 2.1-.1 3.2c0 1-.1 2-.1 3h1.4v1.1c-.5 0-.9.1-1.3 0-.4 0-.8 0-1.2-.1-.4 0-.8-.1-1.2-.1H58c-.1 0-.2 0-.3-.1-.1 0-.1-.1-.1-.2s-.1-.3-.1-.4v-.4c0-.1.1-.2.1-.2.2.1.4.2.6.1s.4-.2.5-.4c0-.1.1-.3.1-.7 0-.4 0-.9.1-1.6 0-.6.1-1.3.1-2.1V7.2c0-.8 0-1.5.1-2.3 0-.7.1-1.3.1-1.8v-.7c0-.2-.1-.4-.2-.6-.1-.2-.3-.3-.5-.4-.2-.1-.4 0-.6.1 0-.2-.1-.5-.1-.7 0-.2 0-.4-.1-.7 1 0 2 .1 3 .1.9 0 1.9.1 3 .1 0 .3-.1.5-.4.7.3 1.3.6 2.6 1 3.9l1.2 3.9c.2-.6.4-1.3.6-1.9l.6-1.8c.3-.5.5-1.1.8-1.7.2-.6.4-1.3.6-2-.1 0-.3 0-.4-.1-.1 0-.2 0-.4-.1-.1 0-.1-.1-.1-.3 0-.1.1-.2.1-.3.1-.1.2-.1.3-.1h4.5c.1 0 .3.1.4.2.1.1.2.2.2.4s0 .3-.2.3c-.1-.1-.2-.1-.3-.1-.1 0-.2.1-.3.1-.2.4-.3.8-.4 1.3-.1.5-.1.9-.1 1.4-.2 2.8-.2 5.6 0 8.4 0 .3 0 .5.1.7-.1.3 0 .5.2.7zM81.7 12h-.4c0 .4 0 .9-.2 1.3-.1.4-.4.8-.7 1.1-.3.3-.7.6-1.1.8-.4.2-.9.3-1.3.4-.4.1-.8 0-1.2 0-.4-.1-.8-.2-1.1-.5-.2-.1-.3-.3-.5-.5s-.3-.4-.4-.6c-.2-.4-.3-.7-.4-1-.1-.3-.2-.6-.3-1-.1-.3-.1-.6-.1-1 0-.3 0-.7.1-1.1.1-.7.3-1.4.5-2 .3-.6.6-1.1.9-1.6s.8-.8 1.3-1.1c.5-.3 1-.4 1.5-.4.2 0 .4 0 .6.1.2.1.3.1.5.3.2.2.4.4.6.8.2.4.4.8.5 1.3h.4v.4l-1.7.3c-.2.1-.3.1-.4 0-.1 0-.1-.1-.2-.2v-.2h.4c.1-.1.2-.2.2-.4v-.5c0-.3-.1-.6-.3-.9l-.3-.3c-.1-.1-.2-.1-.4 0-.1 0-.3.1-.4.3-.1.2-.3.4-.4.6l-.3.6c-.1.2-.1.4-.1.5-.4 1.8-.5 3.6-.1 5.5.1.2.1.4.2.7l.3.6c.1.2.3.3.6.5.2.1.4.1.7.1.4-.1.7-.3 1-.7.2-.4.4-.8.5-1.2 0-.2.1-.4.1-.6v-.3h-.4c-.1 0-.1-.1-.1-.2s0-.2.1-.2h2.4v.2c-.5-.1-.5 0-.6.1z"></path><path d="M83.5 14.2c.2-4.3.3-8.5.2-12.8h-1.8V.9.4c.7 0 1.3 0 2-.1.7 0 1.3 0 2-.1.8-.2 1.6-.2 2.4-.1.8.1 1.6.3 2.4.5.7.3 1.4.7 1.9 1.2s.9 1.1 1.1 1.8c.3 1.3.4 2.5.3 3.8 0 1.2-.2 2.4-.3 3.6 0 .4-.1.8-.2 1.2-.1.4-.3.8-.5 1.1-.3.5-.8 1-1.3 1.3-.5.3-1.1.5-1.7.6-.5.1-.9.2-1.4.1-.5 0-.9 0-1.4-.1h-4.9c-.2-.4-.1-.8.2-1.1.2-.2.3-.2.5-.3.2.3.4.3.5.4zm5.9-12.3c-.4-.3-.8-.5-1.3-.6-.5-.1-1-.1-1.5-.1-.3 4.5-.2 9.1.4 13.6.2 0 .4 0 .5-.1.2 0 .4-.1.6-.1.3-.1.6-.2.9-.4.3-.2.6-.4.8-.7.2-.3.4-.6.5-1s.2-.7.2-1.1c.4-2.1.4-4.2.2-6.3-.1-.6-.2-1.2-.4-1.9 0-.4-.4-.9-.9-1.3zM102.4 9.7c-.6-.1-1.3-.1-2 0s-1.4.4-2 .8l-.2-1.4.9-.1c0-.4-.1-.7-.1-1 0-.2-.1-.5-.1-.9-.3 0-.6.1-.9.1-.3 0-.6.1-1 .1-.2.7-.3 1.3-.4 1.8-.1.5-.2 1.1-.4 1.6l.2-.1.7.6c-.4.2-.8.6-1.2 1.1-.4.5-.7 1-.9 1.5l-.9-.5c0-.1.1-.2.2-.4s.2-.3.2-.4c.1-.2.2-.5.3-1 .1-.4.2-.9.4-1.3.1-.5.2-.9.3-1.3.1-.4.2-.7.2-.9l.3-1.2.3-1.2c.2-.7.3-1.4.4-2.1.1-.7.2-1.4.3-2.2h-.6l.1-.8 4-.1.1.8h-.2-.2c.1.7.2 1.4.3 2l.3 1.8.3 1.8c.1.6.2 1.3.4 2h.6l.3.9zm-3.6-3.6c-.1-.7-.2-1.3-.3-2-.1-.6-.3-1.3-.4-2-.1.6-.2 1.3-.4 2.1-.1.7-.3 1.5-.5 2.2l1.6-.3z"></path><path d="M124.9 20.1c0-.3.1-.6.3-.8.2-.2.4-.3.7-.4.3-.1.5 0 .8.1.3.1.5.3.6.5.3.4.6.9.7 1.4.2.5.2 1 .2 1.5s-.1 1-.3 1.5c-.2.5-.4 1-.7 1.4-.6.9-1.4 1.6-2.4 2-1 .5-2 .7-3 .7-1.5 0-2.8-.3-3.9-1s-2.1-1.4-3-2.4c-.9-1-1.8-2.1-2.5-3.2-.8-1.2-1.5-2.3-2.3-3.5-1.1 1.2-2.4 2.2-3.9 3-1.5.8-3 1.1-4.5 1-1.1 0-2.1-.1-3-.5-.9-.3-1.6-.8-2.2-1.4-.6-.6-.9-1.3-1.1-2.2-.2-.8-.1-1.7.2-2.7.3-.9.7-1.6 1.3-2.2.6-.6 1.2-1.1 2-1.5.7-.4 1.5-.6 2.4-.7.8-.1 1.7 0 2.6.2v-5-4.6h-1.8V.8.3l3.7-.1c.8-.2 1.6-.2 2.4-.1.8.1 1.6.3 2.4.5.7.3 1.4.7 1.9 1.2s.9 1.1 1.1 1.8c.3 1.2.4 2.4.3 3.6-.1 1.2-.2 2.5-.4 3.7-.1 1-.4 2-.8 3-.5 1-1 2-1.7 2.9.3.4.6.8.8 1.2.3.4.5.8.8 1.2.5.8 1.1 1.6 1.7 2.5.6.8 1.3 1.6 2 2.4.7.7 1.5 1.3 2.4 1.8s1.8.7 2.9.8c1.1 0 2.1-.2 3-.7.9-.5 1.6-1.2 2.1-2.2.2-.4.3-.8.4-1.3.1-.5 0-.9-.1-1.3-.2.1-.4.2-.6.2-.2 0-.4 0-.6-.1-.2-.1-.4-.2-.5-.4s-.4-.5-.4-.8zm-22 .9c1.5-.4 2.8-1 3.7-1.8.9-.8 1.7-1.7 2.3-2.8-.2-.2-.3-.5-.6-.7-.6-.7-1.2-1.4-1.9-1.9 0 .6.1 1.2.1 1.8 0 .6.1 1.1.2 1.6v.1h-4.3c-.1-.2-.1-.4 0-.7 0-.2.1-.3.3-.5.3-.3.7-.4 1.1-.2l.1-3.5c-.5-.2-1-.3-1.5-.3s-1.1 0-1.6.1c-.6.1-1.1.3-1.6.6s-.9.7-1.3 1.1c-.4.4-.7.9-.9 1.5-.2.5-.3 1.1-.3 1.6 0 .7.2 1.3.6 1.8.4.5.9.9 1.4 1.4.2.2.5.3.8.5.3.1.7.2 1.1.3.4.1.8.1 1.2.1.3 0 .7 0 1.1-.1zm6.4-19.1c-.4-.3-.8-.5-1.2-.6-.5-.1-.9-.1-1.4-.1-.1 1.7-.2 3.4-.3 5.3-.1 1.9-.1 3.7 0 5.6.6.4 1.2.8 1.7 1.4.5.5 1 1.1 1.5 1.6.2-.6.4-1.2.6-1.9.2-.6.3-1.2.3-1.7.2-1.1.2-2.1.3-3.1 0-1 0-2.1-.1-3.1-.1-.6-.2-1.2-.4-1.9-.2-.6-.5-1.1-1-1.5z"></path><path d="M116.5 1.2h-1.8V.4c.5 0 .9 0 1.2-.1s.7 0 1.1 0h1.1s.8 0 1.3-.1c.9 0 1.8 0 2.8-.1.9 0 1.8 0 2.8-.1v3.6h-1.3c-.1 0-.1-.1 0-.1.1-.2.1-.4.1-.6s0-.4-.1-.6l-.3-.6c-.1-.2-.2-.3-.4-.4-.2-.1-.4-.2-.6-.2h-.7c-.3 0-.5.1-.8.1-.3.1-.5.2-.6.4-.1.2-.1.3-.1.3v.3c0 .7-.1 1.3-.1 2 0 .6-.1 1.3-.1 1.9v1c.6-.2 1.2-.3 1.9-.4.6-.1 1.2-.3 1.9-.4 0 .1.1.2.1.3V7c0 .2-.1.3-.1.4-.1.1-.1.2-.1.3-.1.1-.2.1-.4.2-.1 0-.3.1-.4.1-.5.1-.9.2-1.4.3-.5.1-.9.1-1.4.2 0 1-.1 2-.2 2.9-.1 1-.1 1.9-.2 2.9.8.2 1.5.3 2 .1.6-.2 1.2-.5 1.9-1 .2-.1.2-.3.2-.5v-.7c0-.2.1-.5.2-.6.1-.2.3-.3.7-.4.4 0 .6.1.7.4.1.3.2.7.2 1.1 0 .5 0 .9-.1 1.4-.1.5-.1.9 0 1.2h-1.4c-.4 0-.8 0-1.2.1-.4 0-.8 0-1.2.1h-1.3c-.9 0-1.7 0-2.5.1-.7.1-1.6.1-2.4.1-.2-.2-.2-.4-.2-.7 0-.2.1-.5.3-.6.2-.2.3-.3.6-.3.2-.1.5 0 .7.1.1-2.1.2-4.3.1-6.5-.7-2.2-.7-4.3-.5-6.5z"></path></g></svg>
+            </a>
+        </p>
+    </footer>
+
+    <script>
+        var algolia_app_id      = '8BB87I11DE';
+        var algolia_search_key  = '8e1d446d61fce359f69cd7c8b86a50de';
+        var version             = '5.4';
+    </script>
+
+    <script id="search_suggestion_template" type="text/template">
+	<div class="autocomplete-wrapper">
+		{{#_highlightResult.h1}}
+		<div class="h1">
+			{{{ _highlightResult.h1.value }}}
+		</div>
+		{{/_highlightResult.h1}}
+
+		<div class="sub-section">
+			{{#_highlightResult.h2}}
+			<div class="h2">
+				<span class="hash">#</span> {{{ _highlightResult.h2.value }}}
+			</div>
+			{{/_highlightResult.h2}}
+
+			{{#_highlightResult.h3}}
+			<div class="h3">
+				> {{{ _highlightResult.h3.value }}}
+			</div>
+			{{/_highlightResult.h3}}
+
+			{{#_highlightResult.h4}}
+			<div class="h4">
+				> {{{ _highlightResult.h4.value }}}
+			</div>
+			{{/_highlightResult.h4}}
+		</div>
+
+		{{#_highlightResult.content}}
+		<div class="content">
+			{{{ _highlightResult.content.value }}}
+		</div>
+		{{/_highlightResult.content}}
+	</div>
+</script>
+
+<script id="search_empty_template" type="text/template">
+	<div class="autocomplete-wrapper empty">
+		<div class="h2">We didn't find any result for "{{query}}". Sorry!</div>
+	</div>
+</script>
+
+<script id="search_footer_template" type="text/template">
+	<div class="footer">
+		<a target="_blank" href="https://www.algolia.com/?utm_source=laravel&utm_medium=link&utm_campaign=laravel_documentation_search">
+			<img width="105" src="/assets/img/algolia-logo.svg">
+			<div style="clear: both"></div>
+		</a>
+	</div>
+</script>
+
+    <script src="./Database_ Query Builder - Laravel - The PHP Framework For Web Artisans_files/laravel-7310ca5785.js.download"></script>
+    <script src="./Database_ Query Builder - Laravel - The PHP Framework For Web Artisans_files/viewport-units-buggyfill.js.download"></script>
+    <script>window.viewportUnitsBuggyfill.init();</script>
+    <script>
+        var _gaq=[['_setAccount','UA-23865777-1'],['_trackPageview']];
+        (function(d,t){
+            var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
+            g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
+            s.parentNode.insertBefore(g,s)
+        }(document,'script'));
+    </script><p style="transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); margin: 0px;"></p>
+
+
+</div></div></body></html>
