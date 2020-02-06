@@ -87,7 +87,11 @@ $type= array("mul"=>"Multiple Choice","mat"=>"Matching Type","tru"=>"True or Fal
 
 <script type="text/javascript">
 	function answer() {
-		alert("Answer is not yet available");
+		swal.fire(
+			'Not Available',
+			'Answers are not yet available',
+			'warning'
+		)
 		return false;
 	}
 </script>

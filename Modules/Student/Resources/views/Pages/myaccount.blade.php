@@ -12,11 +12,20 @@ use Modules\Student\Http\Controllers\StudentController;
 			</div>
 		</div>
 
-		<form class="mv-margin" method="post">
+		<form class="mv-margin" method="post" method="POST" role="form" enctype="multipart/form-data">
 			{{csrf_field()}}
 			<div class="form-group">
+				<img src="{{Auth::user()->photo}}" onerror="this.src='/uploads/images/user.png'" style="border:1px solid gray;border-radius:20px;width:200px"/>	   
+			</div>
+
+			<div class="form-group">
+		   		<label>Choose a Picture</label>
+		   		<input type="file" name="photo" class="form-control">
+			</div>
+
+			<div class="form-group">
 		   		<label>Student Number</label>
-		   		<input type="text" name="name" readonly="" data-toggle="tooltip" title="Only your instructor can change your student number." required="" value="{{StudentController::information()->stud_num}}" class="form-control">
+		   		<input type="text" name="stud_number" readonly="" data-toggle="tooltip" title="Only your instructor can change your student number." required="" value="{{StudentController::information()->stud_num}}" class="form-control">
 			</div>
 
 			<div class="form-group">

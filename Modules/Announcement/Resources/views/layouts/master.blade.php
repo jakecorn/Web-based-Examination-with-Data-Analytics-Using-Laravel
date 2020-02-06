@@ -7,10 +7,9 @@
 
 <script type="text/javascript">
 
-$(document).ready(function() {
-	
-$(function(){
-	$('[data-toggle="tooltip"]').tooltip();
-})
-});
+	// $(function(){
+	// 	alert(123)
+	// 	$('[data-toggle="tooltip"]').tooltip();
+	// });
+
 </script>

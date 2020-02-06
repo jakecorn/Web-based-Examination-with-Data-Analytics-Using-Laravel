@@ -4,7 +4,7 @@ use Modules\Student\Http\Controllers\StudentController;
 $type= array("mul"=>"Multiple Choice","mat"=>"Matching Type","tru"=>"True or False","ide"=>"Identification","ess"=>"Essay");
 
 ?>
-<form method="post">
+<form method="post" class="question-form">
 {{csrf_field()}}
 <input type="hidden" name="part_num" placeholder="here" value="{{$exam_part[0]->part_num}}">
 <input type="hidden" name="time">
@@ -81,7 +81,8 @@ $type= array("mul"=>"Multiple Choice","mat"=>"Matching Type","tru"=>"True or Fal
 
 	           <a class="btn btn-primary {{$part_num==0? ' hidden':''}}"  href="/student/exam/{{$class_record_id}}/{{$examination[0]->id}}/start/part/{{$part_num}}/position/{{$position}}" style="width:100px;margin-right:40px;color:white">Previous</a>
 
-         	 <button class="btn btn-primary" style="width:100px">Next / Save</button>
+         	 <button class="btn btn-primary" style="width:100px">Next</button>
+			  <span class="answered" style="display:none"><i> All questions are answered. <a href="{{route('submitscore',$examination[0]->id)}}" style="color:blue">Submit now</a></i></span>
 	        </center>
         </div>
 

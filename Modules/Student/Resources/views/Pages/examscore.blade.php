@@ -105,7 +105,7 @@ $type= array("mul"=>"Multiple Choice","mat"=>"Matching Type","tru"=>"True or Fal
 		@endif -->
 		<div class="col-sm-8">
 			<div class="alert alert-success">
-				<h3>Congratulations!!! 
+				<h3>
 				Your
 				<?php
 					if(Session::get('initial_score')){

@@ -10,8 +10,16 @@
 			</div>
 		</div>
 
-		<form class="mv-margin" method="post">
+		<form class="mv-margin"  method="POST" role="form" enctype="multipart/form-data">
 			{{csrf_field()}}
+			<div class="form-group text-centesr">
+				<img src="{{Auth::user()->photo}}" onerror="this.src='/uploads/images/user.png'" style="border:1px solid gray;border-radius:20px;width:200px"/>	   
+			</div>
+			
+			<div class="form-group">
+		   		<label>Choose a Picture</label>
+		   		<input type="file" name="photo" class="form-control">
+			</div>
 			<div class="form-group">
 		   		<label>Name</label>
 		   		<input type="text" name="name" value="{{Auth::user()->name}}" class="form-control">

@@ -959,6 +959,7 @@ class TeacherController extends Controller
                                 $student->save();
 
                                 $user = new User;
+                                $user->id_number=date("Ymd")."-".mt_rand(1000, 10000000);
                                 $user->name=$request['stud_fname']." ".$request['stud_lname'];
                                 $user->username=$request['stud_num'];
                                 $user->password=bcrypt($request['password']);
@@ -1315,7 +1316,7 @@ class TeacherController extends Controller
 
            //get examination id
             $this->data['main_page'] = "Data Analytics";
-            $this->data['navigation'] = "Data Statistics";
+            $this->data['navigation'] = "Item Statistics";
             $this->data['page_title'] = "itemstatisticsindex";
             return view('teacher::ClassRecord.main',$this->data);
         }
@@ -1615,13 +1616,14 @@ class TeacherController extends Controller
         return view('teacher::ClassRecord.main',$this->data);
     }
 
-     public function updateAccount(Request $req)
-     {
+    public function updateAccount(Request $req)
+    {
         $this->validate(request(),[
             'name'=>'required',
             'current_password'=>'required',
             'username'=>'required|min:6',
             'cp_number'=>'required|digits:11',
+            'photo'     =>  'image|mimes:jpeg,png,jpg,gif|max:2048'
         ]);
 
         $user = User::where('username',$req['username'])->where('id',"!=",Auth::user()->id)->count();
@@ -1629,6 +1631,7 @@ class TeacherController extends Controller
             return redirect()->back()->withErrors(['errors'=>"The username has already been taken."]);
            
         }
+
         if(!Hash::check($req['current_password'], Auth::user()->password)){
              return redirect()->back()->withErrors(["Current password is inccorrect."]);
         }
@@ -1658,32 +1661,53 @@ class TeacherController extends Controller
             BaseController::sendSms(Auth::user()->cp_number,'You have updated your account. If you are not the one doing this, please contact admin immediatedly to reset your password.');
 
              User::where('id',Auth::user()->id)->update([
+                'photo'=>$this->initiatePhotoUPload($req, Auth::user()->photo),
                 'name'=>$req['name'],
                 'username'=>$req['username'],
                 'cp_number'=>$req['cp_number'],
                 'password'=>bcrypt($req['password'])
             ]);
-
-            
-
+ 
             $this->saveLog('Password is updated'.$update_detail,'Update Account',Auth::id(),Auth::id());
 
 
         }else{
              BaseController::sendSms(Auth::user()->cp_number,'You have updated your account. If you are not the one doing this, please contact admin immediatedly to reset your password.');
              User::where('id',Auth::user()->id)->update([
+                'photo'=>$this->initiatePhotoUPload($req, Auth::user()->photo),
                 'name'=>$req['name'],
                 'username'=>$req['username'],
                 'cp_number'=>$req['cp_number'],
             ]);
-            
+                       
 
             $this->saveLog($update_detail,'Update Account',Auth::id(),Auth::id());
         }
         
         
         return redirect()->back()->with('message','Account has been updated.');
-     }
+    }
+
+    public function initiatePhotoUPload($request, $previous_photo){
+
+        if (is_null($request->file('photo')) ) {
+            return null;
+        }
+ 
+        // Get image file
+        $image = $request->file('photo');
+        $name = $request->input('name').time();
+        $name = str_replace(' ', '', strtolower($name));
+        $folder = '/uploads/images/';
+        $filePath = $folder . $name. '.' . $image->getClientOriginalExtension();
+        Util::uploadPhoto($image, $folder, 'public', $name);
+
+        if(!is_null($previous_photo)){
+            Util::deletePhoto($previous_photo); 
+        }
+        
+        return $filePath;
+    }
 
     public function saveLog($content,$action_type,$created_by,$owned_by){
         $date_time = date('Y-m-d H:i:s');

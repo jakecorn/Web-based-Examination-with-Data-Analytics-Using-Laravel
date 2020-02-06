@@ -1,6 +1,10 @@
 <?php
 	namespace Modules\Utilitize;
-	error_reporting(0);
+	use Illuminate\Support\Str;
+	use Illuminate\Http\UploadedFile;
+	use Illuminate\Support\Facades\Storage;
+
+	error_reporting(1);
 	use Session;
 	class Util
 	{
@@ -34,6 +38,17 @@
 
 		static public function flush(){
 			Session::flush();
+		}
+
+		static function uploadPhoto($uploadedFile, $folder = null, $disk = 'public', $filename = null){
+			$filename = Str::slug($filename);
+			$name = !is_null($filename) ? $filename : Str::random(25);
+			$file = $uploadedFile->storeAs($folder, $name.'.'.$uploadedFile->getClientOriginalExtension(), $disk);
+			return $file;
+	   }
+
+		public function deletePhoto($filename = null, $disk = 'public'){
+			Storage::disk($disk)->delete($folder.$filename);
 		}
 	}
 

@@ -23,7 +23,7 @@
 
 			   	<div class="col-sm-6">
 			   		<label for="sub_desc">Subject Description <span style="color:red">*</span></label>
-			    	<input type="text required=""" class="form-control" id="sub_desc" value="{{old('sub_desc')}}" name="sub_desc" placeholder="Subject Description">
+			    	<input type="text" required="" class="form-control" id="sub_desc" value="{{old('sub_desc')}}" name="sub_desc" placeholder="Subject Description">
 			   	</div>
 			  </div>
 
@@ -59,77 +59,77 @@
 
 			  <div class="form-group row criteria count-me">
 			    <div class="col-md-10">
-			    	<input type="text" name="criteria[]"  required=""  class="form-control" id="exampleInputEmail1" readonly="true" value="Attendance" placeholder="Criteria">
+			    	<input type="text" name="criteria[]"  required=""  class="form-control"  readonly="true" value="Attendance" placeholder="Criteria">
 			    </div>
 			    
 			    <div class="col-md-2">
-			    	<input type="number" name="percent[]"  required=""  class="form-control" id="exampleInputEmail1"  placeholder="%">
+			    	<input type="number" name="percent[]"  required=""  class="form-control"   placeholder="%">
 			    </div>
 			  </div>
 
 			  <div class="form-group row criteria count-me">
 			    <div class="col-md-10">
-			    	<input type="text" name="criteria[]"  required=""  class="form-control" id="exampleInputEmail1" value="Assignment" placeholder="Criteria">
+			    	<input type="text" name="criteria[]"  required=""  class="form-control"  value="Assignment" placeholder="Criteria">
 
 			    	<a class="fa fa-close criteria-remove" onclick="criteriaRemove(this)" title="Remove criteria"></a>
 			    </div>
 			    
 			    <div class="col-md-2">
-			    	<input type="number" name="percent[]"  required=""  class="form-control" id="exampleInputEmail1" placeholder="%">
+			    	<input type="number" name="percent[]"  required=""  class="form-control"  placeholder="%">
 			    </div>
 			  </div>
 
 			  <div class="form-group row criteria count-me">
 			    <div class="col-md-10">
-			    	<input type="text" name="criteria[]"  required=""  class="form-control" id="exampleInputEmail1" value="Quiz" placeholder="Criteria">
+			    	<input type="text" name="criteria[]"  required=""  class="form-control"  value="Quiz" placeholder="Criteria">
 			    	<a class="fa fa-close criteria-remove" onclick="criteriaRemove(this)" title="Remove criteria"></a>
 			    </div>
 			    
 			    <div class="col-md-2">
-			    	<input type="number" name="percent[]"  required=""  class="form-control" id="exampleInputEmail1" placeholder="%">
+			    	<input type="number" name="percent[]"  required=""  class="form-control"  placeholder="%">
 			    </div>
 			  </div>
 
 			  <div class="form-group row criteria count-me">
 			    <div class="col-md-10">
-			    	<input type="text" name="criteria[]"  required=""  class="form-control" id="exampleInputEmail1" value="Participation" placeholder="Criteria">
+			    	<input type="text" name="criteria[]"  required=""  class="form-control"  value="Participation" placeholder="Criteria">
 			    	<a class="fa fa-close criteria-remove" onclick="criteriaRemove(this)" title="Remove criteria"></a>
 			    </div>
 			    
 			    <div class="col-md-2">
-			    	<input type="number" name="percent[]"  required=""  class="form-control" id="exampleInputEmail1" placeholder="%">
+			    	<input type="number" name="percent[]"  required=""  class="form-control"  placeholder="%">
 			    </div>
 			  </div>
 
 			  <div class="form-group row criteria count-me">
 			    <div class="col-md-10">
-			    	<input type="text" name="criteria[]" required=""  class="form-control" id="exampleInputEmail1" value="Project" placeholder="Criteria">
+			    	<input type="text" name="criteria[]" required=""  class="form-control"  value="Project" placeholder="Criteria">
 			    	<a class="fa fa-close criteria-remove" onclick="criteriaRemove(this)" title="Remove criteria"></a>
 			    </div>
 			    
 			    <div class="col-md-2">
-			    	<input type="number" name="percent[]" required=""  class="form-control" id="exampleInputEmail1" placeholder="%">
+			    	<input type="number" name="percent[]" required=""  class="form-control"  placeholder="%">
 			    </div>
 			  </div>
 
 			  <div class="form-group row criteria count-me">
 			    <div class="col-md-10">
-			    	<input type="text" name="criteria[]"  required="" class="form-control" id="exampleInputEmail1" placeholder="Criteria">
+			    	<input type="text" name="criteria[]"  required="" class="form-control"  placeholder="Criteria">
 			    	<a class="fa fa-close criteria-remove" onclick="criteriaRemove(this)" title="Remove criteria"></a>
 			    </div>
 			    
 			    <div class="col-md-2">
-			    	<input type="number" name="percent[]" required=""  class="form-control" id="exampleInputEmail1" placeholder="%">
+			    	<input type="number" name="percent[]" required=""  class="form-control"  placeholder="%">
 			    </div>
 			  </div>
 
 			  <div class="form-group row count-me">
 			    <div class="col-md-10">
-			    	<input type="text" readonly="" name="criteria[]" required="" value="{{Util::get_session('class_record_type')}} Exam" class="form-control" id="exampleInputEmail1" placeholder="Criteria">
+			    	<input type="text" readonly="" name="criteria[]" required="" value="{{Util::get_session('class_record_type')}} Exam" class="form-control"  placeholder="Criteria">
 			    </div>
 			    
 			    <div class="col-md-2">
-			    	<input type="number" name="percent[]" required="" class="form-control" id="exampleInputEmail1" placeholder="%">
+			    	<input type="number" name="percent[]" required="" class="form-control"  placeholder="up to 40 % only" max="40">
 			    </div>
 			  </div>
 
@@ -156,7 +156,7 @@
 
 			  		<div class="col-md-6">
 					  	<span style="color:red">*</span>
-			     		<input type="number" name="plus" required="" value="{{$errors->has('plus')? old('plus'):""}}" class="form-control" id="exampleInputEmail1" placeholder="Plus">
+			     		<input type="number" name="plus" required="" value="{{$errors->has('plus')? old('plus'):""}}" class="form-control"  placeholder="Plus">
 			  		</div>
 			  </div>
 

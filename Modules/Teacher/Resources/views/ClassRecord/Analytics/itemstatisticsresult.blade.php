@@ -90,7 +90,7 @@
 				<div class="row">
 					<div class="col-sm-10">
 						<center>
-							<h3>Item Data Analytics</h3>
+							<h3>Item Statistics</h3>
 
 						</center>			
 						<table width="100%">

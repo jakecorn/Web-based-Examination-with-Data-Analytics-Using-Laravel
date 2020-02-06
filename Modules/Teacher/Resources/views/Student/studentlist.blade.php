@@ -38,11 +38,7 @@ use Modules\Teacher\Http\Controllers\TeacherController;
 							<td>{{$student->stud_contact_num}}</td>
 							<td>{{$student->username}}</td>
 							<td align="center" class="password-col">
-								<span class="password">{{$student->password}}</span>
-								<span class="password asterisk">*****</span>
-								<span title="Show password" onclick="showPassword(this)" style="color:gray" class="fa fa-eye action"></span>
-								<span title="Hide passwordddd" onclick="showPassword(this)" style="color:gray" class="fa fa-eye-slash action"></span>
-
+								<span class="password" style="margin-right:8px">{{$student->password}}</span><span class="password asterisk">*****</span><span title="Show password" onclick="showPassword(this)" style="color:gray" class="fa fa-eye action"></span><span title="Hide passwordddd" onclick="showPassword(this)" style="color:gray" class="fa fa-eye-slash action"></span>
 							</td>
 							<td align="center">{{TeacherController::getCourseCode($student->course_id)}}-{{$student->year}}</td>
 							<td align="center" class="list-action">

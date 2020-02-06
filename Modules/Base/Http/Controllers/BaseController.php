@@ -36,6 +36,7 @@ class BaseController extends Controller
     static public function initiateSendSms()
     {
 
+        return;
         $check_pending = DB::select("select * from sms where is_sent=-1 and created_at>=DATE_SUB(NOW(), INTERVAL 10 MINUTE)");
     	$getsms = DB::select("select * from sms where is_sent=0 order by id asc limit 1");
     	

@@ -797,12 +797,13 @@ class StudentController extends Controller
      {
         $this->validate(request(),[
             'current_password'=>'required',
-            'username'=>'required|min:8',
             'name'=>'required',
             'stud_address'=>'required',
+            'photo'     =>  'image|mimes:jpeg,png,jpg,gif|max:2048'
         ]);
 
         $user = \App\User::where('username',$req['username'])->where('id',"!=",Auth::user()->id)->count();
+        
         if($user>0){
             return redirect()->back()->withErrors(["The username has already been taken."]);
            
@@ -838,7 +839,8 @@ class StudentController extends Controller
 
              \App\User::where('id',Auth::user()->id)->update([
                 'username'=>$req['username'],
-                'password'=>bcrypt($req['password'])
+                'password'=>bcrypt($req['password']),
+                'photo'=>$this->initiatePhotoUPload($req, Auth::user()->photo)
             ]);
 
 
@@ -850,22 +852,45 @@ class StudentController extends Controller
 
         }else{
              \App\User::where('id',Auth::user()->id)->update([
+                 'photo'=>$this->initiatePhotoUPload($req, Auth::user()->photo),
                  'username'=>$req['username'],
             ]);
 
             $this->saveLog($update_detail,'Update Account',$previous_detals[0]->id,$previous_detals[0]->id);
         }
         
-        DB::table("students")->where('id',Auth::user()->account_id)->update([
+        DB::table("students")->where('id',Auth::user()->account_id)->update([                
                 'stud_address'=>$req['stud_address'],
                 'stud_contact_num'=>$req['stud_contact_num'],
                 'course_id'=>$req['course_id'],
-                'year'=>$req['year']
+                'year'=>$req['year'],
+                
             ]);
 
 
         return redirect()->back()->with('message','Account has been updated.');
-     }
+    }
+
+    public function initiatePhotoUPload($request, $previous_photo){
+
+        if (is_null($request->file('photo')) ) {
+            return null;
+        }
+ 
+        // Get image file
+        $image = $request->file('photo');
+        $name = $request->input('name').time();
+        $name = str_replace(' ', '', strtolower($name));
+        $folder = '/uploads/images/';
+        $filePath = $folder . $name. '.' . $image->getClientOriginalExtension();
+        Util::uploadPhoto($image, $folder, 'public', $name);
+
+        if(!is_null($previous_photo)){
+            Util::deletePhoto($previous_photo); 
+        }
+        
+        return $filePath;
+    }
 
 
     public function getCourse()

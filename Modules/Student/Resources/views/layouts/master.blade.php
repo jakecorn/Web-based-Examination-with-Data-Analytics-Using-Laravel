@@ -9,6 +9,7 @@
         <link rel="stylesheet" type="text/css" href="/css/mystyle.css">
         <title>Student</title>
          <script type="text/javascript" src="/js/app.js"></script>
+         <script type="text/javascript" src="/js/sweetalert2@8.js"></script>
     </head>
     <body>
     	<div class="container-fluid">

@@ -13,6 +13,7 @@
         <script src="/js/jquery.countdown.min.js"></script>
         <link rel="stylesheet" type="text/css" href="/css/app.css">
         <link rel="stylesheet" type="text/css" href="/css/mystyle.css">
+        <script type="text/javascript" src="/js/sweetalert2@8.js"></script>
         <title>Exam / On-going</title>
     </head>
     <body> 
@@ -33,7 +34,10 @@
                     <h4>Negros Oriental State Unviversity</h4>
                     <h5>Bayawan-Sta Catalina Campus</h5>
                     <br>
-
+                    <div id="profile">
+                      <img src="{{Auth::user()->photo}}" onerror="this.src='/uploads/images/user.png'" style="border:1px solid gray;border-radius:20px;width:200px"/>	   
+                    </div>
+                    
                     <b>{{$subject[0]->sub_code}}
                     {{$subject[0]->sub_desc}}</b>
                     <br>
@@ -88,7 +92,7 @@
                                 $part_num_seq = "";     
 
                                 foreach ($question_list as $key => $value) {
-                                    $answered_question = '';
+                                    $answered_question = 'not-answered-question';
                                     if($value->answer!="" || $value->long_answer!=""){
                                         $answered_question = "answered-question";
                                     }
@@ -128,7 +132,9 @@
 
         </div>
       </div>
+      
       <div id="timerContainer" style=""><span id="timer"></span></div>
+      
       <div id="expirationModal" class="modal fade" role="dialog">
         <div class="modal-dialog">
           <!-- Modal content-->
@@ -152,24 +158,100 @@
 </html>
 <!-- Display the countdown timer in an element -->
 <script>
-    $(document).ready(function() { 
+    $(document).ready(function() {
+
+      var hasTriggered = false;
+
       if($('#durationContainer').html()!="None"){
-        $('#timer').countdown('{{$end_time}}')
-        .on('update.countdown', function(event) {
+        $('#timer').countdown('{{$end_time}}').on('update.countdown', function(event) {
             var format = '%H:%M:%S';
+            var hours = event.offset.hours;
+            var minutes = event.offset.minutes; 
+
+            if(hours == 0 && minutes<=4){
+              if(!hasTriggered){
+                hasTriggered = true;
+                aboutToExpire($(this));
+              }
+            }
+
             $(this).html(event.strftime(format));
+
         }).on('finish.countdown', function(event) {
-          $(this).html('00:00:00')
-            .parent().addClass('disabled expired');
+          $(this).html('00:00:00').parent().addClass('disabled expired');
           $('#expirationModal_button').click();
 
         });
       }
+
+      $(".question-form input[type='radio']").change(function(){
+        $.post('', $('.question-form').serialize())
+      });
+
+      if($('.not-answered-question').length==0){
+        $('.answered').show();
+      }
+
+      $('.answered').click(function(){
+        swal.fire({
+          title: 'Are you sure?',
+          text: "You want to submit your answers?",
+          icon: 'warning',
+          showCancelButton: true,
+          confirmButtonText: 'Yes, Submit it',
+          cancelButtonText: 'No, cancel!',
+          reverseButtons: true
+          }).then((result) => {
+          if (result.value) {
+            window.location="{{route('submitscore',$examination[0]->id)}}";
+          } else if (result.dismiss === Swal.DismissReason.cancel) {
+            return false;
+          }
+        });
+      });
+
     });
+
+    
+
+    function aboutToExpire(el){     
+      
+      el.css("color", "red").fadeOut(500).fadeIn(500, function(){
+        aboutToExpire(el);
+      });
+    }
     
  </script> 
 <style type="text/css">
-   
+    #timerContainer{
+        padding:8px;opacity:0.5;color:green;position:fixed;left:20px;top:20px
+    }
+
+    #timerContainer:hover{
+        opacity: 1
+    }
+    #profile {
+      position:fixed;top:60px;right:50px
+    }
+
+    @media (max-width: 768px) {
+      #timerContainer {
+        top:20px;
+        left:15px;
+        padding:0 0 0 5px;
+      }
+
+      #profile {
+        width:30%;
+        top:20px;
+        right:15px;
+      }
+      #profile img {
+        max-width: 100%;
+        border:1px solid red;
+      }
+
+    }
     .answered-question{
         color: #155724 !important;
         background-color: #d4edda !important;
@@ -182,13 +264,7 @@
         z-index: 3;
     }
 
-    #timerContainer{
-        padding:8px;opacity:0.5;color:green;position:fixed;right:20px;top:20px
-    }
-
-    #timerContainer:hover{
-        opacity: 1
-    }
+    
     .expired span{
         color:red;
     }
