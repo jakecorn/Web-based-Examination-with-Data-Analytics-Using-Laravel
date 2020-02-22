@@ -135,15 +135,15 @@
 					<?php $student_score =0;?>
 					<?php $studentAnswer = array();?>
 					<?php $studentNumber++;?>
-						<tr>
-							<td class="text-capitalize stud-name"><div>{{$no++.". ".$student->stud_lname.", ".$student->stud_fname}}</div></td>
+						<tr class="row-record">
+							<td class="text-capitalize stud-name"><div><span>{{$no++}}</span>. {{$student->stud_lname.", ".$student->stud_fname}}</div></td>
 							@if(count($question)>0)
 								@foreach($question as $q_index => $q)
 									{{-- answer --}}
 									<?php $answer=TeacherController::studentAnswer($q->id,$student->student_id);?>
 									
 									@if(count($answer)>0)
-										<td align="center">
+										<td align="center" class="letter">
 											
 											{{-- get exam type using id --}}
 											<?php $index=0;?>
@@ -166,7 +166,7 @@
 														@endif
 													@endif
 												@endforeach
-												{{$letterDisplay}}-
+												{{$letterDisplay}}
 												
 												@if($correctAnswerArray[$q_index] == $letterDisplay)
 													<?php $student_score++; ?>
@@ -229,7 +229,7 @@
 						<?php array_push($studentAnswerRow, $studentAnswer);?>
 					@endforeach
 				@endif
-				<tr class="total" style="background:#e4e5fc">
+				<tr class="total  total-correct-answer-1" style="background:#e4e5fc">
 					<td>Total Correct Answer</td>
 					@if(count($question)>0)
 						<?php $topCorrectAnswerTotalArray = array();?>
@@ -257,7 +257,7 @@
 				<tr style="background:#dafdd6">
 					<td>Correct Answer</td>
 					@foreach($correctAnswerArray as $answer)
-						<td align="center"><b>{{$answer}}</b></td>
+						<td align="center" class="row-answer"><b>{{$answer}}</b></td>
 					@endforeach
 					<td></td>
 				</tr>
@@ -266,7 +266,7 @@
 				<tr>
 					<td colspan="1000" style="font-size:5px">&nbsp;</td>
 				</tr>
-
+				<tr class="row-record-2"></tr>
 				<?php $studentAnswerRow = array();?>
 				@if(count($student2)>0)
 					<?php $no =1;?>
@@ -275,15 +275,15 @@
 					<?php $studentAnswer = array();?>
 					<?php $studentNumber++;?>
 					<?php $student_score=0; ?>
-						<tr>
-							<td class="text-capitalize stud-name"><div>{{$no++.". ".$student->stud_lname.", ".$student->stud_fname}}</div></td>
+						<tr class="row-record">
+							<td class="text-capitalize stud-name"><div><span>{{$no++}}</span>. {{$student->stud_lname.", ".$student->stud_fname}}</div></td>
 							@if(count($question)>0)
 								@foreach($question as $q)
 									{{-- answer --}}
 									<?php $answer=TeacherController::studentAnswer($q->id,$student->student_id);?>
 									
 									@if(count($answer)>0)
-										<td align="center">
+										<td align="center" class="letter">
 											
 											{{-- get exam type using id --}}
 											<?php $index=0;?>
@@ -302,7 +302,7 @@
 														<?php $letterDisplay=$letter[$key]; ?>
 													@else
 														@if($ans->student_answer=="")
-															<?php $letterDisplay="-"; ?>
+															<?php $letterDisplay="A"; ?>
 														@endif
 													@endif
 												@endforeach
@@ -369,7 +369,7 @@
 						<?php array_push($studentAnswerRow, $studentAnswer);?>
 					@endforeach
 				@endif
-				<tr class="total" style="background:#e4e5fc">
+				<tr class="total total-correct-answer-2" style="background:#e4e5fc">
 					<td>Total Correct Answer</td>
 					<?php $BottomCorrectAnswerTotalArray = array();?>
 					@if(count($question)>0)
@@ -500,21 +500,69 @@
 	
 	upper_score.sort();
 	upper_score.reverse();
-	console.log(upper_score);
-	alert(123)
 	for (i = 0; i < upper_score.length; i++) {
-		// $('.upper-score').filter(function() {
-		// 	if($(this).html() == [i]){
-		// 		new_row_element.push($(this).closest("tr").detach());
-		// 	} 
-		// });
-		console.log(1)
+		$('.upper-score').filter(function() {
+			if($(this).html() == upper_score[i]){
+				new_row_element.push($(this).closest("tr").detach());
+			} 
+		});
 	}
-	
-	$('.row-record').after(new_row_element);
-	// console.log(upper_score);
-	// console.log(parseInt(upper_score.length));
 
+	var row_record;
+	var is_upper = true;
+	var order = 1;
+	var middle_record = (parseInt(upper_score.length/2)+1);
+
+	for (i = 0; i < new_row_element.length; i++) {
+		if(middle_record == parseInt(i)){
+			row_record = $('.row-record-2');
+			order =1;
+			is_upper = false;
+		}else{
+			row_record= $('.row-record:last');
+		}
+		row_record.after(new_row_element[i]);
+		new_row_element[i].find("td div span").text(order);
+		
+		if(!is_upper){
+			new_row_element[i].addClass("row-record-2");
+		}
+		order++;
+	}
+
+	getTotalScore(true);
+	getTotalScore(false);
+
+	function getTotalScore(is_upper){
+		var total_correct_answer_row = $('.total-correct-answer-1');
+		var answer_letter;
+		var correct_answer_letter;
+		var correct_answer_counter=0;
+		var row_record = $('.row-record:not(.row-record-2)');
+
+		if(!is_upper){
+			console.log("hey")
+			total_correct_answer_row  =  $('.total-correct-answer-2');
+			row_record = $('.row-record-2');
+		}
+
+		$('.row-answer').each(function(index, el){
+			correct_answer_letter = $(this).text();
+
+			row_record.each(function(index2, el2){
+				var answer_letter = $(this).children("td.letter:eq("+index+")").text();
+				if(answer_letter.trim() == correct_answer_letter.trim()){
+					correct_answer_counter++;
+				}
+
+				total_correct_answer_row.children(".sum:eq("+index+")").text(correct_answer_counter);
+				if(!is_upper){
+					console.log(correct_answer_letter.trim() +" // "+answer_letter.trim() +"="+correct_answer_counter +"::"+row_record.attr("class"))
+				}
+			});
+			correct_answer_counter = 0;
+		});
+	}
 	function analyticsType(a) {
 		var link = $(a).val();
 		window.location = "/teacher/data-analytics/"+link;

@@ -1329,9 +1329,6 @@ class TeacherController extends Controller
 
         public function itemAnalysis($class , $is_all = false)
         {
-
-            
-
            $classes = ClassRecord::where('teacher_id',Util::get_session('teacher_id'))->where('sy',Util::get_session('sy'))->where('semester',Util::get_session('semester'))->where('type',Util::get_session('class_record_type'))->get();
            $this->data['class'] = $classes;
            $all_classess = "";
