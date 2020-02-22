@@ -124,18 +124,21 @@
 							<td>Item&nbsp;{{$no++}}</td>
 						@endforeach
 					@endif
+					<td>Score</td>
 				</tr>
+				<tr  class="row-record"></tr>
 				<?php $studentAnswerRow = array();?>
 				@if(count($student1)>0)
 					<?php $no =1;?>
-					
+
 					@foreach($student1 as $student)
+					<?php $student_score =0;?>
 					<?php $studentAnswer = array();?>
 					<?php $studentNumber++;?>
 						<tr>
 							<td class="text-capitalize stud-name"><div>{{$no++.". ".$student->stud_lname.", ".$student->stud_fname}}</div></td>
 							@if(count($question)>0)
-								@foreach($question as $q)
+								@foreach($question as $q_index => $q)
 									{{-- answer --}}
 									<?php $answer=TeacherController::studentAnswer($q->id,$student->student_id);?>
 									
@@ -163,7 +166,11 @@
 														@endif
 													@endif
 												@endforeach
-												{{$letterDisplay}}
+												{{$letterDisplay}}-
+												
+												@if($correctAnswerArray[$q_index] == $letterDisplay)
+													<?php $student_score++; ?>
+												@endif
 												<?php array_push($studentAnswer,$letterDisplay);?>
 
 											@elseif($exam_part[$index]->exam_type=='mat')
@@ -183,6 +190,9 @@
 													@endif
 												@endforeach
 												{{$letterDisplay}}
+												@if($correctAnswerArray[$q_index] == $letterDisplay)
+													<?php $student_score++; ?>
+												@endif
 												<?php array_push($studentAnswer, $letterDisplay);?>
 												
 											@else
@@ -201,6 +211,9 @@
 													@endif
 												@endforeach
 												{{$letterDisplay}}
+												@if($correctAnswerArray[$q_index] == $letterDisplay)
+													<?php $student_score++; ?>
+												@endif
 												<?php array_push($studentAnswer, $letterDisplay);?>
 											@endif
 											
@@ -211,6 +224,7 @@
 									@endif
 								@endforeach
 							@endif
+							<td align="center" class="upper-score">{{$student_score}}</td>
 						</tr>
 						<?php array_push($studentAnswerRow, $studentAnswer);?>
 					@endforeach
@@ -233,6 +247,7 @@
 							</td>
 						@endforeach
 					@endif
+					<td></td>
 				</tr>
 				
 				<tr>
@@ -244,6 +259,7 @@
 					@foreach($correctAnswerArray as $answer)
 						<td align="center"><b>{{$answer}}</b></td>
 					@endforeach
+					<td></td>
 				</tr>
 
 				{{-- lower --}}
@@ -254,10 +270,11 @@
 				<?php $studentAnswerRow = array();?>
 				@if(count($student2)>0)
 					<?php $no =1;?>
-					
+
 					@foreach($student2 as $student)
 					<?php $studentAnswer = array();?>
 					<?php $studentNumber++;?>
+					<?php $student_score=0; ?>
 						<tr>
 							<td class="text-capitalize stud-name"><div>{{$no++.". ".$student->stud_lname.", ".$student->stud_fname}}</div></td>
 							@if(count($question)>0)
@@ -290,6 +307,9 @@
 													@endif
 												@endforeach
 												{{$letterDisplay}}
+												@if($correctAnswerArray[$q_index] == $letterDisplay)
+													<?php $student_score++; ?>
+												@endif
 												<?php array_push($studentAnswer,$letterDisplay);?>
 
 											@elseif($exam_part[$index]->exam_type=='mat')
@@ -309,6 +329,9 @@
 													@endif
 												@endforeach
 												{{$letterDisplay}}
+												@if($correctAnswerArray[$q_index] == $letterDisplay)
+													<?php $student_score++; ?>
+												@endif
 												<?php array_push($studentAnswer, $letterDisplay);?>
 												
 											@else
@@ -327,6 +350,9 @@
 													@endif
 												@endforeach
 												{{$letterDisplay}}
+												@if($correctAnswerArray[$q_index] == $letterDisplay)
+													<?php $student_score++; ?>
+												@endif
 												<?php array_push($studentAnswer, $letterDisplay);?>
 											@endif
 											
@@ -337,7 +363,9 @@
 									@endif
 								@endforeach
 							@endif
+							<td align="center" class="upper-score">{{$student_score}}</td>
 						</tr>
+
 						<?php array_push($studentAnswerRow, $studentAnswer);?>
 					@endforeach
 				@endif
@@ -358,6 +386,7 @@
 								<?php array_push($BottomCorrectAnswerTotalArray, $total);?>
 							</td>
 						@endforeach
+						<td></td>
 					@endif
 				</tr>
 
@@ -369,6 +398,7 @@
 								<b>{{number_format(($topCorrectAnswerTotalArray[$key]+$BottomCorrectAnswerTotalArray[$key])/$studentNumber,2)}}</b>
 							</td>
 						@endforeach
+						<td></td>
 					@endif
 				</tr>
 				<tr style="background:#fcf3db">
@@ -379,6 +409,7 @@
 								<b>{{number_format(($topCorrectAnswerTotalArray[$key]-$BottomCorrectAnswerTotalArray[$key])/($studentNumber/2),2)}}</b>
 							</td>
 						@endforeach
+						<td></td>
 					@endif
 				</tr>
 			</table>
@@ -458,11 +489,32 @@
 </div>
 
 <script type="text/javascript">
-	// $('tr.total:eq(0) td.sum').each(function(index, el) {
-	// 	var total = 0;
-	// 	total=int(this).text()+$("tr.total:eq(1) td.sum:eq("+index+")").text();
-	// 	$(".difficulty td.index:eq("+index+")").text(total)
-	// });
+	var row_element = [];
+	var new_row_element = [];
+	var upper_score = [];
+	
+	$('.upper-score').each(function(){
+		upper_score.push($(this).html());
+		row_element.push($(this).closest("tr").clone());
+	});
+	
+	upper_score.sort();
+	upper_score.reverse();
+	console.log(upper_score);
+	alert(123)
+	for (i = 0; i < upper_score.length; i++) {
+		// $('.upper-score').filter(function() {
+		// 	if($(this).html() == [i]){
+		// 		new_row_element.push($(this).closest("tr").detach());
+		// 	} 
+		// });
+		console.log(1)
+	}
+	
+	$('.row-record').after(new_row_element);
+	// console.log(upper_score);
+	// console.log(parseInt(upper_score.length));
+
 	function analyticsType(a) {
 		var link = $(a).val();
 		window.location = "/teacher/data-analytics/"+link;

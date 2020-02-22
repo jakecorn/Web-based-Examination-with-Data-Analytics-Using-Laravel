@@ -1316,7 +1316,7 @@ class TeacherController extends Controller
 
            //get examination id
             $this->data['main_page'] = "Data Analytics";
-            $this->data['navigation'] = "Item Statistics";
+            $this->data['navigation'] = "Data Statistics";
             $this->data['page_title'] = "itemstatisticsindex";
             return view('teacher::ClassRecord.main',$this->data);
         }
