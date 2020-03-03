@@ -59,7 +59,10 @@
 					<td>: {{Util::get_session('class_record_type')}}</td>
 				</tr>
 			</table>
-
+			<div id="" style="margin: auto;text-align:center; max-width: 400px;margin-bottom:30px;">
+				<h3>Passing Percentage</h3>
+				<canvas id="passing-percentage-graph" width="100px" height="100px"></canvas>
+			</div>
 			{{-- correct answeer array --}}
 			<?php $correctAnswerArray = array();?>
 			<?php $studentNumber = 0;?>
@@ -219,7 +222,7 @@
 											
 										</td>
 									@else
-										<td align="center">-</td>
+										<td align="center"  class="letter">-</td>
 										<?php array_push($studentAnswer, "-");?>
 									@endif
 								@endforeach
@@ -358,7 +361,7 @@
 											
 										</td>
 									@else
-										<td align="center">-</td>
+										<td align="center"  class="letter">-</td>
 										<?php array_push($studentAnswer, "-");?>
 									@endif
 								@endforeach
@@ -418,6 +421,19 @@
 
 			<br>
 			<br>		
+			
+			<div  style="overflow-y: scroll;text-align:center;margin-bottom:30px;height:300px;width:100%;position:relative">
+				<div>
+					<h3>Error Percentage</h3>
+					<canvas id="error-percentage-graph"></canvas>
+				</div>
+			</div>
+			<br>
+			<br>
+			<div style="margin: auto;text-align:center; max-width: 400px;margin-bottom:30px;">
+				<h3>Index of Difficulty</h3>
+				<canvas id="index-of-difficulty-graph" width="100px" height="100px"></canvas>
+			</div>
 
 			<table style="width:700px" class="analysis-result">
 				<tr>
@@ -428,7 +444,9 @@
 					<th>Remarks</th>
 				</tr>
 
+				<?php $difficult=0; $ideal=0; $easy=0?>
 				@if(count($question)>0)
+					<?php $no=1;?>
 					<?php $no=1;?>
 					@foreach($question as $key => $q)
 						<?php $difficulty=number_format(($topCorrectAnswerTotalArray[$key]+$BottomCorrectAnswerTotalArray[$key])/$studentNumber,2);?>
@@ -443,9 +461,12 @@
 							<td align="center">
 								@if($difficulty<0.2)
 									{{"DIFFICULT"}}
+									<?php $difficult++;?>
 								@elseif($difficulty<=0.8)
+									<?php $ideal++;?>
 									{{"IDEAL"}}
 								@elseif($difficulty>0.8)
+									<?php $easy++;?>
 									{{"EASY"}}
 								@endif
 							</td>
@@ -466,7 +487,12 @@
 						</tr>
 					@endforeach
 					@endif
+					
 			</table>
+			
+			<input type="hidden" id="difficulty_counter" value="<?=$difficult;?>"/>
+			<input type="hidden" id="ideal_counter" value="<?=$ideal;?>"/>
+			<input type="hidden" id="easy_counter" value="<?=$easy;?>"/>
 
 			<div class="margin-top margin-bottom">
 				<label>Legend</label>
@@ -489,49 +515,66 @@
 </div>
 
 <script type="text/javascript">
-	var row_element = [];
-	var new_row_element = [];
-	var upper_score = [];
-	
-	$('.upper-score').each(function(){
-		upper_score.push($(this).html());
-		row_element.push($(this).closest("tr").clone());
+	$(document).ready(function(){
+		var row_element = [];
+		var new_row_element = [];
+		var upper_score = [];
+		
+		$('.upper-score').each(function(){
+			upper_score.push($(this).html());
+			row_element.push($(this).closest("tr").clone());
+		});
+		
+		upper_score.sort();
+		upper_score.reverse();
+		for (i = 0; i < upper_score.length; i++) {
+			$('.upper-score').filter(function() {
+				if($(this).html() == upper_score[i]){
+					new_row_element.push($(this).closest("tr").detach());
+				} 
+			});
+		}
+
+		var row_record;
+		var is_upper = true;
+		var order = 1;
+		var middle_record = (parseInt(upper_score.length/2)+1);
+
+		for (i = 0; i < new_row_element.length; i++) {
+			if(middle_record == parseInt(i)){
+				row_record = $('.row-record-2');
+				order =1;
+				is_upper = false;
+			}else{
+				row_record= $('.row-record:last');
+			}
+			row_record.after(new_row_element[i]);
+			new_row_element[i].find("td div span").text(order);
+			
+			if(!is_upper){
+				new_row_element[i].addClass("row-record-2");
+			}
+			order++;
+		}
+		examResultGraph()
 	});
 	
-	upper_score.sort();
-	upper_score.reverse();
-	for (i = 0; i < upper_score.length; i++) {
-		$('.upper-score').filter(function() {
-			if($(this).html() == upper_score[i]){
-				new_row_element.push($(this).closest("tr").detach());
-			} 
+	$('footer').click(function(){
+		$('table').click(function(){
+			$(this).find('tr').each(function(){
+				$(this).find('.letter:eq(13)').css("background", "red")
+			});
 		});
-	}
+	});
 
-	var row_record;
-	var is_upper = true;
-	var order = 1;
-	var middle_record = (parseInt(upper_score.length/2)+1);
-
-	for (i = 0; i < new_row_element.length; i++) {
-		if(middle_record == parseInt(i)){
-			row_record = $('.row-record-2');
-			order =1;
-			is_upper = false;
-		}else{
-			row_record= $('.row-record:last');
-		}
-		row_record.after(new_row_element[i]);
-		new_row_element[i].find("td div span").text(order);
-		
-		if(!is_upper){
-			new_row_element[i].addClass("row-record-2");
-		}
-		order++;
-	}
-
+	var total_correct_answer_counter_array = [];
+	var total_item_with_answer = [];
 	getTotalScore(true);
 	getTotalScore(false);
+	itemErrorPercentageGraph(total_correct_answer_counter_array, total_item_with_answer);
+	
+	// console.log(total_correct_answer_counter_array);
+	// console.log(total_item_with_answer);
 
 	function getTotalScore(is_upper){
 		var total_correct_answer_row = $('.total-correct-answer-1');
@@ -541,13 +584,15 @@
 		var row_record = $('.row-record:not(.row-record-2)');
 
 		if(!is_upper){
-			console.log("hey")
 			total_correct_answer_row  =  $('.total-correct-answer-2');
 			row_record = $('.row-record-2');
 		}
 
+
 		$('.row-answer').each(function(index, el){
 			correct_answer_letter = $(this).text();
+			var answer_count = 0;
+			var has_answer=0;
 
 			row_record.each(function(index2, el2){
 				var answer_letter = $(this).children("td.letter:eq("+index+")").text();
@@ -555,14 +600,194 @@
 					correct_answer_counter++;
 				}
 
-				total_correct_answer_row.children(".sum:eq("+index+")").text(correct_answer_counter);
-				if(!is_upper){
-					console.log(correct_answer_letter.trim() +" // "+answer_letter.trim() +"="+correct_answer_counter +"::"+row_record.attr("class"))
+				if(answer_letter.trim().toUpperCase() !=answer_letter.trim().toLowerCase()){
+					has_answer++;
 				}
+				
 			});
+
+			total_correct_answer_row.children(".sum:eq("+index+")").text(correct_answer_counter);
+			if(!is_upper){
+				total_item_with_answer[index] = total_item_with_answer[index]+has_answer;
+				total_correct_answer_counter_array[index] = total_correct_answer_counter_array[index]+correct_answer_counter;
+			}else{
+				total_item_with_answer[index] = has_answer;
+				total_correct_answer_counter_array[index] = correct_answer_counter;
+			}
 			correct_answer_counter = 0;
 		});
 	}
+
+
+	function examResultGraph(){
+		var number_of_items = $('.row-answer').length;
+		var pass_percentage = 0.70;
+		var passing_score = number_of_items*pass_percentage;
+		var passed = 0;
+		var failed = 0;
+		var number_of_takers = 0;
+		
+		$('.upper-score').each(function(){
+			var score = parseInt($(this).text());
+			if(score>0){
+				if(passing_score<=score){
+					passed++;
+				}else{
+					failed++;
+				}
+			}
+		});
+
+		number_of_takers = passed+failed;
+		var passed_percentage = ((passed/number_of_takers)*100).toFixed(2);
+		var failed_percentage = ((failed/number_of_takers)*100).toFixed(2);
+		passed_percentage = parseInt(passed_percentage);
+		failed_percentage = parseInt(failed_percentage);
+		var ctx = document.getElementById('passing-percentage-graph');
+		var myChart = new Chart(ctx, {
+			type: 'pie',
+			data: {
+				labels: ['Passed ('+passed+') '+passed_percentage+'%' , 'Failed ('+failed_percentage+') '+failed_percentage+'%'],
+				datasets: [{
+					label: '# of Votes',
+					data: [passed_percentage,failed_percentage],
+					backgroundColor: [
+						'rgba(255, 99, 132, 0.2)',
+						'rgba(54, 162, 235, 0.2)'
+					],
+					borderColor: [
+						'rgba(255, 99, 132, 1)',
+						'rgba(54, 162, 235, 1)'
+					],
+					borderWidth: 1
+				}]
+			},
+			options: { 
+				gridLines : {
+					display: false
+				},
+				label: {
+					display: true
+				},
+				scaleLabel: {
+					display: true,
+					labelString: 'test'
+				},
+				legend: {
+					display: true,
+					position: 'bottom'
+				}
+			}
+		});
+	}
+
+	function indexOfDifficulty(){
+		var difficult = parseInt($('#difficulty_counter').val());
+		var ideal = parseInt($('#ideal_counter').val());
+		var easy = parseInt($('#easy_counter').val());
+		var total = difficult+ideal+easy;
+
+		var difficult_percentage = parseInt((difficult/total)*100);
+		var ideal_percentage = parseInt((ideal/total)*100);
+		var easy_percentage = parseInt((easy/total)*100);
+
+		var ctx = document.getElementById('index-of-difficulty-graph');
+		var myChart = new Chart(ctx, {
+			type: 'pie',
+			data: {
+				labels: ['Difficult ('+difficult+') '+difficult_percentage+'%' , 'Ideal ('+ideal+') '+ideal_percentage+'%' , 'Easy ('+easy+') '+easy_percentage+'%'],
+				datasets: [{
+					label: '# of Votes',
+					data: [difficult_percentage,ideal_percentage,easy_percentage],
+					backgroundColor: [
+						'#ffe1d1',
+						'#d4ffd1',
+						'#d1deff'
+					],
+					borderWidth: 1
+				}]
+			},
+			options: { 
+				gridLines : {
+					display: false
+				},
+				label: {
+					display: true
+				},
+				scaleLabel: {
+					display: true,
+					labelString: 'test'
+				},
+				legend: {
+					display: true,
+					position: 'bottom'
+				}
+			}
+		});
+	}
+
+	indexOfDifficulty()
+
+	function itemErrorPercentageGraph(total_correct_answer_counter_array, total_item_with_answer){
+
+		var labels = [];
+		var data = [];
+		total_correct_answer_counter_array.forEach(function(el, index){
+			labels[index] = (index+1);
+			var percentage = parseInt(((total_item_with_answer[index]-total_correct_answer_counter_array[index])/total_item_with_answer[index])*100)
+			data[index] = percentage;
+
+		});
+
+		var ctx = document.getElementById('error-percentage-graph');
+		var myChart = new Chart(ctx, {
+			type: 'line',
+			data: {
+				labels: labels,
+				
+				datasets: [{
+					label: 'Items',
+					backgroundColor: '#3097D1',
+					borderColor: '#4dace2',
+					data: data,
+					fill: false
+				}]
+			},
+			options: {
+				responsive: true,
+    			maintainAspectRatio: false,
+				ticks: {
+					callback: function(value) {
+						return value + '%';
+					}
+				},
+				scales: {
+					yAxes: [{
+						display: true,
+						scaleLabel: {
+							display: true,
+							labelString: 'Percentage'
+						}
+					}]
+				},
+				gridLines : {
+					display: false
+				},
+				label: {
+					display: true
+				},
+				scaleLabel: {
+					display: true,
+					labelString: 'test'
+				},
+				legend: {
+					display: true,
+					position: 'bottom'
+				}
+			}
+		});
+	}
+
 	function analyticsType(a) {
 		var link = $(a).val();
 		window.location = "/teacher/data-analytics/"+link;

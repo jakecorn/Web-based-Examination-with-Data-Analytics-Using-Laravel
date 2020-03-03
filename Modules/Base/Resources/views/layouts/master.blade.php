@@ -13,6 +13,8 @@
         <script type="text/javascript" src="/js/app.js"></script>
         <script type="text/javascript" src="/js/sweetalert2@8.js"></script>
         <script type="text/javascript" src="/js/bootstrap-switch.min.js"></script>
+        <!-- <script type="text/javascript" src="/lib/canvasjs/canvasjs.min.js"></script> -->
+        <script type="text/javascript" src="/lib/Chart.min.js"></script>
     	<link rel="stylesheet" type="text/css" href="/css/bootstrap-switch.min.css">
         @section('scripts')
         
