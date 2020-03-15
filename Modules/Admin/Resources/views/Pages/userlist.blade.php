@@ -41,6 +41,11 @@
 						<?php $first_id=$user[0]->id;?>
 						@foreach($user as $user)
 						<?php $last_id=$user->id;?>
+						@if($navigation=="Masterlist")
+							@if($user->is_registered=="Done manual registration but not found in the masterlist")
+								@continue
+							@endif
+						@endif
 							<tr>
 								<td>{{$user->id_number}}</td>
 								<td>{{$user->name}}</td>
@@ -55,15 +60,22 @@
 										@if($user->status==1)
 											<span style="color:green">Activated</span>
 										@else
-
+											@if($user->is_registered=="Not registered")
+											<span style="color:red">Not yet registered</span>
+											@endif
+											@if($user->is_registered=="Done manual registration and present in the masterlist")
+											<span style="color:green">Ready for activation</span>
+											@endif
 										@endif
 									@endif
 								</td>
 								<td>{{$user->created_at}}</td>
 								@if($navigation!="Masterlist")
 									<td align="center" class="list-action"> 							
-										<a data-toggle="tooltip" onclick="passwordReset({{$user->id}},this)" title="Reset password" class="fa fa-refresh action btn-success"></a>
-										<img src='/images/loader.gif' class='loader ' style="display:none;width:20px">
+										@if($user->status==1)
+												<a data-toggle="tooltip" onclick="passwordReset({{$user->id}},this)" title="Reset password" class="fa fa-refresh action btn-success"></a>
+												<img src='/images/loader.gif' class='loader ' style="display:none;width:20px">
+										@endif
 									</td>
 								@endif
 							</tr>

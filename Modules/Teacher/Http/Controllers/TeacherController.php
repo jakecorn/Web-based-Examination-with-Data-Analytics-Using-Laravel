@@ -538,19 +538,27 @@ class TeacherController extends Controller
         return $record;
     }
 
-    static public function getTotalScoreExam($class_record_id,$exam_id=false)
+    static public function getTotalScoreExam($class_record_id,$exam_id=false, $is_long_exam = false)
     {
         
         //get examination that sets to this class record
         if(!$exam_id){
-            $examination_id=DB::table("class_record_exams")->where("class_record_id",$class_record_id)->get(['examination_id']);            
+            $examination_id=DB::select("select cs.examination_id from class_record_exams cs join examinations ex on ex.id=cs.examination_id where cs.class_record_id=".$class_record_id." and ex.exam_type=1 order by ex.id desc limit 1");
             $examination_id = $examination_id[0]->examination_id;            
         }else{
             $examination_id = $exam_id;            
         }
 
         if(count($examination_id)>0 || $examination_id>0){
-            
+            if($is_long_exam) {
+                // this is long exam, try to return the custom total score of the examination
+                // This happens when instructor decided to change the total number of item of the examination
+                $custom_score=DB::table("class_record_exams")->where("class_record_id",$class_record_id)->where('examination_id', $examination_id)->get(['custom_long_exam_total_score']); 
+
+                if($custom_score[0]->custom_long_exam_total_score>0){
+                    return $custom_score[0]->custom_long_exam_total_score;
+                }
+            }
             $question_count =DB::select("select count(questions.id) as question_count from examinations,exam_parts,questions where examinations.id=exam_parts.examination_id and examinations.id='".$examination_id."' and questions.exam_part_id=exam_parts.id and exam_parts.exam_type!='ess'");
             
             // get total score of essay
@@ -586,6 +594,16 @@ class TeacherController extends Controller
        
     }
 
+    function storeUpdateLongExamScore(Request $request){
+
+        $score =0;
+        if($request['removescore_param'] == 0){
+            $score = $request['custom_value'];
+        }
+        $examination_id=DB::select("select cs.examination_id from class_record_exams cs join examinations ex on ex.id=cs.examination_id where cs.class_record_id=".$request['class_record_id']." and ex.exam_type=1 order by ex.id desc limit 1");
+        $examination_id=DB::table("class_record_exams")->where("class_record_id",$request['class_record_id'])->where('examination_id', $examination_id[0]->examination_id);  
+        $examination_id->update(['custom_long_exam_total_score'=>$score]);
+    }
     function storeUpdateScore(Request $request){
         if($request['actionType']=="update"){
             
@@ -1335,7 +1353,7 @@ class TeacherController extends Controller
            Util::set_session('All',$is_all);
            if($is_all=="All"){
                 // get all class records that share the has same examinations with selected class record $class
-                 $all_classess = DB::select("select cr.class_record_id,cr.examination_id from class_record_exams cr join (
+                $all_classess = DB::select("select cr.class_record_id,cr.examination_id from class_record_exams cr join (
                                     select cr.examination_id from class_record_exams cr join examinations ex on ex.id=cr.examination_id
                                     where cr.class_record_id = ".$class." and ex.exam_type=1 
                                 ) subtable on cr.examination_id = subtable.examination_id");

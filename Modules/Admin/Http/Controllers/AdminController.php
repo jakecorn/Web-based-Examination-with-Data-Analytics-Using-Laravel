@@ -171,6 +171,9 @@ class AdminController extends Controller
 				$teacher = new Teacher;
 				$teacher->id=$user->id;
 				$teacher->save();
+			}else{
+				$user =  User::where('id_number', $id_number)->where('is_registered', 'Done manual registration but not found in the masterlist')->update(['is_registered'=>2]);
+
 			}
 			echo $check_user." - <br>";
 			
@@ -179,7 +182,7 @@ class AdminController extends Controller
 		}
 		
 		fclose($myfile);
-		return redirect()->route('uploaduser')->with('message','Users have been uploaded.');
+		// return redirect()->route('uploaduser')->with('message','Users have been uploaded.');
     }
 	// course
 

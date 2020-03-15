@@ -23,6 +23,7 @@ Route::group(['middleware' => ['web','auth','RestrictAccess'], 'prefix' => 'teac
     Route::get('/classrecord/{id}/grade/print', 'TeacherController@classRecordPrint')->name('classrecordprint');
     Route::get('/classrecord/{id}/grade/print/by_term', 'TeacherController@classRecordPrint_term')->name('classrecordprint2');
     Route::post('/classrecord/updatescore/jake', 'TeacherController@storeUpdateScore');
+    Route::post('/classrecord/updatescore/long_exam', 'TeacherController@storeUpdateLongExamScore');
 
 
 

@@ -51,6 +51,12 @@ function searchUser(search){
 }
 	function storeStatus(status,el,user_id, is_registered){
 		if(status ==1 && is_registered == "Done manual registration but not found in the masterlist"){
+			swal.fire(
+					'Error',
+					'Sorry,  user account cannot be activated. User details are not found in the masterlist',
+					'error'
+					)
+			return  false;		// dont allow activation if user is not
 			swal.fire({
 				title: 'Are you sure?',
 				text: "You want to activate this user? This user is not found in pre-registerd users.",

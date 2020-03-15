@@ -34,7 +34,7 @@
                     <h4>Negros Oriental State Unviversity</h4>
                     <h5>Bayawan-Sta Catalina Campus</h5>
                     <br>
-                    <div id="profile">
+                    <div id="profile" class="d-none d-block-lg">
                       <img src="{{Auth::user()->photo}}" onerror="this.src='/uploads/images/user.png'" style="border:1px solid gray;border-radius:20px;width:200px"/>	   
                     </div>
                     
@@ -153,7 +153,6 @@
         </div>
     </div>
     <button data-toggle="modal" style="display:none" id="expirationModal_button" data-target="#expirationModal"></button>
-
     </body>
 </html>
 <!-- Display the countdown timer in an element -->
@@ -161,9 +160,10 @@
     $(document).ready(function() {
 
       var hasTriggered = false;
+      var endDate =new Date().getTime()+{{$end_time_millisecond*1000}};
 
       if($('#durationContainer').html()!="None"){
-        $('#timer').countdown('{{$end_time}}').on('update.countdown', function(event) {
+        $('#timer').countdown(endDate).on('update.countdown', function(event) {
             var format = '%H:%M:%S';
             var hours = event.offset.hours;
             var minutes = event.offset.minutes; 
@@ -178,6 +178,8 @@
             $(this).html(event.strftime(format));
 
         }).on('finish.countdown', function(event) {
+          $(this).html("COMPLETED");
+
           $(this).html('00:00:00').parent().addClass('disabled expired');
           $('#expirationModal_button').click();
 

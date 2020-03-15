@@ -21,7 +21,7 @@
 		    <form method="post" enctype="multipart/form-data">
 				{{csrf_field()}}
 		        <div class="form-group margin-top">
-                    <label>Choose CSV File <small>( <a href="" style="color:blue;text-decoration:underline">Download</a> User-list template and user it for uploading )</small></label>
+                    <label>Choose CSV File <small>( <a href="/template/user-template.xlsx" style="color:blue;text-decoration:underline">Download</a> User-list template and user it for uploading )</small></label>
                     <input type="file" name="file" class="form-control" required="">
                 </div>
                 <div class="form-group">

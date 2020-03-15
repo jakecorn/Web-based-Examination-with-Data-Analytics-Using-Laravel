@@ -21,6 +21,7 @@ use Modules\Admin\Entities\Log;
 use Session;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use DateTime;
 date_default_timezone_set('Asia/Manila'); 
 
 class StudentController extends Controller
@@ -258,6 +259,20 @@ class StudentController extends Controller
            }
     }
 
+    function calculateTransactionDuration($startDate, $endDate)
+    {
+        $startDateFormat = new DateTime($startDate);
+        $EndDateFormat = new DateTime($endDate);
+        // the difference through one million to get micro seconds
+        $uDiff = ($startDateFormat->format('u') - $EndDateFormat->format('u')) / (1000 * 1000);
+        $diff = $startDateFormat->diff($EndDateFormat);
+        $s = (int) $diff->format('%s') - $uDiff;
+        $i = (int) ($diff->format('%i')) * 60; // convert minutes into seconds
+        $h = (int) ($diff->format('%h')) * 60 * 60; // convert hours into seconds
+
+        return sprintf('%.6f', abs($h + $i + $s)); // return total duration in seconds
+    }
+
     public function examinationStart($class_record_id,$exam_id,$part_num,$position)
     {
         $this->data['part_num']=$part_num;
@@ -266,7 +281,9 @@ class StudentController extends Controller
         $this->data['done']=0; 
         $this->data['examination'] = Examination::where('id',$exam_id)->get();
         $this->data['end_time'] = $this->setTimeLimit($exam_id,$class_record_id);
-        // exit;
+        $currenttime = date('Y-m-d H:i:s');
+        $this->data['end_time_millisecond'] =  strtotime($this->data['end_time']) - strtotime($currenttime);
+
         $check_exam = DB::table("class_record_exams")->where('class_record_id',$class_record_id)->where('examination_id',$exam_id)->get(['visibility']);
         
         if($check_exam[0]->visibility==0){
@@ -362,6 +379,7 @@ class StudentController extends Controller
         $this->data['class_record_id'] = $class_record_id;
         $this->data['question_list'] = $question_list;
         Util::set_session('submitted',0);
+        
         return view('student::examination',$this->data);
     }
 

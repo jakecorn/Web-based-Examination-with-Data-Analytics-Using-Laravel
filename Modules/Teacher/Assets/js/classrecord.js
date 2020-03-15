@@ -21,6 +21,18 @@ $(document).ready(function(){
    			$(this).val(100-(mid+fin));
    		}
    });
+
+   $('#removescore').change(function(){
+		var checked = $(this).is(":checked");
+		
+		if(!checked){
+			$('input[id="custom_value"]').val("0").attr("readonly", false);
+		}else{
+			$('input[id="custom_value"]').val("0").attr("readonly", true);
+
+		}
+
+   });
 });
 
 $(function(){
@@ -98,17 +110,7 @@ init:function(){
 			}
 		});
 
-		$('.left-toggler').click(function(e) {
-			$('.leftcolumn').toggle(450);
-			if($(this).attr('name')=='left'){
-				$('.rightcolumn').css('width','100%');
-				$('.left-toggler').show();
-			}else{
-				$('.header .left-toggler').hide();
-				$('.rightcolumn').css('width','');				
-			}
-			
-		})
+		
 
 		$('.count-me  input[type="number"]').keyup(function(event) {
 			var total=0;
@@ -284,4 +286,63 @@ function exam_lock(exam_id,class_record_id,status,el){
 		}
 	});
 	
+}
+
+var exam_score_element;
+function total_score_edit(el){
+	exam_score_element = el;
+	var val = $(el).text();
+	$('input[id="custom_value"]').val(val);
+	$('#custom_total_score_modal').modal('show');
+
+}
+
+function total_score_save(class_record_id){
+	Swal.fire({
+		title: 'Are you sure?',
+		text: "You wan't to manually add the total score of the examination.",
+		icon: 'warning',
+		showCancelButton: true,
+		confirmButtonColor: '#3085d6',
+		cancelButtonColor: '#d33',
+		confirmButtonText: 'Yes, add it!'
+	  }).then((result) => {
+		if (result.value) {
+			var custom_value = $('input[id="custom_value"]').val();
+			var removescore = $('input[id="removescore"]').is(":checked");
+			var removescore_param = 0;
+
+			if(removescore){
+				removescore_param = 1;
+			}
+			
+			$.ajax({
+				url: '/teacher/classrecord/updatescore/long_exam',
+				type: 'POST',
+				data: {
+					custom_value: 	custom_value,
+					removescore: 	removescore_param,
+					class_record_id: 	class_record_id,
+				}
+
+				,success:function(data) {
+					$(exam_score_element).text(custom_value);
+					$('#custom_total_score_modal').modal('hide');
+					Swal.fire(
+						'Added!',
+						'Total score is successfully added. Please refresh the page to re-calculate the grades.',
+						'success'
+					);
+				}
+				,error:function() {
+					Swal.fire(
+						'Error',
+						'A problem is encoutered when connecting to the server. Please try again.',
+						'error'
+					)
+				}
+			});
+			
+		}
+	  })
 }

@@ -692,3 +692,49 @@ div.footer{
 div.footer div{
 	color:#cdc9c9;
 }
+
+.d-none {
+	display: none;
+}
+.d-block {
+	display: block;
+}
+
+/* Small devices (landscape phones, 576px and up) */
+@media (min-width: 576px) {
+	.d-none-sm {
+		display: none;
+	}
+	.d-block-sm {
+		display: block;
+	}
+}
+
+/* Medium devices (tablets, 768px and up) */
+@media (min-width: 768px) {
+	.d-none-md {
+		display: none;
+	}
+	.d-block-md {
+		display: block;
+	}
+}
+/* Large devices (desktops, 992px and up) */
+@media (min-width: 992px) {
+	.d-none-lg {
+		display: none;
+	}
+	.d-block-lg {
+		display: block;
+	}
+}
+
+/* Extra large devices (large desktops, 1200px and up) */
+@media (min-width: 1200px) {
+	.d-block-xl {
+		display: block;
+	}
+	.d-none-xl {
+		display: none;
+	}
+}

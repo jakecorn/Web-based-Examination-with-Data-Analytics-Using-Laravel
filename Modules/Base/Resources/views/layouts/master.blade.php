@@ -11,11 +11,13 @@
        	<link rel="stylesheet" type="text/css" href="/css/app.css">
         <link rel="stylesheet" type="text/css" href="/css/mystyle.css">
         <script type="text/javascript" src="/js/app.js"></script>
+        <script type="text/javascript" src="/js/main.js"></script>
         <script type="text/javascript" src="/js/sweetalert2@8.js"></script>
         <script type="text/javascript" src="/js/bootstrap-switch.min.js"></script>
         <!-- <script type="text/javascript" src="/lib/canvasjs/canvasjs.min.js"></script> -->
         <script type="text/javascript" src="/lib/Chart.min.js"></script>
     	<link rel="stylesheet" type="text/css" href="/css/bootstrap-switch.min.css">
+    	<link rel="stylesheet" type="text/css" href="/css/mystyle.css">
         @section('scripts')
         
 		@show
@@ -27,7 +29,7 @@
 				Header
 			</div> -->
 			<div class="row">
-				<div name="leftcolumn" class="col-md-3 leftcolumn">
+				<div name="leftcolumn" class="col-md-3 leftcolumn d-none d-block-lg">
 					@include('base::layouts.sidebar')&nbsp;				
 				</div>
 
@@ -37,8 +39,8 @@
 					<div class="header">
 						<div class="row" style="text-align:center">
 							<div class="col-sm-6">
-								<span name="right" class="glyphicon glyphicon-align-justify left-toggler" title="Hide left column" style="float:left;display:none;margin-right:15px"></span>
-									<img src="/images/norsu-logo.png" height="40px" style="float:left;margin-top:-7px;margin-bottom:-12px;margin-right:-20px"> {{ config('app.name', 'Laravel')}}
+								<span name="right" class="glyphicon glyphicon-align-justify left-toggler d-block d-none-lg" title="Hide left column" style="float:left;margin-right:15px"></span>
+								<img src="/images/norsu-logo.png" class="d-none d-block-lg" height="40px" style="float:left;margin-top:-7px;margin-bottom:-12px;margin-right:-20px"> {{ config('app.name', 'Laravel')}}
 							</div>
 							<div class="col-sm-6">
 								<div>School Year: {{Util::get_session('sy')}}, {{Util::get_session('semester')}} Semester {{Util::get_session('class_record_type')}}</div>							
@@ -47,7 +49,10 @@
 							
 					</div>
 					<div class="navigation">
-						<span style="font-size:25px;">{{$main_page}}</span> / {{$navigation}}
+						<span style="font-size:25px;">{{$main_page}}</span>
+						@if($main_page!="Data Analytics")
+						/ {{$navigation}}
+						@endif
 					</div>
 					@yield('topNav')
 
