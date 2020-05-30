@@ -26,7 +26,7 @@ use Modules\Teacher\Http\Controllers\TeacherController;
                                             <div  data-toggle="tooltip" data-placement="bottom" title="Topic: {{$record->topic}}">
                                                 <?php echo substr($record->date,5); $total_score+=$record->total_score?>
                                             </div>
-                                        </td> 
+                                        </td>
                                     @endforeach
                                 @endif
                                 <td colspan="2">Overall</td>
@@ -36,7 +36,20 @@ use Modules\Teacher\Http\Controllers\TeacherController;
                             <tr>
                                     @if(count(TeacherController::criteriaRecord($cri->id,$cri->class_record_id))>0)
                                         @foreach(TeacherController::criteriaRecord($cri->id,$cri->class_record_id) as $record)
-                                            <td>{{$record->total_score}}</td> 
+                                            <?php
+                                                $editable_raw_score = "editable_raw_score";
+                                                $title = "Double click this cell to update.";
+                                                $exclude_edit = ["Midterm Exam", "Final Exam", "Attendance"];
+
+                                                if(in_array($cri->criteria , $exclude_edit) ) {
+                                                    $editable_raw_score = "";
+                                                    $title = "";
+                                                }
+                                            ?>
+                                            <td class="{{$editable_raw_score}}"  title="{{$title}}">
+                                                <span>{{$record->total_score}}</span>
+                                                <input type="number" class="update-score-raw-score d-none" maxlength="5" name="update" criteria-record-id="{{$record->id}}" value="{{$record->total_score}}">
+                                            </td>
                                         @endforeach
                                     @endif
                                     @if($cri->criteria!=Session::get('class_record_type')." Exam")

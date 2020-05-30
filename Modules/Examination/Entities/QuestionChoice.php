@@ -13,4 +13,10 @@ class QuestionChoice extends Model
     	// remove extra spaces
         $this->attributes['choice_desc'] = trim(preg_replace('/\s+/', ' ', $value));
     }
+
+    public function answer()
+    {
+        return 1;
+    }
+
 }

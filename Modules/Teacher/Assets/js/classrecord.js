@@ -63,11 +63,40 @@ init:function(){
  			$('.sub-menu-class').slideToggle(200);
 		});
 
-		$('.cell-score').dblclick(function(event) {
+		$('.cell-score, .editable_raw_score').dblclick(function(event) {
 			$(this).children('span,input').toggle();
 			$(this).children('input').focus();
+		});
 
+        $('.update-score-raw-score').keyup(function(event) {
+			var a=$(this).val();
+			var sc = a.replace(/\s+/g, '');
+			$(this).val(sc);
+			var span=$(this).parent().children('span');
+			var spaninput= $(this).parent().children('span,input');
+			if(event.keyCode==13){
+				spaninput.toggle();
+				span.html("<img src='/images/loader.gif' class='loader'>");
+				$.ajax({
+					url: '/teacher/classrecord/updatecriter/rawscore/update',
+					type: 'POST',
+					data: {
+						criteria_record_id: 	$(this).attr('criteria-record-id'),
+						total_score: 	$(this).val()
+					}
 
+					,success:function(data) {
+						span.html(sc);
+					}
+					,error:function() {
+						span.html(sc);
+						alert("Connection error. Please try again");
+					}
+				});
+
+			}else if(event.keyCode==27){
+				$(this).parent().children('span,input').toggle();
+			}
 		});
 
 		$('.update-score').keyup(function(event) {

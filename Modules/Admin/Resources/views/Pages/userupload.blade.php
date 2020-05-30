@@ -25,7 +25,7 @@
                     <input type="file" name="file" class="form-control" required="">
                 </div>
                 <div class="form-group">
-                    <button class="btn btn-primary">Save Course</button>
+                    <button class="btn btn-primary">Upload User</button>
                 </div>
 		    </form>
 		</div>

@@ -112,10 +112,12 @@ error_reporting(E_ALL ^ E_NOTICE);
 						<input type="hidden" class="form-check-input" name="exam_type" value="{{$questions[0]->exam_type}}">
 
 						@foreach($questions as $question)
-								<div class="form-group form-check">
+								<div class="form-group form-check" style="margin: 8px 0 8px 0">
 								    <input type="hidden" class="form-check-input" name="question_id[]" value="{{$question->id}}">
-								    <input type="checkbox" class="form-check-input" name="question[]"  id="question{{$question->id}}" value="{{$question->question}}">
-								    <label class="form-check-label" for="question{{$question->id}}">{{$question->question}}</label>
+								    <label class="form-check-label" style="font-weight: normal" for="question{{$question->id}}">
+								        <input type="checkbox" class="form-check-input" style="margin-left: 8px" name="question[]"  id="question{{$question->id}}" value="{{$question->question}}">
+								        {{$question->question}}
+								    </label>
 								  </div>
 						@endforeach
 
@@ -128,7 +130,7 @@ error_reporting(E_ALL ^ E_NOTICE);
 			<?php
 		}
 		?>
-		
+
 	</div>
 </div>
 

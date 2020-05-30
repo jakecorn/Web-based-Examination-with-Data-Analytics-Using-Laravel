@@ -61,12 +61,12 @@ class TeacherController extends Controller
 
     public function getClassRecordList()
     {
-        if(Session::get("register")=="TRUE"){
+        // if(Session::get("register")=="TRUE"){
 
-            Auth::logout();
-            return redirect()->route("login")->with("successs","Account was created but not yet activated.");
+        //     Auth::logout();
+        //     return redirect()->route("login")->with("successs","Account was created but not yet activated123.");
 
-        }
+        // }
 
         if(Auth::user()->status==0){
              Auth::logout();
@@ -343,7 +343,7 @@ class TeacherController extends Controller
                 'criteria.*.distinct'=>"You have a duplicate cirtiera name"
             ]);
         
-        $check=ClassRecord::where('sub_code',$request['sub_code'])->where('sub_sec',$request['sub_sec'])->where('teacher_id',Session::get('teacher_id'))->count();
+        $check=ClassRecord::where('sub_code',$request['sub_code'])->where('sub_sec',$request['sub_sec'])->where('teacher_id',Session::get('teacher_id'))->where('sy', Session::get('sy'))->where('semester', Session::get('semester'))->count();
 
         if($check>0){
             return redirect()->back()->withErrors(['errors'=>"Duplicate subject code and section"])->withInput();
@@ -604,6 +604,14 @@ class TeacherController extends Controller
         $examination_id=DB::table("class_record_exams")->where("class_record_id",$request['class_record_id'])->where('examination_id', $examination_id[0]->examination_id);  
         $examination_id->update(['custom_long_exam_total_score'=>$score]);
     }
+    function storeUpdateRawScore(Request $request){
+        $record =  CriteriaRecord::where(['id'=> $request->criteria_record_id])->update([
+                                                                                            'total_score'=> $request->total_score
+                                                                                        ]);
+        echo $record;
+        return "success";
+    }
+
     function storeUpdateScore(Request $request){
         if($request['actionType']=="update"){
             
@@ -1091,7 +1099,7 @@ class TeacherController extends Controller
        $checkRecord = DB::select("select name from students,student_records,class_records,users where users.account_id=class_records.teacher_id and  students.stud_num='$request[stud_num]' and  students.id=student_records.student_id and student_records.class_record_id=class_records.id and class_records.sub_code='".$sub_code[0]->sub_code."' and sy='".$sub_code[0]->sy."' and semester='".$sub_code[0]->semester."' and type='".$sub_code[0]->type."' ");
 
         if(count( $checkRecord)>0){
-            return redirect()->back()->withErrors("You are trying to add a student who is already enrolled in the same subject in the class of ".$checkRecord[0]->name);
+            return redirect()->back()->withErrors("You are trying to add a new student record who is already enrolled in the same subject. Please search the record using the student number.");
         }
         $check_studentnum= Student::where('stud_num',$request['stud_num'])->get();
 
@@ -1116,7 +1124,6 @@ class TeacherController extends Controller
         }else{
             $student_id=$check_studentnum[0]->id;
             $checkstudentExist=1;
-            
         }
 
         // check student number if already existed in class record
@@ -1326,7 +1333,7 @@ class TeacherController extends Controller
 
         public function itemStatisticsIndex()
         {
-            $exam = DB::select("select * from examinations,class_record_exams,class_records where class_record_exams.class_record_id=class_records.id and examinations.id=class_record_exams.examination_id and class_records.teacher_id='".Util::get_session('teacher_id')."' group by examinations.id");
+            $exam = DB::select("select * from examinations,class_record_exams,class_records where class_record_exams.class_record_id=class_records.id and examinations.id=class_record_exams.examination_id and class_records.teacher_id='".Util::get_session('teacher_id')."' and class_records.sy='".Util::get_session('sy')."' and class_records.semester='".Util::get_session('semester')."'  group by examinations.id");
             $this->data['exam']=$exam;
 
             // $classes = ClassRecord::where('teacher_id',Util::get_session('teacher_id'))->where('sy',Util::get_session('sy'))->where('semester',Util::get_session('semester'))->where('type',Util::get_session('class_record_type'))->get();
@@ -1433,29 +1440,33 @@ class TeacherController extends Controller
 
         function itemStatistics($exam_id){
 
-            $exam = DB::select("select * from examinations,class_record_exams,class_records where class_record_exams.class_record_id=class_records.id and examinations.id=class_record_exams.examination_id and class_records.teacher_id='".Util::get_session('teacher_id')."'  group by examinations.id");
+            $exam = DB::select("select * from examinations,class_record_exams,class_records where class_record_exams.class_record_id=class_records.id and examinations.id=class_record_exams.examination_id and class_records.teacher_id='".Util::get_session('teacher_id')."' and class_records.sy='".Util::get_session('sy')."' and class_records.semester='".Util::get_session('semester')."'  group by examinations.id");
             $this->data['exam']=$exam;
+
 
             $classes = ClassRecord::where('teacher_id',Util::get_session('teacher_id'))->where('sy',Util::get_session('sy'))->where('semester',Util::get_session('semester'))->where('type',Util::get_session('class_record_type'))->get();
             $this->data['class'] = $classes;
 
           
             // get parts of examination
-           $exam_part = DB::table('exam_parts')->where('examination_id',$exam_id)->whereIn('exam_type',['mul','mat','tru'])->orderBy('id','asc')->pluck('id')->toArray();
+            $exam_part = DB::table('exam_parts')->where('examination_id',$exam_id)->whereIn('exam_type',['mul','mat','tru'])->orderBy('id','asc')->pluck('id')->toArray();
            
-           $question = DB::table('questions')->whereIn('exam_part_id',$exam_part)->where('examination_id',$exam_id)->orderBy('exam_part_id','asc')->orderBy('id','asc')->get(['id','exam_part_id','question']);
-            $this->data['question'] = $question;
+            //$question = DB::table('questions')->whereIn('exam_part_id',$exam_part)->where('examination_id',$exam_id)->orderBy('exam_part_id','asc')->orderBy('id','asc')->get(['id','exam_part_id','question']);
+            $questions = Question::whereIn('exam_part_id',$exam_part)->where('examination_id',$exam_id)->orderBy('exam_part_id','asc')->orderBy('id','asc')->get(['id','exam_part_id','question']);
+
+            $this->data['question'] = $questions;
             $this->data['selected_exam'] = $exam_id;
 
-           //count students
+           //count students  count(student_records.student_id) as countstudent
 
-           $student_count = DB::select("select count(student_records.student_id) as countstudent from student_records,class_record_exams,student_exams where student_exams.student_id=student_records.student_id and class_record_exams.examination_id=student_exams.examination_id and student_records.class_record_id=class_record_exams.class_record_id and class_record_exams.examination_id='$exam_id'");
-           if($student_count[0]->countstudent==0){
+           $students = DB::select("select * from student_records,class_record_exams,student_exams where student_exams.student_id=student_records.student_id and class_record_exams.examination_id=student_exams.examination_id and student_records.class_record_id=class_record_exams.class_record_id and class_record_exams.examination_id='$exam_id'");
+           $student_count = count($students);
+           if($student_count==0){
                return redirect()->back()->withErrors("No Student found in the class record. Cannot generate item analysis.");
            }
-           
+
             $this->data['main_page'] = "Data Analytics";
-            $this->data['student_count'] = $student_count[0]->countstudent;
+            $this->data['student_count'] = $student_count;
             $this->data['navigation'] = "Data Statistics";
             $this->data['page_title'] = "itemstatisticsresult";
             return view('teacher::ClassRecord.main',$this->data);
@@ -1510,6 +1521,12 @@ class TeacherController extends Controller
             $class=DB::select("select * from class_record_exams,class_records where class_record_exams.class_record_id=class_records.id and examination_id='$exam_id'");
             
             return $class;        
+        }
+
+        public function passing_rate($question_id)
+        {
+            $dif=DB::select("select count(student_answers.student_id) as countanswer from student_answers,question_choices where student_answers.question_id=question_choices.question_id and question_choices.answer=1 and student_answers.answer=question_choices.id and question_choices.question_id='$question_id'");
+            return $dif[0]->countanswer;
         }
 
         static public function difficulty($question_id)

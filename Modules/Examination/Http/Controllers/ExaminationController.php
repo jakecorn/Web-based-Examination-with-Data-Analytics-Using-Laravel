@@ -307,8 +307,9 @@ class ExaminationController extends Controller
         $exam = Examination::where("id",$exam_id)->where('teacher_id',Util::get_session('teacher_id'))->get();
 
         $part = ExamPart::where('examination_id',$exam_id)->where('id',$p_id)->get();
-        $sy   = ClassRecord::where('teacher_id',Util::get_session('teacher_id'))->where("sy","!=",Util::get_session('sy'))->groupBy("sy")->get(['sy']);
-        
+        //$sy   = ClassRecord::where('teacher_id',Util::get_session('teacher_id'))->where(["sy","!=",Util::get_session('sy')], [["sy","!=",Util::get_session('sy')], []])->groupBy("sy")->get(['sy']);
+        $sy   = "select sy from class_records where teacher_id=".Util::get_session('teacher_id')." and (sy!='".Util::get_session('sy')."' or (sy='".Util::get_session('sy')."' and semester!='".Util::get_session('semester')."') ) group by sy";
+        $sy = DB::select($sy);
         if(count($sy)==0){
             return redirect()->route("showexam",[$exam_id])->withErrors("No questions yet created from previous class record");
         }
@@ -322,7 +323,7 @@ class ExaminationController extends Controller
         if(isset($req['sy'])){
             $sql = "select * from class_records cr join class_record_exams cre on cre.class_record_id=cr.id join examinations ex on
                         cre.examination_id=ex.id join exam_parts exp on exp.examination_id=ex.id join questions q on q.exam_part_id=exp.id
-                        where cr.sy='".$req['sy']."' and cr.teacher_id='".Util::get_session('teacher_id')."' and cr.sub_code in ('".implode("','",$class_list_array)."') and exp.exam_type='".$part[0]->exam_type."'";
+                        where cr.sy='".$req['sy']."' and cr.teacher_id='".Util::get_session('teacher_id')."' and cr.sub_code in ('".implode("','",$class_list_array)."') and exp.exam_type='".$part[0]->exam_type."' ";
             if($req['semester']!="All"){
                 $sql.=" and cr.semester='".$req['semester']."'";
             }
@@ -330,8 +331,9 @@ class ExaminationController extends Controller
             if($req['term']!="All"){
 
                 $sql.=" and cr.type='".$req['term']."'";
+
             }
-             
+            $sql.="  group by q.question";
             $questions = DB::select($sql);
   
             if(count($questions)==0){

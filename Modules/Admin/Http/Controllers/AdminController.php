@@ -182,7 +182,7 @@ class AdminController extends Controller
 		}
 		
 		fclose($myfile);
-		// return redirect()->route('uploaduser')->with('message','Users have been uploaded.');
+		return redirect()->route('uploaduser')->with('message','Users have been uploaded.');
     }
 	// course
 

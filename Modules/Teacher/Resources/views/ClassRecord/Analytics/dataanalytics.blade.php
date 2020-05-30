@@ -23,10 +23,23 @@
 		<div class="form-group">
 			<label>Class</label>
 			<select class="form-control" name="class">
-				@foreach($class as $class)
-					<option value="{{$class->id}}" {{in_array($class->id, $selected_class)? 'selected=':''}}>{{$class->sub_code}} {{$class->sub_desc}} - {{$class->sub_sec}} {{$class->day}} {{$class->time}}</option>
-					<option value="{{$class->id}}/All">{{$class->sub_code}} {{$class->sub_desc}} - All Sections</option>					
+			    <?php
+			        $sub_code = "";
+			        $is_zero_based = false;
+			    ?>
 
+				@foreach($class as $class)
+					<?php
+					    if($class->formula_times == 100) {
+					        $is_zero_based = true;
+					    }
+					    if($sub_code!=$class->sub_code){ ?>
+				            <option value="{{$class->id}}/All">{{$class->sub_code}} {{$class->sub_desc}} - All Sections</option>
+				        <?php }
+				        $sub_code=$class->sub_code;
+					?>
+
+                    <option value="{{$class->id}}" {{in_array($class->id, $selected_class)? 'selected=':''}}>{{$class->sub_code}} {{$class->sub_desc}} - {{$class->sub_sec}} {{$class->day}} {{$class->time}} {{$is_zero_based}}</option>
 					<?php
 						if(in_array($class->id, $selected_class)){
 							$sub_detail .= $class->sub_code." ".$class->sub_desc." - ".$class->sub_sec ." / ".$class->day." ".$class->time."  ";
@@ -59,9 +72,10 @@
 					<td>: {{Util::get_session('class_record_type')}}</td>
 				</tr>
 			</table>
-			<div id="" style="margin: auto;text-align:center; max-width: 400px;margin-bottom:30px;">
+			<div id="" style="margin: auto;text-align:center; max-width: 400px;margin-bottom:30px">
 				<h3>Passing Percentage</h3>
 				<canvas id="passing-percentage-graph" width="100px" height="100px"></canvas>
+				<input type="hidden" id="is_zero_based" value="{{$is_zero_based}}">
 			</div>
 			{{-- correct answeer array --}}
 			<?php $correctAnswerArray = array();?>
@@ -422,7 +436,7 @@
 			<br>
 			<br>		
 			
-			<div  style="overflow-y: scroll;text-align:center;margin-bottom:30px;height:300px;width:100%;position:relative">
+			<div  style="overflow-y: scroll;text-align:center;margin-bottom:30px;height:300px;width:100%;position:relative;display: none">
 				<div>
 					<h3>Error Percentage</h3>
 					<canvas id="error-percentage-graph"></canvas>
@@ -435,7 +449,7 @@
 				<canvas id="index-of-difficulty-graph" width="100px" height="100px"></canvas>
 			</div>
 
-			<table style="width:700px" class="analysis-result">
+			<table style="width:100%" class="analysis-result">
 				<tr>
 					<th>Item No.</th>
 					<th>Difficulty</th>
@@ -621,7 +635,13 @@
 
 	function examResultGraph(){
 		var number_of_items = $('.row-answer').length;
-		var pass_percentage = 0.70;
+		var is_zero_based = $('#is_zero_based').val();
+		var pass_percentage = 0.75;
+
+	    if(is_zero_based == '1'){
+	        pass_percentage = 0.70
+	    }
+	    console.log(pass_percentage)
 		var passing_score = number_of_items*pass_percentage;
 		var passed = 0;
 		var failed = 0;

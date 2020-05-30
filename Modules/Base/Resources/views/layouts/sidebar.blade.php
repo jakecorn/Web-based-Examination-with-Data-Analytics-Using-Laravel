@@ -100,6 +100,6 @@
 
 <footer>
 	Developed by: Jesus Sumadia<br>
-	<span>09267629048<br>
-	jakecorn135@gmail.com</span>
+	<span>09056194798<br>
+	jesssumadia28@gmail.com</span>
 </footer>

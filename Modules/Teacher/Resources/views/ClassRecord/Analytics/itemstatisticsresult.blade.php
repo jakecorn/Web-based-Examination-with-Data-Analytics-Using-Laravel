@@ -91,8 +91,7 @@
 					<div class="col-sm-10">
 						<center>
 							<h3>Item Statistics</h3>
-
-						</center>			
+						</center>
 						<table width="100%">
 							<tr>
 								<th>
@@ -105,7 +104,7 @@
 									<?php $discrimination_level = "";?>
 									<tr>
 										<td style="width:45px" >{{$key+1}}</td>
-										<td>
+										<td class="" style="background: #ff5252; margin-bottom: 1px !important; display: block;" title="Percentage of wrong answer ">
 											<?php $difficulty =TeacherController::difficulty($question->id); ?>
 											<?php $percent=($difficulty/$student_count)*96;?>
 											
@@ -121,28 +120,29 @@
 												<?php $difficulty_level = "Easy";?>
 											@endif
 
-
-
 											@if($difficulty>0)
 
-												<div class="bar btn-{{$class}}" style="width:{{$percent}}%">
-													{{number_format(($difficulty/$student_count)*100,1)}}%
+												<div class="bar btn-{{$class}}" style="width:{{$percent}}%" title="Percentage of correct answer.">
+												    <?php
+												        $correct_answer=number_format(($difficulty/$student_count)*100,1);
+												    ?>
+													{{$correct_answer}}%
 
 													<?php $discrimination=TeacherController::discrimination($question->id,$student_count);?>
 													
 													
 													@if($discrimination<=0)
-														<span class="fa fa-remove disc-indicator revise"></span>
+														<span class="fa fa-remove disc-indicator revise" style="padding: 1px 3px 1px 3px"></span>
 														<?php $discrimination_level = "To be revised";?>
 													@else
 														<?php $discrimination_level = "To be retained";?>
 														<span class="fa fa-check disc-indicator retain"></span>												
 													@endif
 												</div>
-												
+												<div style="float:right;color:white; margin-right: 8px">{{100-$correct_answer}}%</div>
 											@else
-												
-												<span style="color:red">0.0%</span> <span class="fa fa-remove" style="color:red"></span>
+											    &nbsp;
+ 												<div style="float:right;color:white; margin-right: 8px">100% <span class="fa fa-remove" style="color:white"></div>
 											@endif
 										</td>
 									</tr>
@@ -154,12 +154,12 @@
 
 							<tr>
 								<td></td>
-								<td>
-									<div class="graph-percent"><span class="pull-left">0%</span> 20%</div>
+								<td style="display: flex; justify-content: space-between;">
+									<div class="graph-percent">20%</div>
 									<div class="graph-percent">40%</div>
 									<div class="graph-percent">60%</div>
 									<div class="graph-percent">80%</div>
-									<div class="graph-percent pull-right" style="padding-right:18px">100%</div>
+									<div class="graph-percent">100%</div>
 								</td>
 							</tr>
 						</table>

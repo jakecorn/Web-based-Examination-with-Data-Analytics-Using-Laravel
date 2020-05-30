@@ -18,9 +18,18 @@
 		<div class="form-group">
 			<label>Class</label>
 			<select class="form-control"  name="class">
+			    <?php
+			        $sub_code = "";
+			    ?>
 				@foreach($class as $class)
-					<option value="{{$class->id}}">{{$class->sub_code}} {{$class->sub_desc}} - {{$class->sub_sec}} {{$class->day}} {{$class->time}}</option>					
-					<option value="{{$class->id}}/All">{{$class->sub_code}} {{$class->sub_desc}} - All Sections</option>					
+				    <?php
+				        if($sub_code!=$class->sub_code){ ?>
+				            <option value="{{$class->id}}/All">{{$class->sub_code}} {{$class->sub_desc}} - All Sections</option>
+				        <?php }
+				        $sub_code=$class->sub_code;
+				    ?>
+					<option value="{{$class->id}}">{{$class->sub_code}} {{$class->sub_desc}} - {{$class->sub_sec}} {{$class->day}} {{$class->time}}</option>
+
 				@endforeach
 			</select>
 		</div>
