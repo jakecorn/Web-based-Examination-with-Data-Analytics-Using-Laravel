@@ -98,17 +98,17 @@
 
 
                                             @if($discrimination<=0)
-                                                <span class="fa fa-remove disc-indicator revise" style="padding: 1px 3px 1px 3px"></span>
+                                                <!--<span class="fa fa-remove disc-indicator revise" style="padding: 1px 3px 1px 3px"></span>-->
                                                 <?php $discrimination_level = "To be revised";?>
                                             @else
                                                 <?php $discrimination_level = "To be retained";?>
-                                                <span class="fa fa-check disc-indicator retain"></span>
+                                                <!--<span class="fa fa-check disc-indicator retain"></span>	-->
                                             @endif
                                         </div>
                                         <div style="float:right;color:white; margin-right: 8px">{{100-$correct_answer}}%</div>
                                     @else
                                         &nbsp;
-                                        <div style="float:right;color:white; margin-right: 8px">100% <span class="fa fa-remove" style="color:white"></div>
+                                        <div style="float:right;color:white; margin-right: 8px">100% <span class="fa fa-remove--" style="color:white"></div>
                                     @endif
                                 </td>
                             </tr>
@@ -134,12 +134,12 @@
                 <div class="margin-bottom" style="margin-top:30%">
                     <label>Legend</label>
                     <div>
-                        <span class="btn-warning legend-color"></span> Difficult<br>
+                        <!--<span class="btn-warning legend-color"></span> Difficult<br>
                         <span class="btn-success legend-color"></span> Ideal<br>
-                        <span class="btn-primary legend-color"></span> Easy<br>
+                        <span class="btn-primary legend-color"></span> Easy<br>-->
 
-                        <span class="btn-success legend-color fa fa-check legend-circle"></span>Retain<br>
-                        <span class="btn-danger legend-color fa fa-remove legend-circle"></span>Revise<br>
+                        <span class="btn-success legend-color fa fa-check-- legend-circle"></span>Correct<br>
+                        <span class="btn-danger legend-color fa fa-remove-- legend-circle"></span>Wrong<br>
                     </div>
                 </div>
             </div>

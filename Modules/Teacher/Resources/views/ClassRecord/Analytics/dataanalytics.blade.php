@@ -667,17 +667,18 @@
 		var myChart = new Chart(ctx, {
 			type: 'pie',
 			data: {
-				labels: ['Passed ('+passed+') '+passed_percentage+'%' , 'Failed ('+failed_percentage+') '+failed_percentage+'%'],
+				labels: ['Passed ('+passed+') '+passed_percentage+'%' , 'Failed ('+failed+') '+failed_percentage+'%'],
 				datasets: [{
+
 					label: '# of Votes',
 					data: [passed_percentage,failed_percentage],
 					backgroundColor: [
-						'rgba(255, 99, 132, 0.2)',
-						'rgba(54, 162, 235, 0.2)'
+					    'rgba(54, 162, 235, 0.2)',
+						'rgba(255, 99, 132, 0.2)'
 					],
 					borderColor: [
-						'rgba(255, 99, 132, 1)',
-						'rgba(54, 162, 235, 1)'
+					    'rgba(54, 162, 235, 1)',
+						'rgba(255, 99, 132, 1)'
 					],
 					borderWidth: 1
 				}]
@@ -693,6 +694,7 @@
 					display: true,
 					labelString: 'test'
 				},
+				tooltips: false,
 				legend: {
 					display: true,
 					position: 'bottom'

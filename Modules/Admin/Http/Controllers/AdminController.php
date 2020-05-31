@@ -191,7 +191,6 @@ class AdminController extends Controller
 		$this->data['main_page'] = "Course";
 		$this->data['navigation']='Create Course';
 		$this->data['page_title']='coursecreate';
-
 		return view('admin::layouts.master',$this->data);
 	 }
 
