@@ -226,7 +226,7 @@
  </script> 
 <style type="text/css">
     #timerContainer{
-        padding:8px;opacity:0.5;color:green;position:fixed;left:20px;top:20px
+        padding:8px;opacity:0.5;color:green;position:fixed;left:20px;top:20px;font-size: 18px
     }
 
     #timerContainer:hover{

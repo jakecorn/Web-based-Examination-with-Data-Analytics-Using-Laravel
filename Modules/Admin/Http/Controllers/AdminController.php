@@ -168,6 +168,9 @@ class AdminController extends Controller
 				    'password' => bcrypt("12312311RGFF"),
 				]);
 
+                $user->account_id = $user->id;
+                $user->save();
+
 				$teacher = new Teacher;
 				$teacher->id=$user->id;
 				$teacher->save();
@@ -214,7 +217,6 @@ class AdminController extends Controller
 		$this->data['course']=DB::table('courses')->get();
 		$this->data['navigation']='List';
 		$this->data['page_title']='courselist';
-
 		return view('admin::layouts.master',$this->data);
 	 }
 

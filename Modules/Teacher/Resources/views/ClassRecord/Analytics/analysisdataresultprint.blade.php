@@ -8,7 +8,7 @@
 <!DOCTYPE html>
 <html class="white-bg">
 <head>
-	<title>Item Analysis</title>	
+	<title>Item Analysis</title>
 	<link rel="stylesheet" type="text/css" href="/css/app.css">
 	<link rel="stylesheet" type="text/css" href="/css/mystyle.css">
 	<script type="text/javascript" src="/js/app.js"></script>

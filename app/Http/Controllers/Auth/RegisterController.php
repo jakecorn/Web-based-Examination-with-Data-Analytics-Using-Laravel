@@ -83,7 +83,7 @@ class RegisterController extends Controller
                 'password' => bcrypt($data['password']),
             ]);
             
-            $user = User::find($user[0]->id);
+            $user = $user_update;
             // return $user;
         }else{
             $user =  User::create([
@@ -97,7 +97,9 @@ class RegisterController extends Controller
                 'is_registered' => 3,
                 'password' => bcrypt($data['password']),
             ]);
-            
+
+            $user->account_id = $user->id;
+            $user->save();
 
             $teacher = new Teacher;
             $teacher->id=$user->id;

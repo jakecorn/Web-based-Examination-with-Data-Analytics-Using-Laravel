@@ -365,7 +365,7 @@ class StudentController extends Controller
             // $this->data['teacher']=DB::table('teachers')->where('id',$this->data['subject'][0]->teacher_id)->get();
             $this->data['subject'][0]->teacher_id;
             $this->data['teacher']=DB::select("select * from teachers,users where teachers.id=users.account_id and teachers.id='".$this->data['subject'][0]->teacher_id."'");
-        } 
+        }
         $question_list = DB::select("select rq.*,exp.part_num,sa.answer,la.answer as long_answer from students st
                         join student_exams ste on st.id = ste.student_id
                         join examinations ex on ex.id=ste.examination_id

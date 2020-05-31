@@ -149,9 +149,12 @@
 					<?php $no =1;?>
 
 					@foreach($student1 as $student)
-					<?php $student_score =0;?>
-					<?php $studentAnswer = array();?>
-					<?php $studentNumber++;?>
+					    <?php
+					        $student_took_the_exam = 0;
+                            $student_score =0;
+                            $studentAnswer = array();
+                            $studentNumber++;
+                        ?>
 						<tr class="row-record">
 							<td class="text-capitalize stud-name"><div><span>{{$no++}}</span>. {{$student->stud_lname.", ".$student->stud_fname}}</div></td>
 							@if(count($question)>0)
@@ -160,6 +163,7 @@
 									<?php $answer=TeacherController::studentAnswer($q->id,$student->student_id);?>
 									
 									@if(count($answer)>0)
+									    <?php $student_took_the_exam = true; ?>
 										<td align="center" class="letter">
 											
 											{{-- get exam type using id --}}
@@ -241,7 +245,7 @@
 									@endif
 								@endforeach
 							@endif
-							<td align="center" class="upper-score">{{$student_score}}</td>
+							<td align="center" class="upper-score" has-took-exam="{{$student_took_the_exam}}">{{$student_score}}</td>
 						</tr>
 						<?php array_push($studentAnswerRow, $studentAnswer);?>
 					@endforeach
@@ -289,9 +293,12 @@
 					<?php $no =1;?>
 
 					@foreach($student2 as $student)
-					<?php $studentAnswer = array();?>
-					<?php $studentNumber++;?>
-					<?php $student_score=0; ?>
+                        <?php
+                            $studentAnswer = array();
+                            $student_took_the_exam = 0;
+                            $studentNumber++;
+                            $student_score=0;
+                            ?>
 						<tr class="row-record">
 							<td class="text-capitalize stud-name"><div><span>{{$no++}}</span>. {{$student->stud_lname.", ".$student->stud_fname}}</div></td>
 							@if(count($question)>0)
@@ -300,6 +307,7 @@
 									<?php $answer=TeacherController::studentAnswer($q->id,$student->student_id);?>
 									
 									@if(count($answer)>0)
+									    <?php $student_took_the_exam = true; ?>
 										<td align="center" class="letter">
 											
 											{{-- get exam type using id --}}
@@ -380,7 +388,7 @@
 									@endif
 								@endforeach
 							@endif
-							<td align="center" class="upper-score">{{$student_score}}</td>
+							<td align="center" class="upper-score" has-took-exam="{{$student_took_the_exam}}">{{$student_score}}</td>
 						</tr>
 
 						<?php array_push($studentAnswerRow, $studentAnswer);?>
@@ -533,19 +541,19 @@
 		var row_element = [];
 		var new_row_element = [];
 		var upper_score = [];
-		
+
 		$('.upper-score').each(function(){
 			upper_score.push($(this).html());
 			row_element.push($(this).closest("tr").clone());
 		});
-		
+
 		upper_score.sort();
 		upper_score.reverse();
 		for (i = 0; i < upper_score.length; i++) {
 			$('.upper-score').filter(function() {
 				if($(this).html() == upper_score[i]){
 					new_row_element.push($(this).closest("tr").detach());
-				} 
+				}
 			});
 		}
 
@@ -564,7 +572,7 @@
 			}
 			row_record.after(new_row_element[i]);
 			new_row_element[i].find("td div span").text(order);
-			
+
 			if(!is_upper){
 				new_row_element[i].addClass("row-record-2");
 			}
@@ -647,7 +655,7 @@
 		var failed = 0;
 		var number_of_takers = 0;
 		
-		$('.upper-score').each(function(){
+		$('.upper-score[has-took-exam=1]').each(function(){
 			var score = parseInt($(this).text());
 			if(score>0){
 				if(passing_score<=score){
@@ -655,6 +663,8 @@
 				}else{
 					failed++;
 				}
+			}else{
+			    failed++;
 			}
 		});
 
@@ -766,7 +776,6 @@
 			type: 'line',
 			data: {
 				labels: labels,
-				
 				datasets: [{
 					label: 'Items',
 					backgroundColor: '#3097D1',
