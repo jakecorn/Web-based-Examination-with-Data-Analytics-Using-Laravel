@@ -615,8 +615,8 @@ class StudentController extends Controller
 
     public function announcementList()
     {
-        $announcement= DB::select("select announcement,announcements.date,announcements.time as time_posted,announcement_id,users.name as name,sub_code,sub_sec,day,class_records.time as time_schedule  from student_records,class_record_announcements,announcements,users,class_records where class_records.id=class_record_announcements.class_record_id and class_records.teacher_id=users.account_id and users.role='Teacher' and  announcements.id=class_record_announcements.announcement_id and student_records.class_record_id=class_record_announcements.class_record_id and student_id='".Util::get_session('student_id')."' order by announcement_id desc");
-        
+        $announcement= DB::select("select an.announcement, an.date, an.time as time_posted,cra.announcement_id,us.name as name,sub_code,sub_sec,day,cr.time as time_schedule  from student_records sr,  class_records cr, class_record_announcements cra, announcements an, users us where sr.class_record_id=cr.id and sr.student_id=".Util::get_session('student_id')." and cr.sy='".Util::get_session('sy')."' and cr.semester='".Util::get_session('semester')."' and cra.class_record_id=cr.id and cra.announcement_id=an.id and us.account_id=cr.teacher_id order by an.id desc");
+
         $this->data['main_page'] ="Announcements";
         $this->data['announcement'] =$announcement;
         $this->data['navigation'] = "Announcement";
@@ -632,8 +632,8 @@ class StudentController extends Controller
 
     public function filesList()
     {
-        $file= DB::select("select *,class_records.time as time_schedule ,files.time as time_posted  from student_records,class_record_files,files,class_records,users where users.role='Teacher' and  users.account_id=class_records.teacher_id and class_records.id=student_records.class_record_id and  files.id=class_record_files.file_id and student_records.class_record_id=class_record_files.class_record_id and student_id='".Util::get_session('student_id')."' and type='".Util::get_session('class_record_type')."' and  semester='".Util::get_session('semester')."' and sy='".Util::get_session('sy')."' order by file_id desc");
-        
+        $file= DB::select("select *,class_records.time as time_schedule ,files.time as time_posted  from student_records,class_record_files,files,class_records,users where users.account_id=class_records.teacher_id and class_records.id=student_records.class_record_id and files.id=class_record_files.file_id and class_records.id=class_record_files.class_record_id and student_id=".Util::get_session('student_id')."  and type='".Util::get_session('class_record_type')."'  and  semester='".Util::get_session('semester')."' and sy='".Util::get_session('sy')."' order by file_id desc");
+
         $this->data['main_page'] ="Files";
         $this->data['file'] =$file;
         $this->data['navigation'] = "List";
@@ -897,7 +897,7 @@ class StudentController extends Controller
  
         // Get image file
         $image = $request->file('photo');
-        $name = $request->input('name').time();
+        $name = md5($request->input('name').time());
         $name = str_replace(' ', '', strtolower($name));
         $folder = '/uploads/images/';
         $filePath = $folder . $name. '.' . $image->getClientOriginalExtension();

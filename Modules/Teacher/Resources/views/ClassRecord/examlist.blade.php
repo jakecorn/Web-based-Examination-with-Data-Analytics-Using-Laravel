@@ -89,13 +89,12 @@ $type= array("mul"=>"Multiple Choice","mat"=>"Matching Type","tru"=>"True or Fal
 
 			   				</td>
 			   				<td class="list-action">
-			   					<a href="{{route('checkexam',[$exam_detail[$key]->examination_id,'ide'])}}" class="fa fa-check action  btn-success" data-toggle="tooltip" data-placement="left" title="Check the identification or essay part"></a>
+			   					<a href="{{route('checkexam',[$exam_detail[$key]->examination_id,'ide_essay'])}}" class="fa fa-check action  btn-success" data-toggle="tooltip" data-placement="left" title="Check the identification or essay part"></a>
 								   <?php 
 										   $true="";
 										   $false="";
 										   $paused = "";
 										   $play="";
-
 
 								   ?>
 			   					@if($exam_detail[$key]->lock_exam==true)

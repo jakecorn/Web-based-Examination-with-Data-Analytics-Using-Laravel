@@ -1275,8 +1275,7 @@ class TeacherController extends Controller
       public function checkExam($exam_id,$type)
     {
         $exam = Examination::where("id",$exam_id)->where('teacher_id',Util::get_session('teacher_id'))->get();
-
-        $part = DB::table('exam_parts')->where('examination_id',$exam_id)->where('exam_type',$type)->get();
+        $part = DB::table('exam_parts')->where('examination_id',$exam_id)->whereIn('exam_type',['ide', 'ess'])->get();
         
         if(count($part)==0){
             return redirect()->back()->with('warning',"No Essay or Identifation is found.");
@@ -1728,7 +1727,7 @@ class TeacherController extends Controller
  
         // Get image file
         $image = $request->file('photo');
-        $name = $request->input('name').time();
+        $name = md5($request->input('name').time());
         $name = str_replace(' ', '', strtolower($name));
         $folder = '/uploads/images/';
         $filePath = $folder . $name. '.' . $image->getClientOriginalExtension();
