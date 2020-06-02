@@ -158,7 +158,7 @@ $type= array("mul"=>"Multiple Choice","mat"=>"Matching Type","tru"=>"True or Fal
 												<div class="margin-bottom">
 													{!!$answer_no++.". ".$choice->answer!!}<br>
 													<input type="number" placeholder="Points" value="{{$choice->score}}" id="{{$choice->student_id}}" question-id="{{$question->id}}" class="form-control" style="width:100px;display:inline-block;;height:31px">
-													<button class="btn btn-default margin-left  margin-right margin-top margin-bottom btn-sm" onclick="return savePoints(this)">Save Points</button>
+													<button class="btn btn-default margin-left  margin-right margin-top margin-bottom btn-sm" max-score="{{$point[0]->point}}" onclick="return savePoints(this)">Save Points</button>
 													<img src='/images/loader.gif' class='loader'  style="width:20px;display:none">
 													<small style="color:blue;display:none" class="save-message">Saved</small>
 												</div>
@@ -197,6 +197,7 @@ $type= array("mul"=>"Multiple Choice","mat"=>"Matching Type","tru"=>"True or Fal
 
 	function savePoints(a) {
 		var score = $(a).siblings('input').val();
+		var max_score = $(a).attr("max-score");
 		var previous_score = $(a).siblings('input').attr("value");
 		var student_id = $(a).siblings('input').attr("id");
 		var question_id = $(a).siblings('input').attr("question-id");
@@ -204,6 +205,9 @@ $type= array("mul"=>"Multiple Choice","mat"=>"Matching Type","tru"=>"True or Fal
 		var message = $(a).siblings('small');
 		loader.show();
 		message.hide();
+		if(parseInt(max_score) < parseInt(score)) {
+		    score = max_score;
+		}
 
 		$.ajax({
 			url: '/teacher/examination/check/score/save',
@@ -211,7 +215,7 @@ $type= array("mul"=>"Multiple Choice","mat"=>"Matching Type","tru"=>"True or Fal
 			data: {'score': score,'student_id':student_id,'question_id':question_id},		
 			success:function(data){
 				message.show();
-				$(a).siblings('input').attr("value",score);
+				$(a).siblings('input').attr("value",score).val(score);
  				loader.hide();
 			},
 			error:function() {

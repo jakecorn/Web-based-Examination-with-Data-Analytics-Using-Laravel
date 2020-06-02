@@ -110,13 +110,13 @@
 											
 											<?php $difficulty_level = "";?>
 											@if(($difficulty/$student_count)<0.2)
-												<?php $class="danger";?>
+												<?php $class="success";?>
 												<?php $difficulty_level = "Difficult";?>
 											@elseif(($difficulty/$student_count)<=0.8)
 												<?php $class="success";?>
 												<?php $difficulty_level = "Ideal";?>
 											@elseif(($difficulty/$student_count)>0.8)
-												<?php $class="primary";?>
+												<?php $class="success";?>
 												<?php $difficulty_level = "Easy";?>
 											@endif
 
