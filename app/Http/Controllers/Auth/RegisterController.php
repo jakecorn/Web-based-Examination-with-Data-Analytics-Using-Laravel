@@ -82,9 +82,6 @@ class RegisterController extends Controller
                 'is_registered' => 2,
                 'password' => bcrypt($data['password']),
             ]);
-            
-            $user = $user_update;
-            // return $user;
         }else{
             $user =  User::create([
                 'name' => $data['last_name'].", ".$data['first_name'],
@@ -107,7 +104,6 @@ class RegisterController extends Controller
             
         }
         Session::put("register","TRUE");
-       
         return $user;
     }
 }

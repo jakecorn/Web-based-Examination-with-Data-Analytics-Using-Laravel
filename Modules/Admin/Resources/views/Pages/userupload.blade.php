@@ -9,7 +9,7 @@
 
 				<div class="search-container">
                     <div id="upload_user_button">
-                        <button class="btn btn-seconday">Upload User</button>
+                        <!--<button class="btn btn-seconday">Upload User</button> -->
                     </div>
 					<span class="fa fa-search icon"></span>					
 					<input type="search" name="search" class="search-field" onkeyup="searchUser(this.value)">
