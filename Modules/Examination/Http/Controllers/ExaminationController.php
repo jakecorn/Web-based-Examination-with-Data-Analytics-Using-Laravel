@@ -741,11 +741,13 @@ class ExaminationController extends Controller
             }else{
                 foreach ($req['choices_desc'][$q_i] as $c_i => $choice_desc) {
 
-                    $choice = new QuestionChoice;
-                    $choice->question_id=$question->id;
-                    $choice->choice_desc=$choice_desc;
-                    $choice->answer=$req['answer'][$q_i][$c_i]==1? '1':'0';
-                    $choice->save();
+                    if( strlen(trim($choice_desc)) > 0 ){
+                        $choice = new QuestionChoice;
+                        $choice->question_id=$question->id;
+                        $choice->choice_desc=$choice_desc;
+                        $choice->answer=$req['answer'][$q_i][$c_i]==1? '1':'0';
+                        $choice->save();
+                    }
                 }  
             }
             

@@ -1119,7 +1119,7 @@ class TeacherController extends Controller
             $student->year=$request['year'];
             $student->save();
 
-            \App\User::insert(['name'=>$request['stud_fname']." ".$request['stud_lname'],'username'=>$request['stud_num'],'password'=>bcrypt($request['password']),'role'=>'Student', 'account_id'=>$student->id]);
+            \App\User::insert(['id_number'=>$request['stud_num'], 'name'=>$request['stud_fname']." ".$request['stud_lname'],'username'=>$request['stud_num'],'password'=>bcrypt($request['password']),'role'=>'Student', 'account_id'=>$student->id]);
             $student_id=$student->id;
         }else{
             $student_id=$check_studentnum[0]->id;
@@ -1128,7 +1128,8 @@ class TeacherController extends Controller
 
         // check student number if already existed in class record
         $check_studentnum2= StudentRecord::where('student_id',$student_id)->where('class_record_id',$request['class_record_id'])->count();
-      
+
+
         $checkstudentExistClass=0;
         
         if($check_studentnum2==0){
@@ -1143,9 +1144,7 @@ class TeacherController extends Controller
         
         }else{
             $checkstudentExistClass=1;            
-
         }
-        
 
         $this->data['page_title'] = "studentList";
         $this->classRecordDetail($request['class_record_id']);
