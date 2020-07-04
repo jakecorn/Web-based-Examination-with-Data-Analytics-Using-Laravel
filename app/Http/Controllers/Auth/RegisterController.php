@@ -69,7 +69,13 @@ class RegisterController extends Controller
     {
 
         $user = User::where('id_number',$data['id_number'])->get();
-        
+        $this->validate(request(),[
+                'name' => 'required|string|min:5',
+                'username' => 'required|min:6|unique:users',
+                'password' => 'required|min:6|confirmed',
+                'cp_number' => 'required|digits:11',
+                'degree' => 'required',
+            ]);
         if(count($user)>0){
             $user_update = User::where('id',$user[0]->id)->update([
 				'name' => $data['last_name'].", ".$data['first_name'],
@@ -82,6 +88,9 @@ class RegisterController extends Controller
                 'is_registered' => 2,
                 'password' => bcrypt($data['password']),
             ]);
+            $user = User::find($user[0]->id);
+            //$user = $user_update;
+            return $user;
         }else{
             $user =  User::create([
                 'name' => $data['last_name'].", ".$data['first_name'],

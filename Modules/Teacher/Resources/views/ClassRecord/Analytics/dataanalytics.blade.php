@@ -543,15 +543,17 @@
 		var upper_score = [];
 
 		$('.upper-score').each(function(){
-			upper_score.push($(this).html());
+			upper_score.push(parseInt($(this).html()));
 			row_element.push($(this).closest("tr").clone());
 		});
 
-		upper_score.sort();
+		upper_score.sort(function (a,b) {
+            return a-b;
+        });
 		upper_score.reverse();
 		for (i = 0; i < upper_score.length; i++) {
 			$('.upper-score').filter(function() {
-				if($(this).html() == upper_score[i]){
+				if(parseInt($(this).text()) == upper_score[i]){
 					new_row_element.push($(this).closest("tr").detach());
 				}
 			});
