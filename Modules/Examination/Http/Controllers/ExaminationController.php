@@ -21,8 +21,6 @@ use Session;
 class ExaminationController extends Controller
 {
     use ValidatesRequests;
-
-
     public function __construct(){
         $this->data['main_page'] = "Examination";
         $this->data['term'] = "Examination";
@@ -307,7 +305,6 @@ class ExaminationController extends Controller
         $exam = Examination::where("id",$exam_id)->where('teacher_id',Util::get_session('teacher_id'))->get();
 
         $part = ExamPart::where('examination_id',$exam_id)->where('id',$p_id)->get();
-        //$sy   = ClassRecord::where('teacher_id',Util::get_session('teacher_id'))->where(["sy","!=",Util::get_session('sy')], [["sy","!=",Util::get_session('sy')], []])->groupBy("sy")->get(['sy']);
         $sy   = "select sy from class_records where teacher_id=".Util::get_session('teacher_id')." and (sy!='".Util::get_session('sy')."' or (sy='".Util::get_session('sy')."' and semester!='".Util::get_session('semester')."') ) group by sy";
         $sy = DB::select($sy);
         if(count($sy)==0){
@@ -320,10 +317,17 @@ class ExaminationController extends Controller
             array_push($class_list_array, $value->sub_code);
         }
 
+        $existing_question = ExaminationController::getQuestion($p_id);
+        $existing_question_array = array();
+        foreach ($existing_question as $key => $value) {
+            array_push($existing_question_array, $value->question);
+        }
+
         if(isset($req['sy'])){
             $sql = "select * from class_records cr join class_record_exams cre on cre.class_record_id=cr.id join examinations ex on
                         cre.examination_id=ex.id join exam_parts exp on exp.examination_id=ex.id join questions q on q.exam_part_id=exp.id
-                        where cr.sy='".$req['sy']."' and cr.teacher_id='".Util::get_session('teacher_id')."' and cr.sub_code in ('".implode("','",$class_list_array)."') and exp.exam_type='".$part[0]->exam_type."' ";
+                        where ex.id!=".$req['examination_id']." and q.question not in ('".implode("','",$existing_question_array)."') and cr.sy='".$req['sy']."' and cr.teacher_id='".Util::get_session('teacher_id')."' and cr.sub_code in ('".implode("','",$class_list_array)."') and exp.exam_type='".$part[0]->exam_type."' ";
+
             if($req['semester']!="All"){
                 $sql.=" and cr.semester='".$req['semester']."'";
             }
@@ -370,7 +374,6 @@ class ExaminationController extends Controller
     }
 
     public function  storeUpdateQuestion(Request $req){
-        
          $validate= $this->validate(request(),
             [
             'question.*'=>'required',
@@ -475,6 +478,9 @@ class ExaminationController extends Controller
 
         $message="Question has been updated successfully";
 
+        if(!empty($req['redirect'])){
+            return redirect($req['redirect'])->with("message","The question was revised and added successfully.");
+        }
         return redirect()->route('preview',$req['examination_id'])->with('message',$message);
        
     }
@@ -772,7 +778,31 @@ class ExaminationController extends Controller
         return view('examination::layouts.master',$this->data);
     }
 
+    public function reviseQuestion($e_id,$p_id,$q_id){
+        $question = Question::where('id',$q_id)->get();
+        if(count($question) > 0){
+            $new_question =new Question;
+            $new_question->question = $question[0]->question;
+            $new_question->examination_id = $e_id;
+            $new_question->exam_part_id = $p_id;
+            $new_question->save();
 
+            $choices = $this->getChoices($q_id);
+            foreach ($choices as $c_i => $choice) {
+                $choices = new QuestionChoice;
+                $choices->question_id=$new_question->id;
+                $choices->choice_desc=$choice->choice_desc;
+                $choices->answer=$choice->answer;
+                $choices->save();
+            }
+            $redirect_url = $_SERVER['REQUEST_URI'];
+            $pos = strpos($redirect_url, "redirect=");
+            $redirect_url = substr($redirect_url, $pos+9);
+            return redirect("/teacher/examination/".$e_id."/".$p_id."/".$new_question->id."/edit?redirect=".$redirect_url."");
+        }else{
+            return redirect()->back()->withErrors(['errors'=>"The question you are trying to revise is not found."]);
+        }
+    }
 
     public function editQuestion($e_id,$p_id,$q_id){
 

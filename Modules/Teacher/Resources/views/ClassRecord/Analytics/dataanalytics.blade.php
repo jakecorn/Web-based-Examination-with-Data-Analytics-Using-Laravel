@@ -431,7 +431,13 @@
 					@if(count($question)>0)
 						@foreach($question as $key => $q)
 							<td align="center">
-								<b>{{number_format(($topCorrectAnswerTotalArray[$key]-$BottomCorrectAnswerTotalArray[$key])/($studentNumber/2),2)}}</b>
+							    <?php
+							        $discrimination_value = number_format(($topCorrectAnswerTotalArray[$key]-$BottomCorrectAnswerTotalArray[$key])/($studentNumber/2),2);
+                                    if(substr($_SERVER['REQUEST_URI'], -3) == "All"){
+                                        TeacherController::setDescrimination($q->id, $discrimination_value);
+                                    }
+							    ?>
+								<b>{{$discrimination_value}}</b>
 							</td>
 						@endforeach
 						<td></td>

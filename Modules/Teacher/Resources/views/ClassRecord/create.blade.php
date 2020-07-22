@@ -30,15 +30,52 @@
 			  <div class="form-group row">
 			  	<div class="col-sm-4">
 			  		<label for="day">Day <span style="color:red">*</span></label>
-			    	<input type="text" required="" class="form-control" value="{{old('day')}}" id="day"  name="day" placeholder="Day">
+			    	<input type="text" required="" class="form-control" value="{{old('day')}}" id="day" list="day_list" name="day" placeholder="Day">
+			    	<datalist id="day_list">
+                        <option value="M-W-F">
+                        <option value="T-TH">
+                        <option value="SAT">
+                        <option value="SUN">
+                    </datalist>
 			  	</div>
 			  	<div class="col-sm-4">
 			  		<label for="time">Time <span style="color:red">*</span></label>
-			    	<input type="text" required="" class="form-control" value="{{old('time')}}" id="time" name="time" placeholder="Time">
+			    	<input type="text" required="" class="form-control" value="{{old('time')}}" id="time" list="list_time" name="time" placeholder="Time">
+			    	<datalist id="list_time">
+			    	    <?php
+			    	        $start = 7;
+			    	        $starttime = "07:00";
+			    	        $endtime = "07:00";
+			    	        $starttime2 = "07:00";
+			    	        $endtime2 = "07:00";
+			    	        while ($start <24){
+			    	            $endtime2 = date('H:i', strtotime('+60 minutes', strtotime($endtime2)));
+			    	            echo "<option value='".$starttime2.'-'.$endtime2."'>";
+			    	            $starttime2 = $endtime2;
+			    	            $start++;
+			    	        }
+                            $start = 7;
+			    	        while ($start <18){
+			    	            $endtime = date('H:i', strtotime('+90 minutes', strtotime($endtime)));
+			    	            echo "<option value='".$starttime.'-'.$endtime."'>";
+			    	            $starttime = $endtime;
+			    	            $start++;
+			    	        }
+
+			    	    ?>
+
+                    </datalist>
 			  	</div>
 			  	<div class="col-sm-4">
 			  		<label for="sub_sec">Section <span style="color:red">*</span></label>
-			    	<input type="text" required="" maxlength="1" class="form-control" value="{{old('sub_sec')}}" id="sub_sec" name="sub_sec" placeholder="Section Letter">
+			    	<input type="text" required="" maxlength="1" class="form-control" value="{{old('sub_sec')}}" id="sub_sec" list="list_section" name="sub_sec" placeholder="Section Letter">
+                    <datalist id="list_section">
+                        <?php
+                            foreach (range('A', 'Z') as $char) {
+                                echo "<option value='".$char."'>";
+                            }
+                        ?>
+			  	    </datalist>
 			  	</div>
 			  </div>
 

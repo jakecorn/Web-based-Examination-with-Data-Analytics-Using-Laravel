@@ -87,7 +87,13 @@
 				History Logs
 			</a>
 		</li>
+		<li>
+			<a href="{{route('database_management')}}">
+				<span class="fa fa-database"> </span>
+				Database Management
 
+			</a>
+		</li>
 		<li>
 			<a href="{{route('admin-settings')}}">
 				<span class="fa fa-dashboard"> </span>		

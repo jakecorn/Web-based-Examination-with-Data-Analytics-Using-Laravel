@@ -26,6 +26,10 @@ Route::group(['middleware' => ['web','auth','AdminRestriction'], 'prefix' => 'ad
     Route::get('/course/edit/{id}', 'AdminController@courseEdit')->name('courseEdit');
     Route::post('/course/edit/{id}', 'AdminController@storeCourseEdit');
 
+    Route::get('/database/backup', 'AdminController@dabataseBackup')->name('backupdatabase');
+    Route::get('/database/management', 'AdminController@databaseManagement')->name('database_management');
+    Route::post('/database/management', 'AdminController@storeDatabaseManagement');
+
     Route::get('/system/settings', 'AdminController@settings')->name('settings');
     Route::post('/system/settings', 'AdminController@storeSettings');
 

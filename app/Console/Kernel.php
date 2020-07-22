@@ -13,7 +13,7 @@ class Kernel extends ConsoleKernel
      * @var array
      */
     protected $commands = [
-        //
+        Commands\BackupDatabase::class
     ];
 
     /**
@@ -24,10 +24,11 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-        $schedule->call(function () {
-            $sms = new BaseController();
-            $sms->initiateSendSms();
-        })->everyMinute();
+        //$schedule->call(function () {
+           // $sms = new BaseController();
+           // $sms->initiateSendSms();
+        //})->everyMinute();
+        $schedule->command('db:custombackup')->everyMinute();
     }
 
     /**

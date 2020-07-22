@@ -1532,8 +1532,16 @@ class TeacherController extends Controller
             $dif=DB::select("select count(student_answers.student_id) as countanswer from student_answers,question_choices where student_answers.question_id=question_choices.question_id and question_choices.answer=1 and student_answers.answer=question_choices.id and question_choices.question_id='$question_id'");
             return $dif[0]->countanswer;
         }
-        static public function discrimination($question_id,$count)
-        {  
+
+        static public function setDescrimination($question_id, $value)
+        {
+            Question::where('id',$question_id)->update([
+                'discrimination_value' => $value
+            ]);
+        }
+
+        static public function discrimination($question_id, $count)
+        {
             $limit=round($count/2);
             $studentlist1=DB::select("select *  from student_answers,question_choices where student_answers.question_id=question_choices.question_id and question_choices.answer=1 and student_answers.answer=question_choices.id and question_choices.question_id='$question_id' order by student_answers.student_id asc limit ".$limit);
 

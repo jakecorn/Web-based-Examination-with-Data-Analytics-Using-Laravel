@@ -33,6 +33,7 @@ Route::group(['middleware' => ['web','auth','RestrictAccess'], 'prefix' => 'teac
 
     Route::get('/{id}/preview', 'ExaminationController@preview')->name('preview');
 
+    Route::get('/{e_id}/{p_id}/{q_id}/revise', 'ExaminationController@reviseQuestion')->name('revisequestion');
     Route::get('/{e_id}/{p_id}/{q_id}/edit', 'ExaminationController@editQuestion')->name('editquestion');
     Route::post('/{e_id}/{p_id}/{q_id}/edit', 'ExaminationController@storeUpdateQuestion');
     

@@ -1,6 +1,6 @@
-
 <?php
-
+use Modules\Teacher\Http\Controllers\TeacherController;
+use Modules\Utilitize\Util;
 $type= array("mul"=>"Multiple Choice","mat"=>"Matching Type","tru"=>"True or False","ide"=>"Identification","ess"=>"Essay");
 error_reporting(E_ALL ^ E_NOTICE);
 ?>
@@ -115,8 +115,14 @@ error_reporting(E_ALL ^ E_NOTICE);
 								<div class="form-group form-check" style="margin: 8px 0 8px 0">
 								    <input type="hidden" class="form-check-input" name="question_id[]" value="{{$question->id}}">
 								    <label class="form-check-label" style="font-weight: normal" for="question{{$question->id}}">
-								        <input type="checkbox" class="form-check-input" style="margin-left: 8px" name="question[]"  id="question{{$question->id}}" value="{{$question->question}}">
-								        {{$question->question}}
+								        <input type="checkbox" class="form-check-input" style="margin-left: 8px" name="question[]"  id="question{{$question->id}}" value="{{$question->question}}" <?php if($question->discrimination_value <=0 ){ echo "disabled=1 title='Please revise this question before reusing.'";}?>>
+                                        {{$question->question}}
+                                        <?php
+                                            if($question->discrimination_value <=0 ){
+                                                echo "<a href='".route('revisequestion',[$examination[0]->id, $part[0]->id, $question->id])."?redirect=".$_SERVER['REQUEST_URI']."' style='color: blue'>Revise question</a>";
+
+                                            }
+                                        ?>
 								    </label>
 								  </div>
 						@endforeach

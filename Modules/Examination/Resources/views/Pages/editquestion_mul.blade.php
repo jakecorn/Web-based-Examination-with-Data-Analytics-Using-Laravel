@@ -60,9 +60,20 @@ $type= array("mul"=>"Multiple Choice","mat"=>"Matching Type","tru"=>"True or Fal
 		<br>
 		<div class="container-fluid">
 			<form method="post">
+			        <?php
+					    $redirect_url = $_SERVER['REQUEST_URI'];
+                        $pos = strpos($redirect_url, "redirect=");
+                        if($pos){
+                            $redirect_url = substr($redirect_url, $pos+10);
+                        }else{
+                            $redirect_url = "";
+                        }
+
+					?>
 					<input type="hidden" name="examination_id" value="{{$examination[0]->id}}">
 					<input type="hidden" name="question_id" value="{{$question[0]->id}}">
 					<input type="hidden" name="part_id" value="{{$selected_part[0]->id}}">
+					<input type="hidden" name="redirect" value="{{$redirect_url}}">
 					<input type="hidden" name="_token" value="{{csrf_token()}}">
 				<div class="question-row">
 					<div class="form-group row">

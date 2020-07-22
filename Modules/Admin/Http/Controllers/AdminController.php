@@ -255,7 +255,82 @@ class AdminController extends Controller
 		return redirect()->route('courseList')->with('message','Course has been updated.');
 	  }
 
+	public function databaseManagement()
+	 {
+	    $this->data['sy'] = DB::table('class_records')->groupBy('sy')->orderBy('sy','asc')->get(['sy']);
+		$this->data['main_page'] = "Database Management";
+		$this->data['navigation']='Database';
+		$this->data['page_title']='databasemanagement';
+		return view('admin::layouts.master',$this->data);
+	 }
 
+    public function dabataseBackup(){
+        \Artisan::call('db:custombackup');
+        return redirect()->back()->with('message',"Dabatase backup has been created successfully. Please check for the latest created backup at the <i>/lms/storage/backups/</i> directory.");
+    }
+	 public function storeDatabaseManagement(Request $req)
+	{
+	    $current_year = date("Y");
+	    $year_limit = 2;
+	    $sy = $req['sy'];
+	    $deleted_records = 0;
+	    $start_year = explode("-", $sy);
+	    $start_year = $start_year[0];
+	    if(($current_year - $sy) > $year_limit && isset($sy)){
+	        echo DB::transaction(function () use($sy, &$deleted_records, $start_year) {
+                $class_records = DB::select("select id from class_records where sy='".$sy."'");
+                foreach($class_records as $class_record){
+                    $class_delete = DB::delete("delete class_records, student_records, class_record_announcements, announcements, student_announcements,
+                                                class_record_files, files, student_files, class_record_pairs, criterias, criteria_records, scores
+                                                from class_records
+                                                    left join student_records on class_records.id=student_records.class_record_id
+                                                    left join class_record_announcements on class_records.id=class_record_announcements.class_record_id
+                                                        left join announcements on class_record_announcements.announcement_id=announcements.id
+                                                            left join student_announcements on announcements.id=student_announcements.announcement_id
+                                                    left join class_record_files on class_records.id=class_record_files.class_record_id
+                                                        left join files on class_record_files.file_id=files.id
+                                                            left join student_files on files.id=student_files.file_id
+                                                    left join class_record_pairs on class_records.id=class_record_pairs.class_record_id_mid or class_records.id=class_record_pairs.class_record_id_final
+                                                    left join criterias on class_records.id=criterias.class_record_id
+                                                        left join criteria_records on criterias.id=criteria_records.criteria_id
+                                                            left join scores on criteria_records.id=scores.criteria_record_id
+                                                where class_records.id=".$class_record->id);
+                    if($class_delete){
+                        $deleted_records+=$class_delete;
+                        $questions = DB::select("select questions.id as id from class_record_exams
+                                                    join examinations on class_record_exams.examination_id=examinations.id
+                                                    join questions on examinations.id=questions.examination_id
+                                                    where class_record_exams.class_record_id=".$class_record->id);
+
+                        $deleted_records+=DB::delete("delete class_record_exams, examinations, student_exams, exam_parts, questions, student_answers
+                                                        from
+                                                        class_record_exams
+                                                            left join examinations on class_record_exams.examination_id=examinations.id
+                                                                left join student_exams on examinations.id=student_exams.examination_id
+                                                                left join exam_parts on examinations.id=exam_parts.examination_id
+                                                                left join questions on examinations.id=questions.examination_id
+                                                                    left join student_answers on questions.id=student_answers.question_id
+                                                        where class_record_exams.class_record_id=".$class_record->id);
+
+                        foreach($questions as $question){
+                            $deleted_records+=DB::delete("delete from points where question_id=".$question->id);
+                            $deleted_records+=DB::delete("delete from long_answers where question_id=".$question->id);
+                            $deleted_records+=DB::delete("delete from rand_questions where question_id=".$question->id);
+                            $deleted_records+=DB::delete("delete question_choices, rand_choices from question_choices left join rand_choices on question_choices.id=rand_choices.choice_id where question_choices.question_id=".$question->id);
+                        }
+                    }
+
+                    $deleted_records+=DB::delete("delete from sms where year(created_at)<='".$start_year."'");
+                    $deleted_records+=DB::delete("delete from sms where year(created_at)<='".$start_year."'");
+                    $deleted_records+=DB::delete("delete from class_records where id=".$class_record->id);
+                }
+	        });
+	        return redirect()->back()->with('message','Deleted '.$deleted_records. " records  of S.Y. ".$sy);
+	    }else{
+	        return redirect()->back()->withErrors(['errors' => "The selected S.Y. is not ".$year_limit." years older."]);
+	    }
+
+	}
 	  public function settings()
 	 {
 		$this->data['sy'] = DB::table('class_records')->groupBy('sy')->orderBy('sy','asc')->get();
