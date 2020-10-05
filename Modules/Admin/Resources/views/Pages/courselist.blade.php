@@ -7,7 +7,7 @@
 	<div class="content white-bg m-padding  gray-border mv-margin">
 		<div class="row tab-container">			
 			<div class="col-sm-12">
-				<h4 class="bold tab-title"><span class="fa fa-graduation-cap"></span>Course
+				<h4 class="bold tab-title"><span class="fa fa-graduation-cap"></span>Program
 				</h4>
 			</div>
 		</div>
@@ -36,7 +36,7 @@
 							
 								<td align="center" class="list-action"> 							
 									<a data-href="{{route('courseDelete',$course->id)}}" data-toggle="modal" data-target="#deleteModal"   title="Delete course" class="fa fa-remove action btn-danger"></a>
-									<a href="{{route('courseEdit',$course->id)}}" data-toggle="tooltip"   title="Update course" class="fa fa-pencil action btn-success"></a>
+									<a href="{{route('courseEdit',$course->id)}}" data-toggle="tooltip"   title="Update Program" class="fa fa-pencil action btn-success"></a>
 								</td>
 							</tr>
 						@endforeach

@@ -19,7 +19,7 @@ use Modules\Teacher\Http\Controllers\TeacherController;
 		<br>
 		<table class="margin-bottom">
    			<tr>
-   				<td width="80px"><label for="sub_code">Subject </label></td>
+   				<td width="80px"><label for="sub_code">Course </label></td>
 
    				<td>: {{$detail[0]->sub_code}} {{$detail[0]->sub_desc}} - {{$detail[0]->sub_sec}}</td>
    			</tr>

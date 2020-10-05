@@ -16,8 +16,8 @@
 			<table class="table table-hover">
 				<thead>				
 					<tr>
-	 					<th>Subject Code</th>
-						<th>Subject Description</th>
+	 					<th>Course Code</th>
+						<th>Course Description</th>
 						<th>Section</th>
 						<th>Day</th>
 						<th>Time</th>

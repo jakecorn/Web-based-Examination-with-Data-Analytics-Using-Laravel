@@ -20,7 +20,7 @@
 		</div>
 
 		<div class="form-group">
-			<label>Subject</label>
+			<label>Course</label>
 			<select class="form-control"  name="class">
 				@if(count($exam)>0)
 					@foreach($exam as $exam)

@@ -15,15 +15,15 @@
 		<form class="mv-margin" method="post">
 			  <div class="form-group row">
 			   	<div class="col-sm-6">
-			   		<label for="sub_code">Subject Code </label>
+			   		<label for="sub_code">Course Code </label>
 			    	<input type="hidden" name="_token" value="{{ csrf_token() }}">
 			    	<input type="hidden" name="class_record_id" value="{{$detail[0]->id}}">
-			    	<input type="text" class="form-control" required id="sub_code" name="sub_code" placeholder="Subject Code" value="{{$detail[0]->sub_code}}">
+			    	<input type="text" class="form-control" required id="sub_code" name="sub_code" placeholder="Course Code" value="{{$detail[0]->sub_code}}">
 			   	</div>
 
 			   	<div class="col-sm-6">
-			   		<label for="sub_desc">Subject Description </label>
-			    	<input type="text" class="form-control" required id="sub_desc" name="sub_desc" placeholder="Subject Description" value="{{$detail[0]->sub_desc}}">
+			   		<label for="sub_desc">Course Description </label>
+			    	<input type="text" class="form-control" required id="sub_desc" name="sub_desc" placeholder="Course Description" value="{{$detail[0]->sub_desc}}">
 			   	</div>
 			  </div>
 

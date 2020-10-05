@@ -55,7 +55,7 @@
 		<div class="table-responsive">
 			<table class="margin-bottom">
 				<tr>
-					<th width="80px">Subject</th>
+					<th width="80px">Course</th>
 					<td>: {{$sub_detail}}</td>
 				</tr>
 				<tr>

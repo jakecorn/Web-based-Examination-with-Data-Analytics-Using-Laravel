@@ -8,7 +8,7 @@ $type= array("mul"=>"Multiple Choice","mat"=>"Matching Type","tru"=>"True or Fal
 	<div class="content white-bg m-padding  gray-border mv-margin">
 		<div class="row tab-container">			
 			<div class="col-sm-12">
-				<h4 class="bold tab-title"><span class="fa fa-question-circle"></span>Subjects
+				<h4 class="bold tab-title"><span class="fa fa-question-circle"></span>Courses
  				</h4>
 			</div>
 		</div>
@@ -17,8 +17,8 @@ $type= array("mul"=>"Multiple Choice","mat"=>"Matching Type","tru"=>"True or Fal
 			<table width="100%" class="table table-hover">
 				<thead>
 					<tr>
-						<th>Subject Code</th>
-						<th>Subject Description</th>
+						<th>Course Code</th>
+						<th>Course Description</th>
 						<th>Section</th>
 						<th>Schedule</th>
 						<th>Term</th>

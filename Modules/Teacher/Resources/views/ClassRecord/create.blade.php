@@ -16,14 +16,14 @@
 		<form class="mv-margin" method="post">
 			  <div class="form-group row">
 			   	<div class="col-sm-6">
-			   		<label for="sub_code">Subject Code <span style="color:red">*</span></label>
+			   		<label for="sub_code">Course Code <span style="color:red">*</span></label>
 			    	<input type="hidden" name="_token" value="{{ csrf_token() }}">
-			    	<input type="text" required="" class="form-control" value="{{old('sub_code')}}" id="sub_code" name="sub_code" placeholder="Subject Code">
+			    	<input type="text" required="" class="form-control" value="{{old('sub_code')}}" id="sub_code" name="sub_code" placeholder="Course Code">
 			   	</div>
 
 			   	<div class="col-sm-6">
-			   		<label for="sub_desc">Subject Description <span style="color:red">*</span></label>
-			    	<input type="text" required="" class="form-control" id="sub_desc" value="{{old('sub_desc')}}" name="sub_desc" placeholder="Subject Description">
+			   		<label for="sub_desc">Course Description <span style="color:red">*</span></label>
+			    	<input type="text" required="" class="form-control" id="sub_desc" value="{{old('sub_desc')}}" name="sub_desc" placeholder="Course Description">
 			   	</div>
 			  </div>
 

@@ -26,7 +26,7 @@
 
 	<table class="margin-bottom">
 		<tr>
-			<th width="80px">Subject</th>
+			<th width="80px">Course</th>
 			<td>: {{$subject_list}}</td>
 		</tr>
 

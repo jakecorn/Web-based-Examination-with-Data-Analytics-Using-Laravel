@@ -26,7 +26,7 @@ use Modules\Student\Http\Controllers\StudentController;
 <div class="student-header padding-lr">
 
 	<ul class="link">
-		<li><a href="/student"><i class="fa fa-newspaper-o"></i>Subjects</a></li>
+		<li><a href="/student"><i class="fa fa-newspaper-o"></i>Courses</a></li>
  		<li style="position:relative"><a href="/student/files"><i class="fa fa-floppy-o"></i> Files</a>
 
  			<?php $not = StudentController::fileNotification();?>

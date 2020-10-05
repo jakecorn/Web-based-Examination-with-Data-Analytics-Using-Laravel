@@ -6,7 +6,7 @@
 	<div class="content white-bg m-padding  gray-border mv-margin">
 		<div class="row tab-container">			
 			<div class="col-sm-12">
-				<h4 class="bold tab-title"><span class="fa fa-graduation-cap"></span>Course
+				<h4 class="bold tab-title"><span class="fa fa-graduation-cap"></span>Program
 				</h4>
 			</div>
 		</div>
@@ -14,13 +14,13 @@
 		<form method="post">
 			{{csrf_field()}}
 			<div class="form-group margin-top">
-				<label>Course Code</label>
+				<label>Program Code</label>
 				<input type="hidden" name="course_id" value="{{$course[0]->id}}" class="form-control" required="">
 				<input type="text" name="course_code" value="{{$course[0]->course_code}}" class="form-control" required="">
 			</div>
 
 			<div class="form-group">
-				<label>Course Description</label>
+				<label>Program Description</label>
 				<input type="text" name="course_desc" value="{{$course[0]->course_desc}}" class="form-control" required="">
 			</div>
 

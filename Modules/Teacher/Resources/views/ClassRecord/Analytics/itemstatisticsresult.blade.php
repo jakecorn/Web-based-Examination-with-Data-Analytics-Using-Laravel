@@ -20,7 +20,7 @@
 		</div>
 
 		<div class="form-group">
-			<label>Subject</label>
+			<label>Course</label>
 			<select class="form-control"  name="class">
 				@if(count($exam)>0)
 					<?php $subject_list="";?>
@@ -60,7 +60,7 @@
 
 			<table class="margin-bottom">
 				<tr>
-					<th width="80px">Subject</th>
+					<th width="80px">Course</th>
 					<td>: {{$subject_list}}</td>
 				</tr>
 

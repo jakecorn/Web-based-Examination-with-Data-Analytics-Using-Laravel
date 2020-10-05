@@ -31,7 +31,7 @@ $type= array("mul"=>"Multiple Choice","mat"=>"Matching Type","tru"=>"True or Fal
 
     <span style="text-transform:capitalize">{{$subject[0]->semester}} Semester, S.Y. {{$subject[0]->sy}}<br></span>
 
-    {{$teacher[0]->name}}<br>Subject Instructor<br>
+    {{$teacher[0]->name}}<br>Course Instructor<br>
 
 
   </div>

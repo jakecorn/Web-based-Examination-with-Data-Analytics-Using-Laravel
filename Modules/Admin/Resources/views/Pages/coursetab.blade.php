@@ -9,7 +9,7 @@
 
 				<a href="{{route('courseList')}}" class="mybutton gray2-bg">
 					<span class="fa fa-sign-in margin-right"></span>
-					All Courses
+					All Programs
 				</a>
 			</div>
 		</div>

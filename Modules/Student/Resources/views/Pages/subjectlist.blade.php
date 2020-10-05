@@ -3,7 +3,7 @@
 	<div class="content white-bg m-padding  gray-border mv-margin">
 		<div class="row tab-container">			
 			<div class="col-sm-12">
-				<h4 class="bold tab-title"><span class="fa fa-book"></span>Subjects 
+				<h4 class="bold tab-title"><span class="fa fa-book"></span>Courses
 
 				</h4>
 			</div>
@@ -14,8 +14,8 @@
 			<table width="100%" class="table table-hover">
 				<thead>
 					<tr>
-						<th>Subject Code</th>
-						<th>Subject Description</th>
+						<th>Course Code</th>
+						<th>Course Description</th>
 						<th>Section</th>
 						<th>Schedule</th>
 						<th style="text-align:center"><b>Actions</b></th>

@@ -32,7 +32,7 @@
 		<div class="table-responsive">
 			<table class="margin-bottom">
 				<tr>
-					<th width="80px">Subject</th>
+					<th width="80px">Course</th>
 					<td>: Math 111 Plane Trigonometry</td>
 				</tr>
 				<tr>
