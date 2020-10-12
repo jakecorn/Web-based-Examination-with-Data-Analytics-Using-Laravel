@@ -43,7 +43,7 @@
 			</div>
 
 			<div class="form-group">
-			   		<label for="course_id">Course</label>
+			   		<label for="course_id">Program</label>
 			    	<select name="course_id" id="couse_id" class="form-control">
 			    		@if(count($course)>0)
 			    			@foreach($course as $course)

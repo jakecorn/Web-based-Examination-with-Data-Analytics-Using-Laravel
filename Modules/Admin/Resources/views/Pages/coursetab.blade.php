@@ -4,7 +4,7 @@
 
 				<a href="{{route('courseCreate')}}" class="mybutton green-bg">
 					<span class="fa fa-plus-circle margin-right"></span>
-					Add Course
+					Add Program
 				</a>
 
 				<a href="{{route('courseList')}}" class="mybutton gray2-bg">

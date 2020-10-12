@@ -66,7 +66,7 @@ use Modules\Teacher\Http\Controllers\TeacherController;
 							<th>No.</th>
 							<th class="not-important">ID</th>
 							<th>Name</th>
-							<th class="not-important">Course</th>
+							<th class="not-important">Program</th>
 							<th class="not-important">Year Level</th>
 							<th><center>Present</center></th>
 						</tr>

@@ -22,7 +22,7 @@ use Modules\Teacher\Http\Controllers\TeacherController;
 						<th>Contact #</th>
 						<th>Username</th>
 						<th>Password</th>
-						<th>Course</th>
+						<th>Program</th>
 						<th>Actions</th>
 					</tr>
 				</thead>

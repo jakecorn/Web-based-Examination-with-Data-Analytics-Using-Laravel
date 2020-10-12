@@ -22,8 +22,8 @@
 			   	</div>
 
 			   	<div class="col-sm-6">
-			   		<label for="sub_desc">Course Description <span style="color:red">*</span></label>
-			    	<input type="text" required="" class="form-control" id="sub_desc" value="{{old('sub_desc')}}" name="sub_desc" placeholder="Course Description">
+			   		<label for="sub_desc">Program Description <span style="color:red">*</span></label>
+			    	<input type="text" required="" class="form-control" id="sub_desc" value="{{old('sub_desc')}}" name="sub_desc" placeholder="Program Description">
 			   	</div>
 			  </div>
 

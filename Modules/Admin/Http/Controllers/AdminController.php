@@ -191,8 +191,8 @@ class AdminController extends Controller
 
 	 public function courseCreate(Request $req)
 	 {
-		$this->data['main_page'] = "Course";
-		$this->data['navigation']='Create Course';
+		$this->data['main_page'] = "Program";
+		$this->data['navigation']='Create Program';
 		$this->data['page_title']='coursecreate';
 		return view('admin::layouts.master',$this->data);
 	 }
@@ -203,8 +203,8 @@ class AdminController extends Controller
 			'course_code'=>'required',
 			'course_desc'=>'required'
 			],[
-				'course_code.required'=>'The course code field is required',
-				 'course_desc.required'=>'The course description is required'
+				'course_code.required'=>'The program code field is required',
+				 'course_desc.required'=>'The program description is required'
 			]);
 
 		DB::table('courses')->insert(['course_code'=>$req['course_code'], 'course_desc'=>$req['course_desc'] ]);
@@ -213,7 +213,7 @@ class AdminController extends Controller
 
 	 public function courseList()
 	{    
-		$this->data['main_page'] = "Course";
+		$this->data['main_page'] = "Program";
 		$this->data['course']=DB::table('courses')->get();
 		$this->data['navigation']='List';
 		$this->data['page_title']='courselist';
@@ -234,8 +234,8 @@ class AdminController extends Controller
 	  public function courseEdit($id)
 	 {
 		 $this->data['course']=DB::table('courses')->where('id',$id)->get();
-		$this->data['main_page'] = "Course";
-		$this->data['navigation']='Edit Course';
+		$this->data['main_page'] = "Program";
+		$this->data['navigation']='Edit Program';
 		$this->data['page_title']='courseedit';
 
 		return view('admin::layouts.master',$this->data);

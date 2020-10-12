@@ -76,7 +76,7 @@
 		<li>
 			<a href="/admin/course/list">
 				<span class="fa fa-mortar-board"> </span>		
-				Courses
+				Programs
 
 			</a>
 		</li>

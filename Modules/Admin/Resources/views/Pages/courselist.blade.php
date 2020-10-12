@@ -16,8 +16,8 @@
 			<table class="table table-hover userlist">
 				<thead>				
 					<tr>
-	 					<th>Course Code</th>
-						<th>Course Description</th>
+	 					<th>Program Code</th>
+						<th>Program Description</th>
 
 						<th align="center"><center>actions</center></th>
 					</tr>
